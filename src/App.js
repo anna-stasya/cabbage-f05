@@ -7,6 +7,9 @@ import Container from './components/Container';
 import RegisterView from './redux/views/auth/RegisterView';
 import LoginViews from './redux/views/auth/LoginViews';
 
+//Transactions
+import TransactionView from './pages/Transactions/TransactionView';
+
 import './App.css';
 
 const Example = lazy(() =>
@@ -29,6 +32,7 @@ function App() {
           <Route end path={paths.reports} element={<Reports />} />
           <Route path={paths.register} element={<RegisterView />} />
           <Route path={paths.login} exact element={<LoginViews />} />
+          <Route path="/transactions" exact element={<TransactionView />} />
           <Route end path="/" element={<Example />} />
         </Routes>
       </Suspense>
