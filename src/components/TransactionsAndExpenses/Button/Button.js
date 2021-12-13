@@ -1,13 +1,13 @@
 // import React, { useState } from 'react';
 import './Button.module.css';
 
-export default function Button({ children, onClick, ...allyProps }) {
+export default function Button({ children, type, onClick, ...allyProps }) {
   return (
     <button
       // className={
       //   props.type == 'primary' ? 'btn btn-primary' : 'btn btn-secondary'
       // }
-      type="button"
+      type={type}
       onClick={onClick}
       {...allyProps}
     >
