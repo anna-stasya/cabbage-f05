@@ -1,3 +1,4 @@
+// import React, { useState } from 'react';
 import Select from 'react-select';
 import './ExpensesSelect.module.css';
 
@@ -15,13 +16,35 @@ const options = [
   { value: 'прочее', label: 'Прочее' },
 ];
 
-export default function ExpensesSelect({ onChange, category }) {
+export default function ExpensesSelect() {
+  // const [category, setCategory] = useState([
+  //   'Транспорт',
+  //   'Продукты',
+  //   'Здоровье',
+  // ]);
+  // console.log('category', category);
+
+  // const handleChange = selectedOption => {
+  //   console.log('selectedOption', selectedOption);
+  //   setCategory(selectedOption);
+  // };
+
   return (
+    // <select name="Item category" value="category" onChange={handleChange}>
+    //   <option value="">Категория товара</option>
+    //   {category.map(option => {
+    //     return (
+    //       <option key={option} value={option} label={option}>
+    //         {option}
+    //       </option>
+    //     );
+    //   })}
+    // </select>
     <Select
       placeholder="Категория товара"
-      onChange={onChange}
-      value={category}
+      // onChange={handleChange}
       options={options}
+      // value={category}
     />
   );
 }

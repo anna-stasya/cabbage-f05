@@ -17,14 +17,13 @@ export const fetchTransaction = () => async dispatch => {
 };
 
 export const addTransaction =
-  ({ transaction }) =>
-  async dispatch => {
-    // const transaction = {
-    //   date,
-    //   descr,
-    //   category,
-    //   cost,
-    // };
+  (date, descr, category, cost) => async dispatch => {
+    const transaction = {
+      date,
+      descr,
+      category,
+      cost,
+    };
 
     dispatch(actions.addTransactionRequest());
 
