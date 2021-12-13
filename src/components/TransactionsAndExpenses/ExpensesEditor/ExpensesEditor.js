@@ -1,17 +1,12 @@
-import React, { useState } from 'react';
 import './ExpensesEditor.module.css';
 
-export default function ExpensesEditor({ expense }) {
-  const [message, setMessage] = useState(`${expense}`);
-
-  const handleChange = e => setMessage(e.target.value);
-
+export default function ExpensesEditor({ expense, onChange }) {
   return (
     <input
       type="text"
       className="ExpensesCreator"
-      value={message}
-      onChange={handleChange}
+      value={expense}
+      onChange={onChange}
       placeholder="Описание расхода"
     ></input>
   );

@@ -1,17 +1,18 @@
- import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
- import {
-   persistStore,
-   persistReducer,
-   FLUSH,
-   REHYDRATE,
-   PAUSE,
-   PERSIST,
-   PURGE,
-   REGISTER,
- } from "redux-persist";
- import storage from "redux-persist/lib/storage";
- import logger from "redux-logger";
-import authSliceReducer from './auth/auth-slice'
+import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
+import transactionsReducer from './transaction/transaction-reducer';
+import {
+  persistStore,
+  persistReducer,
+  FLUSH,
+  REHYDRATE,
+  PAUSE,
+  PERSIST,
+  PURGE,
+  REGISTER,
+} from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
+import logger from 'redux-logger';
+import authSliceReducer from './auth/auth-slice';
 
 const middleware = [
   ...getDefaultMiddleware({
@@ -30,22 +31,15 @@ const authPersistConfig = {
 
 export const store = configureStore({
   reducer: {
-        auth: persistReducer(authPersistConfig, authSliceReducer),
-      // cabbage:{}
+    auth: persistReducer(authPersistConfig, authSliceReducer),
+    transactions: transactionsReducer,
+    // cabbage:{}
   },
   middleware,
   devtools: process.env.NODE_ENV !== 'development',
 });
 
 export const persistor = persistStore(store);
-
-
-
-
-
-
-
-
 
 // const persistConfig = {
 //   key: "auth",
