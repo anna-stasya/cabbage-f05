@@ -19,18 +19,24 @@ export default function TransactionView() {
     e.preventDefault();
     let userData = this.state.newUser;
 
-    fetch('http://example.com', {
-      method: 'POST',
-      body: JSON.stringify(userData),
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-    }).then(response => {
-      response.json().then(data => {
-        console.log('Successful' + data);
-      });
-    });
+    const transaction = { date, expense, category, cost };
+    operations.addTransaction(transaction);
+    // fetch('http://example.com', {
+    //   method: 'POST',
+    //   body: JSON.stringify(userData),
+    //   headers: {
+    //     Accept: 'application/json',
+    //     'Content-Type': 'application/json',
+    //   },
+    // }).then(response => {
+    //   response.json().then(data => {
+    //     console.log('Successful' + data);
+    //   });
+    // });
+    setDate(new Date());
+    setExpense('');
+    setCategory('');
+    setCost('');
   };
 
   const handleClearForm = e => {
