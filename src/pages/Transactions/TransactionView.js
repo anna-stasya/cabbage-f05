@@ -35,6 +35,10 @@ export default function TransactionView() {
     //     console.log('Successful' + data);
     //   });
     // });
+    setDate(new Date());
+    setExpense('');
+    setCategory('');
+    setCost('');
   };
 
   const handleClearForm = e => {
