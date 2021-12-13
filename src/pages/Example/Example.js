@@ -1,5 +1,43 @@
-const Example = () => {
-  return <div>Example</div>;
-};
+import React, { Component } from 'react';
+
+import UniversalModal from '../../components/UniversalModal/UniversalModal';
+import UniversalForm from '../../components/UniversalForm/UniversalForm';
+
+class Example extends Component {
+  state = {
+    showModal: false,
+    showed: false,
+  };
+
+  toggleModal = () => {
+    this.setState(({ showModal }) => ({
+      showModal: !showModal,
+    }));
+  };
+  render() {
+    const { showModal } = this.state;
+    return (
+      <div>
+        Example
+        <button type="button" onClick={this.toggleModal}>
+          Тест модалки
+        </button>
+        {showModal && (
+          <UniversalModal onClose={this.toggleModal}>
+            <UniversalForm />
+            {/* <div>
+              <button type="button" onClick={this.toggleModal}>
+                ДА
+              </button>
+              <button type="button" onClick={this.toggleModal}>
+                НЕТ
+              </button>
+            </div> */}
+          </UniversalModal>
+        )}
+      </div>
+    );
+  }
+}
 
 export default Example;
