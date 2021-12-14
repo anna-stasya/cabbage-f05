@@ -2,17 +2,20 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 //import { Link } from 'react-router-dom';
 import authOperations from '../../auth/auth-operations';
+import { SignInGoogle } from './SigninGoogle';
 //import { routes } from 'utils/routes';
 
 import s from './Auth.module.css';
 import b from '../../../components/ButtonAuth/Button.module.css';
 
 const LoginViews = () => {
-// export default function LoginViews() {
-     const dispatch = useDispatch();
+  // export default function LoginViews() {
+  const dispatch = useDispatch();
   const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+    const [password, setPassword] = useState('');
+    const [actionType, setActionType] = useState('');
 
+    
   const handleChange = ({ target: { name, value } }) => {
     switch (name) {
       case 'email':
@@ -30,17 +33,24 @@ const LoginViews = () => {
     setEmail('');
     setPassword('');
   };
-    return (
-        <div>
-        <span>Или зайти с помощью e-mail и пароля, предварительно зарегистрировавшись:</span>
-        <button className={b.btn} type="submit">
-          Google
-        </button>
-      <span>Или зайти с помощью e-mail и пароля, предварительно зарегистрировавшись:</span>
+  return (
+    <div className={s.auth}>
+      <p className={`${s.textGoogle} ${s.textAuth}`}>
+        Вы можете авторизоваться с помощью Google Account:
+          </p>
+          
+          <SignInGoogle className={`${b.btnGoogle} ${b.btn}`} />
+      {/* <button className={`${b.btnGoogle} ${b.btn}`} type="submit">
+        Google
+          </button> */}
+
+      <p className={s.textAuth}>
+        Или зайти с помощью e-mail и пароля, предварительно зарегистрировавшись:
+      </p>
 
       <form onSubmit={handleSubmit} className={s.form} autoComplete="off">
         <label className={s.label}>
-          Электронная почта:
+          <p className={s.text}>Электронная почта: </p>
           <input
             type="email"
             name="email"
@@ -52,7 +62,7 @@ const LoginViews = () => {
         </label>
 
         <label className={s.label}>
-          Пароль:
+          <p className={s.text}>Пароль:</p>
           <input
             type="password"
             name="password"
@@ -62,14 +72,14 @@ const LoginViews = () => {
             className={s.input}
           />
         </label>
-
-        <button className={b.btnEnter} type="submit">
-          Войти
-                </button>
-                 <button className={b.btnEnter} type="submit">
-          регистрация
-        </button>
-                
+        <div className={b.btn}>
+          <button className={`${b.btn} ${b.btnAuth} `} type="submit" onClick={() => setActionType('login')}>
+            Войти
+          </button>
+          <button className={`${b.btn} ${b.btnAuth} `} type="submit" onClick={() => setActionType('register')}>
+            Регистрация
+          </button>
+        </div>
         {/* <button className={b.btn} type="submit">
             <Link to={routes.register}>
                 Регистрация
@@ -78,6 +88,6 @@ const LoginViews = () => {
       </form>
     </div>
   );
-}
+};
 
 export default LoginViews;

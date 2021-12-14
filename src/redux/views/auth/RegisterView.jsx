@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import authOperations from '../../auth/auth-operations';
+import { SignInGoogle } from './SigninGoogle';
 
 import s from './Auth.module.css';
 import b from '../../../components/ButtonAuth/Button.module.css';
@@ -34,12 +35,18 @@ const RegisterView= () => {
   };
 
   return (
-    <div>
-      <h1>Регистрация</h1>
+    <div className={`${s.authRegister} ${s.auth}`}>
+      <p className={`${s.textGoogle} ${s.textAuth}`}>
+        Вы можете авторизоваться с помощью Google Account:
+      </p>
+      <SignInGoogle className={`${b.btnGoogle} ${b.btn}`} />
+      <p className={s.textAuth}>
+        Или заполните поля:
+      </p>
 
       <form onSubmit={handleSubmit} className={s.form} autoComplete="off">
         <label className={s.label}>
-          Имя
+          <p className={s.text}>Имя: </p>
           <input
             className={s.input}
             type="text"
@@ -51,7 +58,7 @@ const RegisterView= () => {
         </label>
 
         <label className={s.label}>
-          Электронная почта:
+          <p className={s.text}>Электронная почта: </p>
           <input
             type="email"
             name="email"
@@ -63,7 +70,7 @@ const RegisterView= () => {
         </label>
 
         <label className={s.label}>
-          Пароль:
+          <p className={s.text}>Пароль:</p>
           <input
             type="password"
             name="password"
@@ -74,12 +81,14 @@ const RegisterView= () => {
           />
         </label>
 
-        <button className={b.btn} type="submit">
-          Реристрация
-        </button>
-        <button className={b.btn} type="submit">
-          Войти
-        </button>
+        <div className={b.btn}>
+          <button className={`${b.btn} ${b.btnAuth} `} type="submit">
+            Войти
+          </button>
+          <button className={`${b.btn} ${b.btnAuth} `} type="submit">
+            Регистрация
+          </button>
+        </div>
       </form>
     </div>
   );
