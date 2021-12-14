@@ -1,6 +1,9 @@
+.form {
+  position: relative;
+}
 .question {
   text-align: center;
-  margin-top: 50px;
+  margin-top: 20px;
 
   font-family: Roboto;
   font-weight: 500;
@@ -38,4 +41,16 @@
 .button:hover {
   background-color: #ff751d;
   color: #ffffff;
+}
+.button:first-child {
+  margin-left: 0;
+}
+.iconClose {
+  position: relative;
+  width: 24px;
+  height: 24px;
+  fill: #52555f;
+}
+.iconClose:hover {
+  fill: #ff751d;
 }
