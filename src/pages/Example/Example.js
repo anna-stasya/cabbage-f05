@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 
 import UniversalModal from '../../components/UniversalModal/UniversalModal';
-import UniversalForm from '../../components/UniversalForm/UniversalForm';
+// import UniversalForm from '../../components/UniversalForm/UniversalForm';
+import FormLogOut from '../../components/FormLogOut/FormLogOut';
 
 class Example extends Component {
   state = {
@@ -24,7 +25,7 @@ class Example extends Component {
         </button>
         {showModal && (
           <UniversalModal onClose={this.toggleModal}>
-            <UniversalForm />
+            <FormLogOut />
             {/* <div>
               <button type="button" onClick={this.toggleModal}>
                 ДА
