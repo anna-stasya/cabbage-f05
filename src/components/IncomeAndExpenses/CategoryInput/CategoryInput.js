@@ -1,10 +1,10 @@
-import './ExpensesEditor.module.css';
+import s from './CategoryInput.module.css';
 
-export default function ExpensesEditor({ expense, onChange }) {
+export default function CategoryInput({ expense, onChange }) {
   return (
     <input
       type="text"
-      className="ExpensesCreator"
+      className={s.categoryInput}
       value={expense}
       onChange={onChange}
       placeholder="Описание расхода"
