@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import UniversalModal from '../../components/UniversalModal/UniversalModal';
 // import UniversalForm from '../../components/UniversalForm/UniversalForm';
 import FormLogOut from '../../components/FormLogOut/FormLogOut';
+import s from './Example.module.css';
 
 class Example extends Component {
   state = {
@@ -18,7 +19,7 @@ class Example extends Component {
   render() {
     const { showModal } = this.state;
     return (
-      <div>
+      <div className={s.background}>
         Example
         <button type="button" onClick={this.toggleModal}>
           Тест модалки
