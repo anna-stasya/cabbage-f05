@@ -9,6 +9,7 @@ import LoginViews from './redux/views/auth/LoginViews';
 
 //Transactions
 import TransactionView from './pages/Transactions/TransactionView';
+import Header from './pages/Header/Header';
 
 import './App.css';
 
@@ -26,17 +27,20 @@ const Reports = lazy(() =>
 
 function App() {
   return (
-    <Container>
-      <Suspense fallback={<div>Downloading...</div>}>
-        <Routes>
-          <Route end path={paths.reports} element={<Reports />} />
-          <Route path={paths.register} element={<RegisterView />} />
-          <Route path={paths.login} exact element={<LoginViews />} />
-          <Route path="/transactions" exact element={<TransactionView />} />
-          <Route end path="/" element={<Example />} />
-        </Routes>
-      </Suspense>
-    </Container>
+    <>
+      <Header isLogedIn />
+      <Container>
+        <Suspense fallback={<div>Downloading...</div>}>
+          <Routes>
+            <Route end path={paths.reports} element={<Reports />} />
+            <Route path={paths.register} element={<RegisterView />} />
+            <Route path={paths.login} exact element={<LoginViews />} />
+            <Route path="/transactions" exact element={<TransactionView />} />
+            <Route end path="/" element={<Example />} />
+          </Routes>
+        </Suspense>
+      </Container>
+    </>
   );
 }
 
