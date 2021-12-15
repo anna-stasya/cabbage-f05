@@ -1,9 +1,6 @@
-.form {
-  position: relative;
-}
 .question {
   text-align: center;
-  margin-top: 20px;
+  margin-top: 50px;
 
   font-family: Roboto;
   font-weight: 500;
@@ -45,8 +42,13 @@
 .button:first-child {
   margin-left: 0;
 }
-.iconClose {
+.iconForm {
   position: relative;
+}
+.iconClose {
+  position: absolute;
+  right: 0px;
+  top: -50px;
   width: 24px;
   height: 24px;
   fill: #52555f;
