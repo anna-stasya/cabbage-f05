@@ -1,0 +1,31 @@
+.costEditor_label {
+  position: relative;
+}
+
+.costEditor_input {
+  padding: 13px 50px 13px 13px;
+
+  border: 2px solid #f5f6fb;
+  border-radius: 0px 16px 16px 0px;
+  border-left: none;
+  outline: none;
+  text-align: right;
+}
+
+@media screen and (min-width: 768px) {
+  .costEditor_input {
+    width: 105px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .costEditor_input {
+    width: 125px;
+  }
+}
+
+.calculator {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+}

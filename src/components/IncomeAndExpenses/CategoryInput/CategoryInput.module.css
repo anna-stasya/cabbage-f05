@@ -1,0 +1,21 @@
+.categoryInput {
+  padding: 13px;
+
+  border: none;
+  border: 2px solid #f5f6fb;
+  border-radius: 16px 0px 0px 0px;
+  border-right: none;
+  outline: none;
+}
+
+@media screen and (min-width: 768px) {
+  .categoryInput {
+    width: 190px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .categoryInput {
+    width: 270px;
+  }
+}

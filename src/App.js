@@ -7,6 +7,9 @@ import Container from './components/Container';
 import Registration from './pages/Auth/Registration/Registration';
 import Login from './pages/Auth/Login/Login';
 
+//Transactions
+import TransactionView from './pages/Transactions/TransactionView';
+
 import './App.css';
 
 const Example = lazy(() =>
@@ -27,9 +30,10 @@ function App() {
       <Suspense fallback={<div>Downloading...</div>}>
         <Routes>
           <Route end path={paths.reports} element={<Reports />} />
-
-          <Route path={paths.register} element={<Registration />} />
+          <Route path={paths.register} exact element={<Registration />} />
           <Route path={paths.login} exact element={<Login />} />
+          <Route path="/transactions" exact element={<TransactionView />} />
+
           <Route end path="/" element={<Example />} />
         </Routes>
       </Suspense>

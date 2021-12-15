@@ -1,0 +1,42 @@
+.container {
+  margin-bottom: 30px;
+}
+
+.text {
+  margin: 5px 0;
+  color: rgba(82, 85, 95, 0.7);
+  text-align: center;
+}
+
+.monthWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.month {
+  font-style: 14px;
+  font-weight: 700;
+  letter-spacing: 1.15;
+  text-transform: uppercase;
+  padding: 0 10px;
+}
+
+.btn {
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  border: none;
+}
+
+.icon {
+  width: 10px;
+  height: 18px;
+}
+
+@media (min-width: 768px) {
+  .container {
+    margin-bottom: 0;
+  }
+}
