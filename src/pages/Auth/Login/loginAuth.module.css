@@ -3,7 +3,7 @@
   display: flex;
   flex-direction: column;
   width: 300px;
-  height: 625px;
+  height: 525px;
   margin: auto;
   margin-top: 48px;
   padding: 42px 17px 51px;
@@ -22,7 +22,7 @@
   font-style: normal;
   font-weight: normal;
   width: 242px;
-  /* height: 24px; */
+  height: 24px;
   font-size: 10px;
 
   line-height: 1.2;
@@ -55,7 +55,7 @@
   margin-bottom: 4px;
   /* margin-bottom: 30px; */
   width: 253px;
-  height: 32px;
+  height: 52px;
   background: #f5f6fb;
   color: #a6abb9;
   border-radius: 30px;
@@ -68,7 +68,7 @@
   .auth {
     margin-top: 0;
     width: 436px;
-    height: 685px;
+    height: 535px;
     padding: 50px 85px 53px;
   }
 
@@ -87,7 +87,7 @@
 
   .input {
     width: 265px;
-    height: 32px;
+    height: 52px;
   }
 }
 

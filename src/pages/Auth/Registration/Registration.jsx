@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 // import { routes } from 'utils/routes';
 import { paths } from '../../../config';
-import { SignInGoogle } from '../SigninGoogle';
+import { SignInGoogle } from '../SignInGoogle/SigninGoogle';
 import authOperations from '../../../redux/auth/auth-operations';
 
 import s from './RegisterAuth.module.css';
@@ -84,7 +84,7 @@ const Registration = () => {
         Вы можете авторизоваться с помощью Google Account:
       </p>
       <SignInGoogle className={`${b.btnGoogle} ${b.btn}`} />
-      <p className={s.textAuth}>Или заполните поля:</p>
+      <p className={s.textAuth}>Или заполните поля ниже:</p>
       <Formik
         initialValues={INITIAL_VALUES}
         validate={validate}
@@ -168,24 +168,23 @@ const Registration = () => {
             >
               Войти
             </button>
-            
+
             <Link to={paths.login}>
-            <button
-              type="submit"
-              className={`${b.btn} ${b.btnAuth} `}
-              disabled={
-                isSubmitting ||
-                !(
-                  Object.keys(errors).length === 0 &&
-                  Object.keys(touched).length ===
-                    Object.keys(INITIAL_VALUES).length
-                )
-              }
-            >
-              Регистрация
-            </button>
+              <button
+                type="submit"
+                className={`${b.btn} ${b.btnAuth} `}
+                disabled={
+                  isSubmitting ||
+                  !(
+                    Object.keys(errors).length === 0 &&
+                    Object.keys(touched).length ===
+                      Object.keys(INITIAL_VALUES).length
+                  )
+                }
+              >
+                Регистрация
+              </button>
             </Link>
-            
           </Form>
         )}
       </Formik>

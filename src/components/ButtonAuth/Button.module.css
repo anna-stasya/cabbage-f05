@@ -19,7 +19,6 @@
   
   filter: drop-shadow(1px 3px 5px rgba(82, 85, 95, 0.15));
   transition: all 250ms ease;
-  /* transition: all 0.7s; */
   cursor: pointer;
 }
 
@@ -31,15 +30,14 @@
 
 .btnAuth {
   margin: auto;
+  margin-top: 30px;
   background: #F5F6FB;
   width: 125px;
   height: 44px;
   text-transform: uppercase;
-  /* background-size: 200%; */
   background-position: 100%;
   color: #52555F;
   font-size: 12px;
-  font-style: 400;
   font-weight: 700;
   border-radius: 16px;
   border: 0;
@@ -48,7 +46,10 @@
   transition: all 0.7s;
   cursor: pointer;
   margin-right: 15px;
-  
+}
+
+.activeLink:hover{
+  color: #FFFFFF;
 }
 
 .btnAuth:last-child{

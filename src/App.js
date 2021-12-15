@@ -4,10 +4,8 @@ import { Routes, Route } from 'react-router-dom';
 import { paths } from './config';
 import Container from './components/Container';
 //Auth
-//import RegisterView from './redux/views/auth/RegisterView';
-import LoginViews from './redux/views/auth/LoginViews';
-
 import Registration from './pages/Auth/Registration/Registration';
+import Login from './pages/Auth/Login/Login';
 
 import './App.css';
 
@@ -15,9 +13,9 @@ const Example = lazy(() =>
   import('./pages/Example' /* webpackChunkName: "Example" */),
 );
 //Auth
-//const {LoginViews, RegisterView} = lazy(() => import('./redux/views/auth'));
-// const LoginViews = lazy(() => import('./redux/views/auth'));
-// const RegisterView = lazy(() => import('./redux/views/auth'));
+//const {Login, Registration} = lazy(() => import('../pages/Auth'));
+// const Login = lazy(() => import('./pages/Auth/Login'));
+// const Registration = lazy(() => import('./pages/Auth/Registration'));
 
 const Reports = lazy(() =>
   import('./pages/Reports' /* webpackChunkName: "Reports" */),
@@ -30,10 +28,8 @@ function App() {
         <Routes>
           <Route end path={paths.reports} element={<Reports />} />
 
-<Route path={paths.register} element={<Registration />} />
-
-          {/* <Route path={paths.register} element={<RegisterView />} /> */}
-          <Route path={paths.login} exact element={<LoginViews />} />
+          <Route path={paths.register} element={<Registration />} />
+          <Route path={paths.login} exact element={<Login />} />
           <Route end path="/" element={<Example />} />
         </Routes>
       </Suspense>

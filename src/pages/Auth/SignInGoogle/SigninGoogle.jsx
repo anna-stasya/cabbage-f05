@@ -2,9 +2,9 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { GoogleLogin } from 'react-google-login';
 
-import logInSucces from '../../redux/auth/auth-slice'
+import logInSucces from '../../../redux/auth/auth-slice'
 
-import b from '../../components/ButtonAuth/Button.module.css';
+import b from '../../../components/ButtonAuth/Button.module.css';
 
 const clientId =
   '969256354016-orno03n42ee5h75ii12h0s0lmfu5tfcn.apps.googleusercontent.com';
@@ -37,8 +37,8 @@ const dispatch = useDispatch();
         onSuccess={onSuccess}
         onFailure={onFailure}
         cookiePolicy={'single_host_origin'}
-        style={{ borderRadius: '16px;' }}
-        className={`${b.btnGoogle} ${b.btn}`}
+       // style={{ borderRadius: '26px;' }}
+        className={b.btnGoogle}
         isSignedIn={true}
       />
     </div>
