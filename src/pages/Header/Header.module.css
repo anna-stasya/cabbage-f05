@@ -22,3 +22,54 @@
 
   border-radius: 50%;
 }
+.userName {
+  display: none;
+}
+.tabletLogout {
+  display: none;
+}
+@media (min-width: 768px) {
+  .headerContainer {
+    width: 768px;
+    display: flex;
+  }
+  .userName {
+    display: inline-block;
+    padding: 0;
+    border: none;
+    font: inherit;
+    color: inherit;
+    background-color: transparent;
+    cursor: pointer;
+    margin-left: 10px;
+  }
+
+  .user {
+    margin-left: 444px;
+  }
+  .logout {
+    display: none;
+  }
+  .tabletLogout {
+    display: block;
+    padding: 0;
+    border: none;
+    font: inherit;
+    color: inherit;
+    background-color: transparent;
+    cursor: pointer;
+    text-decoration: underline;
+    margin-right: auto;
+  }
+
+  .tabletLogout::before {
+    width: 36px;
+    transform: rotate(90deg);
+
+    content: '';
+    display: inline-block;
+    border: 1px solid #e0e5eb;
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+}

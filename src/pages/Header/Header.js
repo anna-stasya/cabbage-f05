@@ -32,6 +32,9 @@ const Header = props => {
         <button type="button" className={styles.user}>
           U
         </button>
+        <button type="button" className={styles.userName}>
+          User Name
+        </button>
         <a href="/" className={styles.logout}>
           <svg
             width="16"
@@ -57,6 +60,9 @@ const Header = props => {
             </defs>
           </svg>
         </a>
+        <button type="button" className={styles.tabletLogout}>
+          Выйти
+        </button>
       </div>
     </header>
   );
