@@ -1,24 +1,40 @@
 import { createAction } from '@reduxjs/toolkit';
 
-export const fetchTransactionRequest = createAction(
-  'transaction/fetchTransactionRequest',
+const setDate = createAction('set-date');
+
+export const fetchExpenseRequest = createAction(
+  'transaction/fetchExpenseRequest',
 );
-export const fetchTransactionSuccess = createAction(
-  'transaction/fetchTransactionSuccess',
+export const fetchExpenseSuccess = createAction(
+  'transaction/fetchExpenseSuccess',
 );
-export const fetchTransactionError = createAction(
-  'transaction/fetchTransactionError',
+export const fetchExpenseError = createAction('transaction/fetchExpenseError');
+
+export const addExpenseRequest = createAction('transaction/addExpenseRequest');
+export const addExpenseSuccess = createAction('transaction/addExpenseSuccess');
+export const addExpenseError = createAction('transaction/addExpenseError');
+
+const addIncomeRequest = createAction('transactions/addIncomeRequest');
+const addIncomeSuccess = createAction('transactions/addIncomeSuccess');
+const addIncomeError = createAction('transactions/addIncomeError');
+
+const getExpenseByDateRequest = createAction(
+  'transactions/getExpenseByDateRequest',
+);
+const getExpenseByDateSuccess = createAction(
+  'transactions/getExpenseByDateSuccess',
+);
+const getExpenseByDateError = createAction(
+  'transactions/getExpenseByDateError',
 );
 
-export const addTransactionRequest = createAction(
-  'transaction/addTransactionRequest',
+const getIncomeByDateRequest = createAction(
+  'transactions/getIncomeByDateRequest',
 );
-export const addTransactionSuccess = createAction(
-  'transaction/addTransactionSuccess',
+const getIncomeByDateSuccess = createAction(
+  'transactions/getIncomeByDateSuccess',
 );
-export const addTransactionError = createAction(
-  'transaction/addTransactionError',
-);
+const getIncomeByDateError = createAction('transactions/getIncomeByDateError');
 
 export const deleteTransactionRequest = createAction(
   'transaction/deleteTransactionRequest',
@@ -29,3 +45,27 @@ export const deleteTransactionSuccess = createAction(
 export const deleteTransactionError = createAction(
   'transaction/deleteTransactionError',
 );
+
+const transactionsActions = {
+  setDate,
+  fetchExpenseRequest,
+  fetchExpenseSuccess,
+  fetchExpenseError,
+  addExpenseRequest,
+  addExpenseSuccess,
+  addExpenseError,
+  addIncomeRequest,
+  addIncomeSuccess,
+  addIncomeError,
+  getExpenseByDateRequest,
+  getExpenseByDateSuccess,
+  getExpenseByDateError,
+  getIncomeByDateRequest,
+  getIncomeByDateSuccess,
+  getIncomeByDateError,
+  deleteTransactionRequest,
+  deleteTransactionSuccess,
+  deleteTransactionError,
+};
+
+export default transactionsActions;

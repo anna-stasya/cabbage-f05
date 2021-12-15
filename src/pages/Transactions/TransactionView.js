@@ -1,7 +1,7 @@
 // import React, { useState } from 'react';
-import TransactionForm from '../../components/IncomeAndExpenses/TransactionForm';
+import Tabs from '../../components/IncomeAndExpenses/Tabs';
 // import s from './TransactionView.module.css';
 
 export default function TransactionView() {
-  return <TransactionForm />;
+  return <Tabs />;
 }
