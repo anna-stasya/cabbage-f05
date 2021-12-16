@@ -7,7 +7,10 @@ export default function UniversalForm() {
   return (
     <form>
       <div className={s.iconForm}>
-        <BiX className={s.iconClose} />
+        <BiX
+          className={s.iconClose}
+          // onClick={toggleModal}
+        />
       </div>
       <p className={s.question}>Вы уверены?</p>
       <div className={s.buttons}>
@@ -21,7 +24,7 @@ export default function UniversalForm() {
         <button
           className={s.button}
           type="button"
-          // onClick={this.toggleModal}
+          // onClick={toggleModal}
         >
           Нет
         </button>
