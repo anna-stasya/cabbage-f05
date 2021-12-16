@@ -9,8 +9,11 @@ import LoginViews from './redux/views/auth/LoginViews';
 
 //Transactions
 import TransactionView from './pages/Transactions/TransactionView';
-import Header from './pages/Header/Header';
-
+import AppBar from './pages/Header/appBar';
+import UserMenu from './pages/Header/userMenu';
+import { useSelector } from 'react-redux';
+import authSelectors from './redux/auth/auth-selectors';
+import styles from './pages/Header/Header.module.css';
 import './App.css';
 
 const Example = lazy(() =>
@@ -26,9 +29,12 @@ const Reports = lazy(() =>
 );
 
 function App() {
+  const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
   return (
     <>
-      <Header isLogedIn />
+      <header className={styles.headerContainer}>
+        <AppBar>{isLoggedIn ? <UserMenu /> : <RegisterView />}</AppBar>
+      </header>
       <Container>
         <Suspense fallback={<div>Downloading...</div>}>
           <Routes>
