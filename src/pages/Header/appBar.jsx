@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import UserMenu from '../Header/userMenu';
 import authSelectors from '../../redux/auth/auth-selectors';
 import React from 'react';
-import RegisterView from '../../redux/views/auth/RegisterView';
+// import RegisterView from '../../redux/views/auth/RegisterView';
 
 export default function AppBar() {
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
@@ -35,7 +35,7 @@ export default function AppBar() {
             />
           </svg>
         </a>
-        {isLoggedIn ? <UserMenu /> : <RegisterView />}
+        {/* {isLoggedIn ? <UserMenu /> : <RegisterView />} */}
       </div>
     </header>
   );
