@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 
 import UniversalModal from '../../components/UniversalModal/UniversalModal';
-// import UniversalForm from '../../components/UniversalForm/UniversalForm';
-import FormLogOut from '../../components/FormLogOut/FormLogOut';
+import UniversalForm from '../../components/UniversalForm/UniversalForm';
 // import s from './Example.module.css';
 
 export default function Example() {
@@ -20,7 +19,10 @@ export default function Example() {
       </button>
       {showModal && (
         <UniversalModal onClose={toggleModal}>
-          <FormLogOut />
+          <UniversalForm
+            children={'Вы действительно хотите выйти?'}
+            onClose={toggleModal}
+          />
         </UniversalModal>
       )}
     </div>
