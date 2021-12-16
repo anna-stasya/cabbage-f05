@@ -12,6 +12,7 @@
  import storage from "redux-persist/lib/storage";
  import logger from "redux-logger";
 import authSliceReducer from './auth/auth-slice'
+import chosenMonthReduser from './chosenMonth/chosenMonth-reduser'
 
 const middleware = [
   ...getDefaultMiddleware({
@@ -30,8 +31,9 @@ const authPersistConfig = {
 
 export const store = configureStore({
   reducer: {
-        auth: persistReducer(authPersistConfig, authSliceReducer),
-      // cabbage:{}
+    auth: persistReducer(authPersistConfig, authSliceReducer),
+    desiredMonth : chosenMonthReduser,
+      
   },
   middleware,
   devtools: process.env.NODE_ENV !== 'development',
