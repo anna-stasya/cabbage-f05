@@ -17,7 +17,7 @@ export default function UniversalForm() {
         <button
           className={s.button}
           type="button"
-          // onClick={this.toggleModal}
+          // onClick={toggleModal}
         >
           Да
         </button>
