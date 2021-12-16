@@ -1,47 +1,86 @@
 import axios from 'axios';
-// import { useDispatch } from 'react-redux';
-// import { createAsyncThunk } from '@reduxjs/toolkit';
-import * as actions from './transaction-actions';
+import transactionsActions from './transaction-actions';
 
 axios.defaults.baseURL = 'http://localhost:3000';
 
 export const fetchTransaction = () => async dispatch => {
-  dispatch(actions.fetchTransactionRequest());
+  dispatch(transactionsActions.fetchExpenseRequest());
 
   try {
     const transactions = await axios.get('/transactions');
-    dispatch(actions.fetchTransactionSuccess(transactions));
+    dispatch(transactionsActions.fetchExpenseSuccess(transactions));
   } catch (error) {
-    dispatch(actions.fetchTransactionError(error));
+    dispatch(transactionsActions.fetchExpenseError(error));
   }
 };
 
-export const addTransaction =
-  (date, descr, category, cost) => async dispatch => {
-    const transaction = {
-      date,
-      descr,
-      category,
-      cost,
-    };
-
-    dispatch(actions.addTransactionRequest());
+export const addExpense =
+  (transaction, onSuccess, onError) => async dispatch => {
+    dispatch(transactionsActions.addExpenseRequest());
 
     try {
-      const addedTransaction = await axios.post('/transactions', transaction);
-      dispatch(actions.addTransactionSuccess(addedTransaction));
+      await axios.post('/transactions/addExpense', transaction);
+      dispatch(transactionsActions.addExpenseSuccess());
+      onSuccess();
     } catch (error) {
-      dispatch(actions.addTransactionError(error));
+      onError(error);
+      dispatch(transactionsActions.addExpenseError(error.message));
     }
   };
 
+const addIncome = (data, onSuccess, onError) => async dispatch => {
+  dispatch(transactionsActions.addIncomeRequest());
+
+  try {
+    await axios.post('/transactions/addIncome', data);
+    dispatch(transactionsActions.addIncomeSuccess());
+    onSuccess();
+  } catch (error) {
+    onError(error);
+    dispatch(transactionsActions.addIncomeError(error.message));
+  }
+};
+
 export const deleteTransaction = transactionId => async dispatch => {
-  dispatch(actions.deleteTransactionRequest());
+  dispatch(transactionsActions.deleteTransactionRequest());
 
   try {
     await axios.delete(`/transactions/${transactionId}`);
-    dispatch(actions.deleteTransactionSuccess(transactionId));
+    dispatch(transactionsActions.deleteTransactionSuccess(transactionId));
   } catch (error) {
-    dispatch(actions.deleteTransactionError(error));
+    dispatch(transactionsActions.deleteTransactionError(error));
   }
 };
+
+const getExpenseByDate = date => async dispatch => {
+  dispatch(transactionsActions.getExpenseByDateRequest());
+
+  try {
+    const { data } = await axios.get(`/transactions/getExpenseByDate/${date}`);
+    dispatch(transactionsActions.getExpenseByDateSuccess(data));
+  } catch (error) {
+    dispatch(transactionsActions.getExpenseByDateError());
+  }
+};
+
+const getIncomeByDate = date => async dispatch => {
+  dispatch(transactionsActions.getIncomeByDateRequest());
+
+  try {
+    const { data } = await axios.get(`/transactions/getIncomeByDate/${date}`);
+    dispatch(transactionsActions.getIncomeByDateSuccess(data));
+  } catch (error) {
+    dispatch(transactionsActions.getIncomeByDateError(error));
+  }
+};
+
+const counterOperations = {
+  fetchTransaction,
+  addExpense,
+  addIncome,
+  getExpenseByDate,
+  getIncomeByDate,
+  deleteTransaction,
+};
+
+export default counterOperations;
