@@ -4,7 +4,7 @@ import Button from '../Button';
 
 import s from './Transaction.module.css';
 
-const Transaction = ({ item, income, onDelete }) => {
+export default function Transaction({ item, income, onDelete }) {
   const currCost = income ? item.cost : -item.cost;
   const currClass = income ? `${s.tableAmountIncome}` : `${s.tableAmount}`;
 
@@ -27,6 +27,4 @@ const Transaction = ({ item, income, onDelete }) => {
       </td>
     </tr>
   );
-};
-
-export default Transaction;
+}
