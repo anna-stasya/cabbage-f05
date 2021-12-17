@@ -9,8 +9,9 @@ import Login from './pages/Auth/Login/Login';
 
 //Transactions
 import TransactionView from './pages/Transactions/TransactionView';
-
 import './App.css';
+
+import ReportsCategories from './components/ReportsCategories';
 
 const Example = lazy(() =>
   import('./pages/Example' /* webpackChunkName: "Example" */),
@@ -28,6 +29,7 @@ function App() {
   return (
     <Container>
       <Suspense fallback={<div>Downloading...</div>}>
+        <ReportsCategories />
         <Routes>
           <Route end path={paths.reports} element={<Reports />} />
           <Route path={paths.register} exact element={<Registration />} />
