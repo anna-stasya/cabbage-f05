@@ -9,11 +9,7 @@ import Login from './pages/Auth/Login/Login';
 
 //Transactions
 import TransactionView from './pages/Transactions/TransactionView';
-import AppBar from './pages/Header/appBar';
-import UserMenu from './pages/Header/userMenu';
-import { useSelector } from 'react-redux';
-import authSelectors from './redux/auth/auth-selectors';
-import styles from './pages/Header/Header.module.css';
+
 import './App.css';
 
 const Example = lazy(() =>
@@ -29,24 +25,19 @@ const Reports = lazy(() =>
 );
 
 function App() {
-  const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
   return (
-    <>
-      <header className={styles.headerContainer}>
-        <AppBar>{isLoggedIn ? <UserMenu /> : <Registration />}</AppBar>
-      </header>
-      <Container>
-        <Suspense fallback={<div>Downloading...</div>}>
-          <Routes>
-            <Route end path={paths.reports} element={<Reports />} />
-            <Route path={paths.register} element={<Registration />} />
-            <Route path={paths.login} exact element={<Login />} />
-            <Route path="/transactions" exact element={<TransactionView />} />
-            <Route end path="/" element={<Example />} />
-          </Routes>
-        </Suspense>
-      </Container>
-    </>
+    <Container>
+      <Suspense fallback={<div>Downloading...</div>}>
+        <Routes>
+          <Route end path={paths.reports} element={<Reports />} />
+          <Route path={paths.register} exact element={<Registration />} />
+          <Route path={paths.login} exact element={<Login />} />
+          <Route path="/transactions" exact element={<TransactionView />} />
+
+          <Route end path="/" element={<Example />} />
+        </Routes>
+      </Suspense>
+    </Container>
   );
 }
 
