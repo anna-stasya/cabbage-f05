@@ -28,6 +28,8 @@
     align-items: center;
     text-transform: uppercase;
     color: #000;
+    padding-right: 84px;
+    padding-left: 20px;
   }
 
   .tableTransThDate {
@@ -84,6 +86,11 @@
   }
   .table {
     width: 760px;
+  }
+
+  .tableHeadTr {
+    padding-right: 136px;
+    /* padding-right: 136px; */
   }
 
   .tableTransThDate {

@@ -5,7 +5,7 @@ import Loader from 'react-js-loader';
 
 import s from './TransactionsList.module.css';
 
-const TransactionTable = ({ income, transactions, onDelete }) => {
+const TransactionsList = ({ income, transactions, onDelete }) => {
   const isLoading = useSelector(transactionsSelectors.getIsLoading);
   return (
     <div className={s.tableDeskWrapper}>
@@ -48,4 +48,4 @@ const TransactionTable = ({ income, transactions, onDelete }) => {
   );
 };
 
-export default TransactionTable;
+export default TransactionsList;
