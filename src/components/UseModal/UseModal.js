@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 
 import UniversalModal from '../../components/Modal/Modal';
 import UniversalForm from '../../components/ModalUniversal/ModalUniversal';
-// import s from './Example.module.css';
 
 export default function Example() {
   const [showModal, setShowModal] = useState(false);
@@ -13,9 +12,8 @@ export default function Example() {
 
   return (
     <div>
-      Example
       <button type="button" onClick={toggleModal}>
-        Тест модалки
+        Кнопка на которую кидать модалку
       </button>
       {showModal && (
         <UniversalModal onClose={toggleModal}>

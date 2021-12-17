@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { BiX } from 'react-icons/bi';
 
-import s from './UniversalForm.module.css';
+import s from './ModalUniversal.module.css';
 
-export default function UniversalForm({ children, onClose }) {
+export default function ModalUniversal({ children, onClose }) {
   const [enterActive, setEnterActive] = useState(true);
   const [registerActive, setRegisterActive] = useState(false);
 
