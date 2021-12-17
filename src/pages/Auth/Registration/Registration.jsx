@@ -83,7 +83,7 @@ const Registration = () => {
       <p className={`${s.textGoogle} ${s.textAuth}`}>
         Вы можете авторизоваться с помощью Google Account:
       </p>
-      <SignInGoogle className={`${b.btnGoogle} ${b.btn}`} />
+      <SignInGoogle className={b.btnGoogle} />
       <p className={s.textAuth}>Или заполните поля ниже:</p>
       <Formik
         initialValues={INITIAL_VALUES}
@@ -156,7 +156,7 @@ const Registration = () => {
             {/* ==================buttons======================*/}
             <button
               type="submit"
-              className={`${b.btn} ${b.btnAuth} `}
+              className={b.btnAuth} 
               disabled={
                 isSubmitting ||
                 !(
@@ -172,7 +172,7 @@ const Registration = () => {
             <Link to={paths.login}>
               <button
                 type="submit"
-                className={`${b.btn} ${b.btnAuth} `}
+                className={b.btnAuth}
                 disabled={
                   isSubmitting ||
                   !(

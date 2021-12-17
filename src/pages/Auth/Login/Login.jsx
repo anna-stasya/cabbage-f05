@@ -46,10 +46,8 @@ const Login = () => {
         Вы можете авторизоваться с помощью Google Account:
       </p>
 
-      <SignInGoogle
-        className={`${b.btnGoogle} ${b.btn} {borderRadius: '26px'}`}
-      />
-
+        <SignInGoogle className={b.btnGoogle}  />
+      
       <p className={s.textAuth}>
         Или зайти с помощью e-mail и пароля, предварительно зарегистрировавшись:
       </p>
@@ -109,7 +107,7 @@ const Login = () => {
 
             <button
               type="submit"
-              className={`${b.btn} ${b.btnAuth} `}
+              className={b.btnAuth} 
               disabled={
                 isSubmitting ||
                 !(
@@ -122,33 +120,22 @@ const Login = () => {
               Войти
             </button>
 
-            <button
-              type="submit"
-              className={`${b.btn} ${b.btnAuth} `}
-              disabled={
-                isSubmitting ||
-                !(
-                  Object.keys(errors).length === 0 &&
-                  Object.keys(touched).length ===
-                    Object.keys(INITIAL_VALUES).length
-                )
-              }
-            >
-              {/* 
-              <NavLink
-                to="/register"
-                style={{ textDecoration: 'none', color: '#52555F', }}
-                activeClassName={b.activeLink}
+            <Link to="/register">
+              <button
+                type="submit"
+                className={b.btnAuth} 
+                disabled={
+                  isSubmitting ||
+                  !(
+                    Object.keys(errors).length === 0 &&
+                    Object.keys(touched).length ===
+                      Object.keys(INITIAL_VALUES).length
+                  )
+                }
               >
-                <p>Регистрация</p>
-              </NavLink> */}
-              <Link
-                to="/register"
-                style={{ textDecoration: 'none', color: '#52555F' }}
-              >
-                <p>Регистрация</p>
-              </Link>
-            </button>
+                Регистрация
+              </button>
+            </Link>
           </form>
         )}
       </Formik>

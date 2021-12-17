@@ -1,18 +1,7 @@
 /* =============  Button Google*/
 .btnGoogle {
-  display: inline-block;
-
   margin: auto;
   margin-bottom: 30px;
-
-  background: #F5F6FB;
-  color: #52555F;
-  width: 122px;
-  height: 44px;
-  
-  font-size: 14px;
-  font-weight: 500;
-  background-position: 100%;
   
   border-radius: 26px;
   border: 0;
@@ -23,8 +12,14 @@
 }
 
 .btnGoogle:hover {
-  box-shadow:1px 3px 5px rgba(57, 58, 65, 0.15);
-  transform: scale(1.03);
+  box-shadow:1px 3px 5px rgba(26, 26, 29, 0.15);
+  transform: scale(1.08);
+}
+
+.logo{
+  display: inline-block;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 /* =============  Btn*/
 
@@ -46,6 +41,7 @@
   transition: all 0.7s;
   cursor: pointer;
   margin-right: 15px;
+
 }
 
 .activeLink:hover{
