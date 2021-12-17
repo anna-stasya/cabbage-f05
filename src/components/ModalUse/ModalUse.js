@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
-import UniversalModal from '../../components/Modal/Modal';
-import UniversalForm from '../../components/ModalUniversal/ModalUniversal';
+import Modal from '../Modal/Modal';
+import ModalUniversal from '../ModalUniversal/ModalUniversal';
 
 export default function Example() {
   const [showModal, setShowModal] = useState(false);
@@ -16,12 +16,12 @@ export default function Example() {
         Кнопка на которую кидать модалку
       </button>
       {showModal && (
-        <UniversalModal onClose={toggleModal}>
-          <UniversalForm
+        <Modal onClose={toggleModal}>
+          <ModalUniversal
             children={'Вы действительно хотите выйти?'}
             onClose={toggleModal}
           />
-        </UniversalModal>
+        </Modal>
       )}
     </div>
   );
