@@ -9,12 +9,12 @@ import {
   PERSIST,
   PURGE,
   REGISTER,
-
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import logger from 'redux-logger';
 import authSliceReducer from './auth/auth-slice';
 import { transactionsReducer } from './transaction';
+import balanceReducer from './balance/balance-reducer';
 import chosenMonthReduser from './chosenMonth/chosenMonth-reduser';
 
 const middleware = [
@@ -36,6 +36,7 @@ export const store = configureStore({
   reducer: {
     auth: persistReducer(authPersistConfig, authSliceReducer),
     transactions: transactionsReducer,
+    balance: balanceReducer,
 
     desiredMonth: chosenMonthReduser,
   },

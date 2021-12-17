@@ -59,8 +59,8 @@ export default function TransactionForm({
     e.preventDefault();
 
     const transaction = { date, product, category, cost };
+    onSubmit(transaction);
     // operations.addTransaction(transaction);
-    console.log('transaction', transaction);
     // fetch('http://example.com', {
     //   method: 'POST',
     //   body: JSON.stringify(userData),
@@ -73,13 +73,10 @@ export default function TransactionForm({
     //     console.log('Successful' + data);
     //   });
     // });
-    setDate(moment(new Date()).valueOf());
-    setProduct('');
-    setCategory('');
-    setCost('');
+    handleClearForm();
   };
 
-  const handleClearForm = e => {
+  const handleClearForm = () => {
     setDate(new Date());
     setProduct('');
     setCategory('');
