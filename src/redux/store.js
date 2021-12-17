@@ -44,25 +44,3 @@ export const store = configureStore({
 });
 
 export const persistor = persistStore(store);
-
-
-const persistConfig = {
-  key: "auth",
-  storage,
-  whitelist: ["token"],
-};
-const middleware = (getDefaultMiddleware) =>
-  getDefaultMiddleware({
-    serializableCheck: {
-      ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-    },
-  }).concat(logger);
-
-export const store = configureStore({
-  reducer: {
-    auth: persistReducer(persistConfig),
-    contacts:{}
-  },
-  middleware,
-  devTools: process.env.NODE_ENV === "development",
-});
