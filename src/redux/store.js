@@ -13,8 +13,7 @@ import storage from 'redux-persist/lib/storage';
 import logger from 'redux-logger';
 import authSliceReducer from './auth/auth-slice';
 import { transactionsReducer } from './transaction';
-import chosenMonthReduser from './chosenMonth/chosenMonth-reduser'
-
+import chosenMonthReduser from './chosenMonth/chosenMonth-reduser';
 
 const middleware = [
   ...getDefaultMiddleware({
@@ -34,11 +33,9 @@ const authPersistConfig = {
 export const store = configureStore({
   reducer: {
     auth: persistReducer(authPersistConfig, authSliceReducer),
-    kvitkovsky/transaction
     transactions: transactionsReducer,
 
-    desiredMonth : chosenMonthReduser,
-
+    desiredMonth: chosenMonthReduser,
   },
   middleware,
   devtools: process.env.NODE_ENV !== 'development',

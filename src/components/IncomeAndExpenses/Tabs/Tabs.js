@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import moment from 'moment';
-// import s from './Tabs.module.css'
+import s from './Tabs.module.css';
 import TransactionForm from '../TransactionForm';
 import Button from '../Button';
 import { transactionsOperations } from '../../../redux/transaction';
@@ -64,8 +64,21 @@ export default function Tabs() {
   return (
     <div>
       <div>
-        <Button onClick={clickExpense}>Расход</Button>
-        <Button type="button" onClick={clickIncome}>
+        <Button
+          onClick={clickExpense}
+          className={
+            expense ? `${s.tabButton} ${s.activeButton}` : `${s.tabButton}`
+          }
+        >
+          Расход
+        </Button>
+        <Button
+          type="button"
+          onClick={clickIncome}
+          className={
+            income ? `${s.tabButton} ${s.activeButton}` : `${s.tabButton}`
+          }
+        >
           Доход
         </Button>
       </div>

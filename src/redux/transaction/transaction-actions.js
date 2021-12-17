@@ -10,6 +10,14 @@ export const fetchExpenseSuccess = createAction(
 );
 export const fetchExpenseError = createAction('transaction/fetchExpenseError');
 
+const setTotalBalanceRequest = createAction(
+  'transaction/setTotalBalanceRequest',
+);
+const setTotalBalanceSuccess = createAction(
+  'transaction/setTotalBalanceSuccess',
+);
+const setTotalBalanceError = createAction('transaction/setTotalBalanceError');
+
 export const addExpenseRequest = createAction('transaction/addExpenseRequest');
 export const addExpenseSuccess = createAction('transaction/addExpenseSuccess');
 export const addExpenseError = createAction('transaction/addExpenseError');
@@ -51,6 +59,9 @@ const transactionsActions = {
   fetchExpenseRequest,
   fetchExpenseSuccess,
   fetchExpenseError,
+  setTotalBalanceRequest,
+  setTotalBalanceSuccess,
+  setTotalBalanceError,
   addExpenseRequest,
   addExpenseSuccess,
   addExpenseError,

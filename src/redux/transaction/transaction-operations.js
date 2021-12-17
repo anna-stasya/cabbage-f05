@@ -14,6 +14,19 @@ export const fetchTransaction = () => async dispatch => {
   }
 };
 
+const setBalance = balance => async (dispatch, getState) => {
+  dispatch(transactionsActions.setTotalBalanceRequest());
+
+  try {
+    const response = await fetch.setBalance(balance);
+    dispatch(
+      transactionsActions.setTotalBalanceSuccess(response.data.data.balance),
+    );
+  } catch (error) {
+    dispatch(transactionsActions.setTotalBalanceError(error));
+  }
+};
+
 export const addExpense =
   (transaction, onSuccess, onError) => async dispatch => {
     dispatch(transactionsActions.addExpenseRequest());
@@ -76,6 +89,7 @@ const getIncomeByDate = date => async dispatch => {
 
 const counterOperations = {
   fetchTransaction,
+  setBalance,
   addExpense,
   addIncome,
   getExpenseByDate,
