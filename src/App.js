@@ -9,12 +9,13 @@ import Login from './pages/Auth/Login/Login';
 
 //Transactions
 import TransactionView from './pages/Transactions/TransactionView';
-import AppBar from './pages/Header/appBar';
-import UserMenu from './pages/Header/userMenu';
+import AppBar from './components/Header/appBar';
+import UserMenu from './components/Header/userMenu';
 import { useSelector } from 'react-redux';
 import authSelectors from './redux/auth/auth-selectors';
-import styles from './pages/Header/Header.module.css';
+
 import './App.css';
+import styles from './components/Header/Header.module.css';
 
 const Example = lazy(() =>
   import('./pages/Example' /* webpackChunkName: "Example" */),
@@ -33,8 +34,10 @@ function App() {
   return (
     <>
       <header className={styles.headerContainer}>
-        <AppBar>{isLoggedIn ? <UserMenu /> : <Registration />}</AppBar>
+        <AppBar></AppBar>
+        {isLoggedIn ? <UserMenu /> : <Registration />}
       </header>
+
       <Container>
         <Suspense fallback={<div>Downloading...</div>}>
           <Routes>

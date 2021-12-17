@@ -1,15 +1,12 @@
-import operations from '../../redux/auth/auth-operations';
 import { useDispatch, useSelector } from 'react-redux';
 import authSelectors from '../../redux/auth/auth-selectors';
 import styles from '../Header/Header.module.css';
+import authOperations from '../../redux/auth/auth-operations';
 
-const UserMenu = () => {
+export default function UserMenu() {
   const dispatch = useDispatch();
-  const name = useSelector(authSelectors.getUsername);
 
-  const logOut = () => {
-    dispatch(operations.logOut());
-  };
+  const name = useSelector(authSelectors.getUsername);
   return (
     <div>
       <button type="button" className={styles.user}>
@@ -18,7 +15,11 @@ const UserMenu = () => {
       <button type="button" className={styles.userName}>
         {name}
       </button>
-      <button type="button" onClick={logOut} className={styles.logout}>
+      <button
+        type="button"
+        onClick={() => dispatch(authOperations.logOut())}
+        className={styles.logout}
+      >
         <svg
           width="16"
           height="16"
@@ -43,11 +44,13 @@ const UserMenu = () => {
           </defs>
         </svg>
       </button>
-      <button type="button" onClick={logOut} className={styles.tabletLogout}>
+      <button
+        type="button"
+        onClick={() => dispatch(authOperations.logOut())}
+        className={styles.tabletLogout}
+      >
         Выйти
       </button>
     </div>
   );
-};
-
-export default UserMenu;
+}
