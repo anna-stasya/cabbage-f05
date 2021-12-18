@@ -1,10 +1,9 @@
-import ModalUse from '../../components/ModalUse';
+import Home from '../../components/Home';
 
 const Example = () => {
   return (
     <div>
-      Example
-      <ModalUse />
+      <Home />
     </div>
   );
 };
