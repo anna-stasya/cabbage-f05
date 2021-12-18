@@ -1,6 +1,8 @@
 import GoBackBtn from '../../components/GoBackBtn';
 import Balance from '../../components/Balance';
 import ChosenMonth from '../../components/ChosenMonth';
+import ReportsCategories from '../../components/ReportsCategories';
+
 import s from './Reports.module.css';
 
 const Reports = () => {
@@ -11,6 +13,7 @@ const Reports = () => {
         <ChosenMonth />
         <Balance />
       </div>
+      <ReportsCategories />
     </div>
   );
 };

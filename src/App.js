@@ -11,9 +11,7 @@ import Login from './pages/Auth/Login/Login';
 import TransactionView from './pages/Transactions/TransactionView';
 import './App.css';
 //components
-import ReportsCategories from './components/ReportsCategories';
 import BriefList from './components/Brief';
-
 
 const Example = lazy(() =>
   import('./pages/Example' /* webpackChunkName: "Example" */),
@@ -31,7 +29,6 @@ function App() {
   return (
     <Container>
       <Suspense fallback={<div>Downloading...</div>}>
-        <ReportsCategories />
         <Routes>
           <Route end path={paths.reports} element={<Reports />} />
           <Route path={paths.register} exact element={<Registration />} />
