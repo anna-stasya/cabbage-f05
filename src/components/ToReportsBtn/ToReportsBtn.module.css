@@ -1,0 +1,21 @@
+.btnContainer {
+  width: 154px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btnText {
+  font-family: 'Roboto';
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14px;
+  letter-spacing: 4%;
+}
+
+.btnIcon {
+  width: 24px;
+  height: 24px;
+  background: #52555f;
+}
