@@ -13,7 +13,6 @@ import './App.css';
 //components
 import ReportsCategories from './components/ReportsCategories';
 import BriefList from './components/Brief';
-import CurrentDateCalendar from './components/CurrentDateCalendar';
 
 const Example = lazy(() =>
   import('./pages/Example' /* webpackChunkName: "Example" */),
@@ -32,7 +31,6 @@ function App() {
     <Container>
       <Suspense fallback={<div>Downloading...</div>}>
         <ReportsCategories />
-        <CurrentDateCalendar />
 
         <Routes>
           <Route end path={paths.reports} element={<Reports />} />
