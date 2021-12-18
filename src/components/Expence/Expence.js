@@ -1,15 +1,15 @@
 import { useState } from 'react';
-import { ReactComponent as Transport } from '../../img/reports/transport.svg';
-import { ReactComponent as Products } from '../../img/reports/products.svg';
-import { ReactComponent as Health } from '../../img/reports/health.svg';
-import { ReactComponent as Alcohol } from '../../img/reports/alcohol.svg';
-import { ReactComponent as Entertainment } from '../../img/reports/entertainment.svg';
-import { ReactComponent as Housing } from '../../img/reports/housing.svg';
-import { ReactComponent as Technics } from '../../img/reports/technics.svg';
-import { ReactComponent as Communal } from '../../img/reports/communal.svg';
-import { ReactComponent as Sport } from '../../img/reports/sport.svg';
-import { ReactComponent as Education } from '../../img/reports/education.svg';
-import { ReactComponent as Other } from '../../img/reports/other.svg';
+import { ReactComponent as Transport } from '../../img/reportsCategories/transport.svg';
+import { ReactComponent as Products } from '../../img/reportsCategories/products.svg';
+import { ReactComponent as Health } from '../../img/reportsCategories/health.svg';
+import { ReactComponent as Alcohol } from '../../img/reportsCategories/alcohol.svg';
+import { ReactComponent as Entertainment } from '../../img/reportsCategories/entertainment.svg';
+import { ReactComponent as Housing } from '../../img/reportsCategories/housing.svg';
+import { ReactComponent as Technics } from '../../img/reportsCategories/technics.svg';
+import { ReactComponent as Communal } from '../../img/reportsCategories/communal.svg';
+import { ReactComponent as Sport } from '../../img/reportsCategories/sport.svg';
+import { ReactComponent as Education } from '../../img/reportsCategories/education.svg';
+import { ReactComponent as Other } from '../../img/reportsCategories/other.svg';
 import s from './Expence.module.css';
 
 export default function Expence() {
