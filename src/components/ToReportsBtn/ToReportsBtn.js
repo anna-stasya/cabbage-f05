@@ -1,17 +1,17 @@
 import { Link } from 'react-router-dom';
 
 import { paths } from '../../config/index';
-import { ReactComponent as BarChart } from '../../img/reports/barChart.png';
+import { ReactComponent as BarChart } from '../../img/reports/barChart.svg';
 
 import s from './ToReportsBtn.module.css';
 
 export default function ToReportsBtn() {
   return (
-    <div className={s.btnContainer}>
-      <Link to={paths.reports}>
+    <>
+      <Link to={paths.reports} className={s.link}>
         <p className={s.btnText}>Перейти к отчетам</p>
         <BarChart className={s.btnIcon} />
       </Link>
-    </div>
+    </>
   );
 }

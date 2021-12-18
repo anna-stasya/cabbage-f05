@@ -1,9 +1,14 @@
-.btnContainer {
-  width: 154px;
-  height: 24px;
+.link {
   display: flex;
+  text-decoration: none;
   align-items: center;
-  justify-content: center;
+  width: 154px;
+}
+
+.link:hover,
+.link:focus {
+  transform: scale(1.02);
+  transition: all 200ms linear;
 }
 
 .btnText {
@@ -11,11 +16,20 @@
   font-weight: 400;
   font-size: 12px;
   line-height: 14px;
-  letter-spacing: 4%;
+  margin-right: 20px;
+  color: rgb(32, 33, 37, 0.7);
+  font-weight: 500;
+  padding-top: 6px;
+  padding-left: 3px;
+  transition: all 100ms linear;
+}
+
+.btnText:hover,
+.btnText:focus {
+  color: rgb(155, 157, 165);
 }
 
 .btnIcon {
   width: 24px;
   height: 24px;
-  background: #52555f;
 }
