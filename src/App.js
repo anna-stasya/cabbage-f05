@@ -14,7 +14,6 @@ import './App.css';
 import ReportsCategories from './components/ReportsCategories';
 import BriefList from './components/Brief';
 
-
 const Example = lazy(() =>
   import('./pages/Example' /* webpackChunkName: "Example" */),
 );
@@ -32,6 +31,7 @@ function App() {
     <Container>
       <Suspense fallback={<div>Downloading...</div>}>
         <ReportsCategories />
+
         <Routes>
           <Route end path={paths.reports} element={<Reports />} />
           <Route path={paths.register} exact element={<Registration />} />
