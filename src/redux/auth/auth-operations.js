@@ -16,7 +16,7 @@ const token = {
 const register = createAsyncThunk('auth/register', async credentials => {
   console.log(credentials);
   try {
-    const { data } = await axios.post('/users/signup', credentials);
+    const { data } = await axios.post('/user/signup', credentials);
     token.set(data.token);
     return data;
   } catch (error) {
@@ -26,7 +26,7 @@ const register = createAsyncThunk('auth/register', async credentials => {
 
 const logIn = createAsyncThunk('auth/login', async credentials => {
   try {
-    const { data } = await axios.post('/users/login', credentials);
+    const { data } = await axios.post('/user/signin', credentials);
     token.set(data.token);
     return data;
   } catch (error) {}

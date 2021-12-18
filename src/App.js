@@ -4,18 +4,24 @@ import { Routes, Route } from 'react-router-dom';
 import { paths } from './config';
 import Container from './components/Container';
 //Auth
-import RegisterView from './redux/views/auth/RegisterView';
-import LoginViews from './redux/views/auth/LoginViews';
+import Registration from './pages/Auth/Registration/Registration';
+import Login from './pages/Auth/Login/Login';
 
+//Transactions
+import TransactionView from './pages/Transactions/TransactionView';
 import './App.css';
+//components
+import ReportsCategories from './components/ReportsCategories';
+import BriefList from './components/Brief';
+
 
 const Example = lazy(() =>
   import('./pages/Example' /* webpackChunkName: "Example" */),
 );
 //Auth
-//const {LoginViews, RegisterView} = lazy(() => import('./redux/views/auth'));
-// const LoginViews = lazy(() => import('./redux/views/auth'));
-// const RegisterView = lazy(() => import('./redux/views/auth'));
+//const {Login, Registration} = lazy(() => import('../pages/Auth'));
+// const Login = lazy(() => import('./pages/Auth/Login'));
+// const Registration = lazy(() => import('./pages/Auth/Registration'));
 
 const Reports = lazy(() =>
   import('./pages/Reports' /* webpackChunkName: "Reports" */),
@@ -25,10 +31,14 @@ function App() {
   return (
     <Container>
       <Suspense fallback={<div>Downloading...</div>}>
+        <ReportsCategories />
         <Routes>
           <Route end path={paths.reports} element={<Reports />} />
-          <Route path={paths.register} element={<RegisterView />} />
-          <Route path={paths.login} exact element={<LoginViews />} />
+          <Route path={paths.register} exact element={<Registration />} />
+          <Route path={paths.login} exact element={<Login />} />
+          <Route path={paths.brief} exact element={<BriefList />} />
+          <Route path="/transactions" exact element={<TransactionView />} />
+
           <Route end path="/" element={<Example />} />
         </Routes>
       </Suspense>
