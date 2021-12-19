@@ -1,9 +1,9 @@
-import Home from '../../components/Home';
+import MainLog from '../../components/MainLog/MainLog';
 
 const Example = () => {
   return (
     <div>
-      <Home />
+      <MainLog />
     </div>
   );
 };
