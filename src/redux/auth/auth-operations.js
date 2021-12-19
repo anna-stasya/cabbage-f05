@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-axios.defaults.baseURL = 'http://localhost:3000';
+axios.defaults.baseURL = 'http://localhost:3001/api/auth';
 
 //на все запроссы авторизации
 const token = {
@@ -13,25 +13,25 @@ const token = {
   },
 };
 
-const register = createAsyncThunk('auth/register', async credentials => {
-  console.log(credentials);
+const register = createAsyncThunk('/register', async credentials => {
   try {
     const { data } = await axios.post('/user/signup', credentials);
-    token.set(data.token);
     return data;
   } catch (error) {
     console.log(error);
   }
 });
 
+
 const logIn = createAsyncThunk('auth/login', async credentials => {
   try {
-    const { data } = await axios.post('/user/signin', credentials);
+    const { data } = await axios.post('/users/signin', credentials);
     token.set(data.token);
     return data;
-  } catch (error) {}
+  } catch (error) {
+     console.log(error);
+  }
 });
-
 
 
 const authOperations = {
