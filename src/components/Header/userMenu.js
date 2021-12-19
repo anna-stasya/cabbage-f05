@@ -8,7 +8,7 @@ export default function UserMenu() {
 
   const name = useSelector(authSelectors.getUsername);
   return (
-    <div>
+    <>
       <button type="button" className={styles.user}>
         U
       </button>
@@ -51,6 +51,6 @@ export default function UserMenu() {
       >
         Выйти
       </button>
-    </div>
+    </>
   );
 }
