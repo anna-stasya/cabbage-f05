@@ -13,18 +13,21 @@ const authSlice = createSlice({
   initialState,
   extraReducers: {
     [authOperations.register.fulfilled](state, action) {
-      console.log('register', action);
+      console.log('register', action.payload);
+
       state.user = action.payload.user;
-      state.token = action.payload.token;
       state.isLoggedIn = true;
-      state.isGoogleSigned = action.payload.token
+      state.isGoogleSigned = true;
+      // state.isGoogleSigned = action.payload.token;
     },
     [authOperations.logIn.fulfilled](state, action) {
       console.log('login', action);
+      
       state.user = action.payload.user;
       state.token = action.payload.token;
       state.isLoggedIn = true;
-      state.isGoogleSigned = action.payload.token
+      state.isGoogleSigned = true;
+      //state.isGoogleSigned = action.payload.token
     },
   },
 });
