@@ -1,7 +1,7 @@
 import GoBackBtn from '../../components/GoBackBtn';
 import Balance from '../../components/Balance';
 import ChosenMonth from '../../components/ChosenMonth';
-import ExponsesAndIncome from '../../components/ExponsesAndIncome';
+import ExponsesAndIncome from '../../components/TransactionsPerMonth';
 import s from './Reports.module.css';
 
 const Reports = () => {
