@@ -9,10 +9,16 @@ import Login from './pages/Auth/Login/Login';
 
 //Transactions
 import TransactionView from './pages/Transactions/TransactionView';
+import AppBar from './components/Header/appBar';
+import UserMenu from './components/Header/userMenu';
+import { useSelector } from 'react-redux';
+import authSelectors from './redux/auth/auth-selectors';
 import './App.css';
+import styles from './components/Header/Header.module.css';
 //components
 import ReportsCategories from './components/ReportsCategories';
 import BriefList from './components/Brief';
+
 
 const Example = lazy(() =>
   import('./pages/Example' /* webpackChunkName: "Example" */),
@@ -28,21 +34,24 @@ const Reports = lazy(() =>
 
 function App() {
   return (
-    <Container>
-      <Suspense fallback={<div>Downloading...</div>}>
-        <ReportsCategories />
+    <>
+      <header className={styles.headerContainer}>
+        <AppBar></AppBar>
+        {isLoggedIn ? <UserMenu /> : <Login />}
+      </header>
 
-        <Routes>
-          <Route end path={paths.reports} element={<Reports />} />
-          <Route path={paths.register} exact element={<Registration />} />
-          <Route path={paths.login} exact element={<Login />} />
-          <Route path={paths.brief} exact element={<BriefList />} />
-          <Route path="/transactions" exact element={<TransactionView />} />
-
-          <Route end path="/" element={<Example />} />
-        </Routes>
-      </Suspense>
-    </Container>
+      <Container>
+        <Suspense fallback={<div>Downloading...</div>}>
+          <Routes>
+            <Route end path={paths.reports} element={<Reports />} />
+            <Route path={paths.register} element={<Registration />} />
+            <Route path={paths.login} exact element={<Login />} />
+              <Route path={paths.brief} exact element={<BriefList />} />
+            <Route path="/transactions" exact element={<TransactionView />} />
+          </Routes>
+        </Suspense>
+      </Container>
+    </>
   );
 }
 
