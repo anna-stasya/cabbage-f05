@@ -1,7 +1,7 @@
 import axios from 'axios';
 import transactionsActions from './transaction-actions';
 
-axios.defaults.baseURL = 'http://localhost:3000';
+// axios.defaults.baseURL = 'http://localhost:3000';
 
 export const fetchTransaction = () => async dispatch => {
   dispatch(transactionsActions.fetchExpenseRequest());
@@ -11,6 +11,19 @@ export const fetchTransaction = () => async dispatch => {
     dispatch(transactionsActions.fetchExpenseSuccess(transactions));
   } catch (error) {
     dispatch(transactionsActions.fetchExpenseError(error));
+  }
+};
+
+const setBalance = balance => async (dispatch, getState) => {
+  dispatch(transactionsActions.setTotalBalanceRequest());
+
+  try {
+    const response = await fetch.setBalance(balance);
+    dispatch(
+      transactionsActions.setTotalBalanceSuccess(response.data.data.balance),
+    );
+  } catch (error) {
+    dispatch(transactionsActions.setTotalBalanceError(error));
   }
 };
 
@@ -76,6 +89,7 @@ const getIncomeByDate = date => async dispatch => {
 
 const counterOperations = {
   fetchTransaction,
+  setBalance,
   addExpense,
   addIncome,
   getExpenseByDate,

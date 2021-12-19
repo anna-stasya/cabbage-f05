@@ -1,10 +1,16 @@
 import { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import moment from 'moment';
-// import s from './Tabs.module.css'
+import { toast } from 'react-toastify';
+import s from './Tabs.module.css';
 import TransactionForm from '../TransactionForm';
+import TransactionsList from '../TransactionsList/TransactionsList';
 import Button from '../Button';
-import { transactionsOperations } from '../../../redux/transaction';
+import { balanceOperations } from '../../../redux/balance';
+import {
+  transactionsOperations,
+  transactionsSelectors,
+} from '../../../redux/transaction';
 
 const optionsExpense = [
   { value: 'transport', label: 'Транспорт' },
@@ -30,6 +36,9 @@ export default function Tabs() {
   const [income, setIncome] = useState(false);
 
   const dispatch = useDispatch();
+
+  const selectedDate = useSelector(transactionsSelectors.currentDate);
+  const transactions = useSelector(transactionsSelectors.getTransactions);
 
   useEffect(() => {
     const momentDate = moment(new Date()).valueOf();
@@ -61,20 +70,64 @@ export default function Tabs() {
     }
   };
 
+  const onDeleteTransaction = id => {
+    dispatch(
+      transactionsOperations.deleteTransaction(
+        id,
+        onDeleteTransactionSuccess,
+        onDeleteTransactionError,
+      ),
+    );
+  };
+
+  const onDeleteTransactionSuccess = () => {
+    toast.success('Transaction has been deleted.');
+    dispatch(balanceOperations.getBalance());
+    if (income) {
+      dispatch(transactionsOperations.getIncomeByDate(selectedDate));
+    }
+    if (expense) {
+      dispatch(transactionsOperations.getExpenseByDate(selectedDate));
+    }
+  };
+
+  const onDeleteTransactionError = error => {
+    toast.error('Something went wrong, please try again later.');
+  };
+
   return (
     <div>
       <div>
-        <Button onClick={clickExpense}>Расход</Button>
-        <Button type="button" onClick={clickIncome}>
+        <Button
+          onClick={clickExpense}
+          className={
+            expense ? `${s.tabButton} ${s.activeButton}` : `${s.tabButton}`
+          }
+        >
+          Расход
+        </Button>
+        <Button
+          type="button"
+          onClick={clickIncome}
+          className={
+            income ? `${s.tabButton} ${s.activeButton}` : `${s.tabButton}`
+          }
+        >
           Доход
         </Button>
       </div>
       {expense ? (
-        <TransactionForm
-          options={optionsExpense}
-          onSubmit={handleSubmit}
-          placeholder="Категория товара"
-        />
+        <div className="counter-tab-container">
+          <TransactionForm
+            options={optionsExpense}
+            onSubmit={handleSubmit}
+            placeholder="Категория товара"
+          />
+          <TransactionsList
+            transactions={transactions}
+            onDelete={onDeleteTransaction}
+          />
+        </div>
       ) : (
         <TransactionForm
           options={optionsIncome}

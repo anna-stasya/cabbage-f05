@@ -78,6 +78,8 @@
 
   background-color: transparent;
   border: 2px solid #f5f6fb;
+  transition: color 250ms linear, background-color 250ms linear,
+    border-color 250ms linear;
 }
 
 .button:hover {

@@ -1,4 +1,5 @@
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
+
 import {
   persistStore,
   persistReducer,
@@ -13,6 +14,7 @@ import storage from 'redux-persist/lib/storage';
 import logger from 'redux-logger';
 import authSliceReducer from './auth/auth-slice';
 import { transactionsReducer } from './transaction';
+import balanceReducer from './balance/balance-reducer';
 import chosenMonthReduser from './chosenMonth/chosenMonth-reduser';
 
 const middleware = [
@@ -33,8 +35,8 @@ const authPersistConfig = {
 export const store = configureStore({
   reducer: {
     auth: persistReducer(authPersistConfig, authSliceReducer),
-    // kvitkovsky/transaction
     transactions: transactionsReducer,
+    balance: balanceReducer,
 
     desiredMonth: chosenMonthReduser,
   },
@@ -43,26 +45,3 @@ export const store = configureStore({
 });
 
 export const persistor = persistStore(store);
-
-// const persistConfig = {
-//   key: "auth",
-//   storage,
-//   whitelist: ["token"],
-// };
-// const middleware = (getDefaultMiddleware) =>
-//   getDefaultMiddleware({
-//     serializableCheck: {
-//       ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-//     },
-//   }).concat(logger);
-
-// export const store = configureStore({
-//   reducer: {
-//     auth: persistReducer(persistConfig),
-//     contacts:{}
-//   },
-//   middleware,
-//   devTools: process.env.NODE_ENV === "development",
-// });
-
-// export const persistor = persistStore(store);
