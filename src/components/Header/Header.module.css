@@ -59,10 +59,12 @@
     background-color: transparent;
     cursor: pointer;
     margin-left: 10px;
+    font-size: 12px;
+    line-height: 14px;
   }
 
   .user {
-    margin-left: 444px;
+    margin-left: auto;
   }
   .logout {
     display: none;
@@ -76,7 +78,7 @@
     background-color: transparent;
     cursor: pointer;
     text-decoration: underline;
-    margin-right: auto;
+    margin-right: 20px;
   }
 
   .tabletLogout::before {
@@ -86,8 +88,6 @@
     content: '';
     display: inline-block;
     border: 1px solid #e0e5eb;
-    margin-left: 20px;
-    margin-right: 20px;
   }
 }
 
@@ -104,5 +104,6 @@
   }
   .tabletLogout {
     margin-left: 20px;
+    margin-right: 20px;
   }
 }
