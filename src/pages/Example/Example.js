@@ -1,10 +1,9 @@
-import ModalUse from '../../components/ModalUse';
+import MainLog from '../../components/MainLog/MainLog';
 
 const Example = () => {
   return (
     <div>
-      Example
-      <ModalUse />
+      <MainLog />
     </div>
   );
 };

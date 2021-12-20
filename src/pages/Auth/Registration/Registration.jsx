@@ -1,9 +1,7 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback } from 'react';
 import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-// import { routes } from 'utils/routes';
-import { paths } from '../../../config';
+
 import { SignInGoogle } from '../SignInGoogle/SigninGoogle';
 import authOperations from '../../../redux/auth/auth-operations';
 
@@ -19,9 +17,6 @@ const INITIAL_VALUES = {
 
 const Registration = () => {
   const dispatch = useDispatch();
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
 
   const validate = useCallback(values => {
     const errors = {};
@@ -42,20 +37,20 @@ const Registration = () => {
     //валидация для password
     if (!values.password) {
       errors.password = 'это обязательное поле';
-    } else if (values.password.length < 7 || values.password.length > 15) {
+    } else if (values.password.length < 6 || values.password.length > 12) {
       errors.password =
-        'Такой пароль не подходит. Пароль должен быть больше 7 и меньше 15 символов';
+        'Такой пароль не подходит. Пароль должен быть больше 6 и меньше 12 символов';
     }
 
     //валидация для confirm password
     if (!values.confirmPassword) {
       errors.confirmPassword = 'это обязательное поле';
     } else if (
-      values.confirmPassword.length < 7 ||
-      values.confirmPassword.length > 15
+      values.confirmPassword.length < 6 ||
+      values.confirmPassword.length > 12
     ) {
       errors.confirmPassword =
-        'Такой пароль не подходит. Пароль должен быть больше 7 и меньше 15 символов';
+        'Такой пароль не подходит. Пароль должен быть больше 6 и меньше 12 символов';
     } else if (values.confirmPassword !== values.password) {
       errors.confirmPassword =
         'Пароль не подходит. Подтверждение пароля должно совпадать с паролем';
@@ -63,20 +58,13 @@ const Registration = () => {
     return errors;
   }, []);
 
-  const handleSubmit = useCallback(
-    (values, { setSubmitting }) => {
-      dispatch(authOperations.register({ name, email, password }));
-      setName('');
-      setEmail('');
-      setPassword('');
 
-      setTimeout(() => {
-        alert(JSON.stringify(values, null, 2));
-        setSubmitting(false);
-      }, 400);
-    },
-    [dispatch, email, name, password],
-  );
+  const handleSubmit = e => {
+    const email = e.email;
+    const password = e.password;
+  
+    dispatch(authOperations.register({ email, password }));
+  };
 
   return (
     <div className={s.auth}>
@@ -90,7 +78,7 @@ const Registration = () => {
         validate={validate}
         onSubmit={handleSubmit}
       >
-        {({ isSubmitting, errors, touched }) => (
+        {() => (
           <Form className={s.form}>
             {/* =====================Name ===========================*/}
             <label htmlFor="name" className={s.label}>
@@ -154,37 +142,15 @@ const Registration = () => {
               className={s.ErrorMessage}
             />
             {/* ==================buttons======================*/}
-            <button
+            
+            <div className={s.btnRegister}>
+              <button
               type="submit"
-              className={b.btnAuth} 
-              disabled={
-                isSubmitting ||
-                !(
-                  Object.keys(errors).length === 0 &&
-                  Object.keys(touched).length ===
-                    Object.keys(INITIAL_VALUES).length
-                )
-              }
+                className={b.btnAuth}
             >
               Войти
             </button>
-
-            <Link to={paths.login}>
-              <button
-                type="submit"
-                className={b.btnAuth}
-                disabled={
-                  isSubmitting ||
-                  !(
-                    Object.keys(errors).length === 0 &&
-                    Object.keys(touched).length ===
-                      Object.keys(INITIAL_VALUES).length
-                  )
-                }
-              >
-                Регистрация
-              </button>
-            </Link>
+            </div>
           </Form>
         )}
       </Formik>

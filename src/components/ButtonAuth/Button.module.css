@@ -2,6 +2,9 @@
 .btnGoogle {
   margin: auto;
   margin-bottom: 30px;
+
+  width: 122px;
+  height: 40px;
   
   border-radius: 26px;
   border: 0;
@@ -24,7 +27,7 @@
 /* =============  Btn*/
 
 .btnAuth {
-  margin: auto;
+  /* margin: auto; */
   margin-top: 30px;
   background: #F5F6FB;
   width: 125px;
@@ -36,7 +39,7 @@
   font-weight: 700;
   border-radius: 16px;
   border: 0;
-  display: inline-block;
+  /* display: inline-block; */
   filter: drop-shadow(1px 3px 5px rgba(82, 85, 95, 0.15));
   transition: all 0.7s;
   cursor: pointer;
