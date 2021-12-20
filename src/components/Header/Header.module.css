@@ -5,7 +5,7 @@
 
 .headerContainer {
   display: flex;
-  width: 320px;
+  width: auto;
   height: 56px;
 }
 
@@ -14,7 +14,7 @@
   height: 16px;
   margin-top: 20px;
   margin-right: 19px;
-  margin-left: auto;
+  margin-left: 15px;
   background: none;
   padding: 0;
   justify-content: center;
@@ -27,7 +27,7 @@
   background: #f5f6fa;
   border-radius: 50%;
   text-align: center;
-  margin-left: 129px;
+  margin-left: auto;
   border: none;
   font-family: Roboto;
   font-size: 12px;
@@ -44,7 +44,7 @@
 }
 @media (min-width: 768px) {
   .headerContainer {
-    width: 768px;
+    width: auto;
   }
 
   .logo {
@@ -93,14 +93,14 @@
 
 @media (min-width: 1280px) {
   .headerContainer {
-    width: 1280px;
+    width: auto;
   }
 
   .logo {
     margin-top: 13px;
   }
   .user {
-    margin-left: 908px;
+    margin-left: auto;
   }
   .tabletLogout {
     margin-left: 20px;

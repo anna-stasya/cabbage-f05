@@ -19,9 +19,6 @@ import styles from './components/Header/Header.module.css';
 import ReportsCategories from './components/ReportsCategories';
 import BriefList from './components/Brief';
 
-const Example = lazy(() =>
-  import('./pages/Example' /* webpackChunkName: "Example" */),
-);
 //Auth
 //const {Login, Registration} = lazy(() => import('../pages/Auth'));
 // const Login = lazy(() => import('./pages/Auth/Login'));
