@@ -16,7 +16,6 @@ import authSelectors from './redux/auth/auth-selectors';
 import './App.css';
 import styles from './components/Header/Header.module.css';
 //components
-import ReportsCategories from './components/ReportsCategories';
 import BriefList from './components/Brief';
 
 const Example = lazy(() =>
@@ -39,7 +38,6 @@ function App() {
         <AppBar></AppBar>
         {isLoggedIn ? <UserMenu /> : <Login />}
       </header>
-
       <Container>
         <Suspense fallback={<div>Downloading...</div>}>
           <Routes>

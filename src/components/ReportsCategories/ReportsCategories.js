@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import Income from '../Income';
 import Expence from '../Expence';
-import { ReactComponent as LeftArrow } from '../../img/reports/left-arrow.svg';
-import { ReactComponent as RightArrow } from '../../img/reports/right-arrow.svg';
+import { ReactComponent as LeftArrow } from '../../img/reportsCategories/left-arrow.svg';
+import { ReactComponent as RightArrow } from '../../img/reportsCategories/right-arrow.svg';
 import s from './ReportsCategories.module.css';
 
 export default function ReportsCategories() {

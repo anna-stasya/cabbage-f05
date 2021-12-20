@@ -28,6 +28,13 @@
   align-items: center;
   background-color: transparent;
   border: none;
+
+  transition: all 250ms ease-in-out;
+}
+
+.btn:hover,
+.btn:focus {
+  transform: scale(1.15);
 }
 
 .icon {

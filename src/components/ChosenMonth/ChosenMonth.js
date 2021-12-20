@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useDispatch } from "react-redux";
+import { useDispatch } from 'react-redux';
 import moment from 'moment';
 import { ReactComponent as Left } from '../../img/reports/arrowLeft.svg';
 import { ReactComponent as Right } from '../../img/reports/arrowRight.svg';
@@ -12,32 +12,44 @@ const ChosenMonth = () => {
   const dispatch = useDispatch();
   const [visibleDate, setVisibleDate] = useState('');
   const [stateDate, setstateDate] = useState('');
-  
-  
+
   moment.updateLocale('ru', {
-    months : [
-        "Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль",
-        "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"
-    ]
+    months: [
+      'Январь',
+      'Февраль',
+      'Март',
+      'Апрель',
+      'Май',
+      'Июнь',
+      'Июль',
+      'Август',
+      'Сентябрь',
+      'Октябрь',
+      'Ноябрь',
+      'Декабрь',
+    ],
   });
-  
+
   useEffect(() => {
-    const dateNow = new Date()
-    setVisibleDate(moment(dateNow.toISOString()).format('MMMM YYYY'))
-    setstateDate(dateNow)
-  }, [])
-    const incrementDate = (event) => {
+    const dateNow = new Date();
+    setVisibleDate(moment(dateNow.toISOString()).format('MMMM YYYY'));
+    setstateDate(dateNow);
+  }, []);
+  const incrementDate = event => {
     event.preventDefault();
-    const dateNow = new Date()
+    const dateNow = new Date();
     if (Date.parse(dateNow) < Date.parse(stateDate)) {
-      console.log(`месяц еще не настал`)
-      return
+      console.log(`месяц еще не настал`);
+      return;
     }
-    const isoDate = stateDate.toISOString()
-    const nextMonth = moment(isoDate).add(1, 'month').format('MMMM YYYY')
-    const nextMonthForObject = moment(isoDate).add(1, 'month').format('YYYY-MM-DD')
-    const normalizedMonth = new Date(nextMonthForObject)
-    const nextMonthToState = Date.parse(normalizedMonth)
+    const isoDate = stateDate.toISOString();
+    const nextMonth = moment(isoDate).add(1, 'month').format('MMMM YYYY');
+    const nextMonthForObject = moment(isoDate)
+      .add(1, 'month')
+      .format('YYYY-MM-DD');
+    const normalizedMonth = new Date(nextMonthForObject);
+    const nextMonthToState = Date.parse(normalizedMonth);
+
 
     setVisibleDate(nextMonth)
     setstateDate(normalizedMonth)
@@ -46,8 +58,10 @@ const ChosenMonth = () => {
     dispatch(incrementMonth({nextMonthToState}))
   }
 
-    const decrementDate = (event) => {
+
+  const decrementDate = event => {
     event.preventDefault();
+
     const isoDate = stateDate.toISOString()
     const nextMonth = moment(isoDate).add(-1, 'month').format('MMMM YYYY')
     const nextMonthForObject = moment(isoDate).add(-1, 'month').format('YYYY-MM-DD')
@@ -76,10 +90,5 @@ const ChosenMonth = () => {
     </div>
   );
 };
-// const mapStateToProps = (state) => ({
-//   date: chosenMonthSelector.getDesiredDate(state),
-// });
-// export default connect(mapStateToProps)(ChosenMonth);
 
 export default ChosenMonth;
-
