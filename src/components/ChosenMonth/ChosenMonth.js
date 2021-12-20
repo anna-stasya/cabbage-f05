@@ -4,6 +4,7 @@ import moment from 'moment';
 import { ReactComponent as Left } from '../../img/reports/arrowLeft.svg';
 import { ReactComponent as Right } from '../../img/reports/arrowRight.svg';
 import { incrementMonth, decrementMonth } from '../../redux/chosenMonth/chosenMonth-action';
+import operations from '../../redux/chosenMonth/chosenMonth-operations';
 
 import s from './ChosenMonth.module.css';
 
@@ -40,7 +41,8 @@ const ChosenMonth = () => {
 
     setVisibleDate(nextMonth)
     setstateDate(normalizedMonth)
-
+      
+    dispatch(operations.fatchTransactionsPerMonth(normalizedMonth))
     dispatch(incrementMonth({nextMonthToState}))
   }
 
@@ -49,12 +51,13 @@ const ChosenMonth = () => {
     const isoDate = stateDate.toISOString()
     const nextMonth = moment(isoDate).add(-1, 'month').format('MMMM YYYY')
     const nextMonthForObject = moment(isoDate).add(-1, 'month').format('YYYY-MM-DD')
-      const normalizedMonth = new Date(nextMonthForObject)
-    const nextMonthToState = Date.parse(normalizedMonth)
+    const normalizedMonth = new Date(nextMonthForObject)
+      const nextMonthToState = Date.parse(normalizedMonth)
 
     setVisibleDate(nextMonth)
     setstateDate(normalizedMonth)
-
+      
+    dispatch(operations.fatchTransactionsPerMonth(normalizedMonth))
     dispatch(decrementMonth({nextMonthToState}))
   }
 
