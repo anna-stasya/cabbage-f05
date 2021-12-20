@@ -1,6 +1,6 @@
-import s from './transactionsPerMonth.module.css';
+import s from './ExponsesAndIncome.module.css';
 
-const transactionsPerMonth = () => {
+const ExponsesAndIncome = () => {
 
     return (
         <ul className={s.list}>
@@ -15,5 +15,5 @@ const transactionsPerMonth = () => {
 };
 
 
-export default transactionsPerMonth;
+export default ExponsesAndIncome;
 
