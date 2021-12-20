@@ -1,9 +1,10 @@
 import React, { useCallback } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { Formik, ErrorMessage } from 'formik';
 
 import { SignInGoogle } from '../SignInGoogle/SigninGoogle';
-import { paths } from '../../../config';
+import authOperations from '../../../redux/auth/auth-operations';
 
 import s from './loginAuth.module.css';
 import b from '../../../components/ButtonAuth/Button.module.css';
@@ -14,6 +15,9 @@ const INITIAL_VALUES = {
 };
 
 const Login = () => {
+
+  const dispatch = useDispatch();
+
   const validate = useCallback(values => {
     const errors = {};
     //валидация для email
@@ -26,19 +30,18 @@ const Login = () => {
     //валидация для password
     if (!values.password) {
       errors.password = 'это обязательное поле';
-    } else if (values.password.length < 7 || values.password.length > 15) {
+    } else if (values.password.length < 6 || values.password.length > 12) {
       errors.password = 'Логин или пароль не верный';
     }
 
     return errors;
   }, []);
 
-  const handleSubmit = useCallback((values, { setSubmitting }) => {
-    setTimeout(() => {
-      alert(JSON.stringify(values, null, 2));
-      setSubmitting(false);
-    }, 400);
-  }, []);
+  const handleSubmit = e => {
+    const email = e.email;
+    const password = e.password;
+    dispatch(authOperations.logIn({ email, password }));
+  };
 
   return (
     <div className={s.auth}>
@@ -58,12 +61,9 @@ const Login = () => {
       >
         {({
           values,
-          errors,
-          touched,
           handleChange,
           handleBlur,
           handleSubmit,
-          isSubmitting,
         }) => (
           <form onSubmit={handleSubmit} className={s.form}>
             <label htmlFor="email" className={s.label}>
@@ -83,7 +83,6 @@ const Login = () => {
               component="div"
               className={s.ErrorMessage}
             />
-            {/* {errors.email && touched.email && errors.email} */}
 
             <label htmlFor="password" className={s.label}>
               <p className={s.text}>Пароль:</p>
@@ -103,19 +102,10 @@ const Login = () => {
               component="div"
               className={s.ErrorMessage}
             />
-            {/* {errors.password && touched.password && errors.password} */}
 
             <button
               type="submit"
-              className={b.btnAuth} 
-              disabled={
-                isSubmitting ||
-                !(
-                  Object.keys(errors).length === 0 &&
-                  Object.keys(touched).length ===
-                    Object.keys(INITIAL_VALUES).length
-                )
-              }
+              className={b.btnAuth}
             >
               Войти
             </button>
@@ -124,14 +114,6 @@ const Login = () => {
               <button
                 type="submit"
                 className={b.btnAuth} 
-                disabled={
-                  isSubmitting ||
-                  !(
-                    Object.keys(errors).length === 0 &&
-                    Object.keys(touched).length ===
-                      Object.keys(INITIAL_VALUES).length
-                  )
-                }
               >
                 Регистрация
               </button>

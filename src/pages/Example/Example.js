@@ -1,5 +1,11 @@
+import MainLog from '../../components/MainLog/MainLog';
+
 const Example = () => {
-  return <div>Example</div>;
+  return (
+    <div>
+      <MainLog />
+    </div>
+  );
 };
 
 export default Example;
