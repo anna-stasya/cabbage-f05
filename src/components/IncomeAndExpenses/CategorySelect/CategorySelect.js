@@ -36,6 +36,7 @@ export default function CategorySelect({
     control: () => ({
       display: 'flex',
       width: 188,
+      height: 44,
       paddingTop: 1,
       paddingBottom: 2,
       border: '2px solid #f5f6fb',
