@@ -23,12 +23,12 @@ const authSlice = createSlice({
     },
     [authOperations.logIn.fulfilled](state, action) {
       console.log('login', action);
-
-
+      if (action.payload === undefined) {
+        return;
+      }
       state.user = action.payload.user;
       state.token = action.payload.token;
       state.isLoggedIn = true;
-
       //state.isGoogleSigned = action.payload.token;
     },
 
