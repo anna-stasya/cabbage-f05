@@ -36,7 +36,7 @@ const setBalance = balance => async dispatch => {
 
   try {
     const response = await axios.patch(
-      '/api/auth/users/balance',
+      '/auth/users/balance',
       { balance },
     );
     dispatch(
@@ -51,7 +51,7 @@ export const addExpense = transaction => async dispatch => {
   dispatch(transactionsActions.addExpenseRequest());
 
   try {
-    await axios.post('/api/expense', transaction);
+    await axios.post('/expense', transaction);
     dispatch(transactionsActions.addExpenseSuccess());
   } catch (error) {
     dispatch(transactionsActions.addExpenseError(error.message));
@@ -62,7 +62,7 @@ const addIncome = data => async dispatch => {
   dispatch(transactionsActions.addIncomeRequest());
 
   try {
-    await axios.post('/api/income', data);
+    await axios.post('/income', data);
     dispatch(transactionsActions.addIncomeSuccess());
   } catch (error) {
     dispatch(transactionsActions.addIncomeError(error.message));
@@ -75,7 +75,7 @@ export const deleteTransaction =
     dispatch(transactionsActions.deleteTransactionRequest());
 
     try {
-      await axios.delete(`/api/${transaction}/${transactionId}`);
+      await axios.delete(`/${transaction}/${transactionId}`);
       dispatch(transactionsActions.deleteTransactionSuccess(transactionId));
       onSuccess();
     } catch (error) {
@@ -89,7 +89,7 @@ const getExpenseByDate = date => async dispatch => {
   const month = moment(Number(date)).format('MMMM');
 
   try {
-    const { data } = await axios.get(`/api/expense?month=${month}`);
+    const { data } = await axios.get(`/expense?month=${month}`);
     dispatch(transactionsActions.getExpenseByDateSuccess(data));
   } catch (error) {
     dispatch(transactionsActions.getExpenseByDateError());
@@ -101,7 +101,7 @@ const getIncomeByDate = date => async dispatch => {
   const month = moment(Number(date)).format('MMMM');
 
   try {
-    const { data } = await axios.get(`/api/income?month=${month}`);
+    const { data } = await axios.get(`/income?month=${month}`);
     dispatch(transactionsActions.getIncomeByDateSuccess(data));
   } catch (error) {
     dispatch(transactionsActions.getIncomeByDateError(error));
