@@ -2,7 +2,7 @@
 .auth {
   position: absolute;
   right: 110px;
-  top: 253px;
+  top: 197px;
 
   display: flex;
   flex-direction: column;
@@ -72,7 +72,7 @@
   .auth {
     position: absolute;
     right: 166px;
-    top: 297px;
+    top: 241px;
 
     margin-top: 0;
     width: 436px;
