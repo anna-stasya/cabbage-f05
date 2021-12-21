@@ -2,6 +2,7 @@
 .auth {
   display: flex;
   flex-direction: column;
+  background: #ffffff;
   width: 300px;
   height: 525px;
   margin: auto;
@@ -96,7 +97,7 @@
 @media screen and (min-width: 1280px) {
   .auth {
     position: absolute;
-    right: 166px;
-    top: 297px;
+    right: 110px;
+    top: 173.5px;
   }
 }

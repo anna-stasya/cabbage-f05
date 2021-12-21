@@ -9,14 +9,15 @@ import Login from './pages/Auth/Login/Login';
 
 //Transactions
 import TransactionView from './pages/Transactions/TransactionView';
-import AppBar from './components/Header/appBar';
-import UserMenu from './components/Header/userMenu';
+// import AppBar from './components/Header/appBar';
+// import UserMenu from './components/Header/userMenu';
 import { useSelector } from 'react-redux';
 import authSelectors from './redux/auth/auth-selectors';
 import './App.css';
-import styles from './components/Header/Header.module.css';
+// import styles from './components/Header/Header.module.css';
 //components
 import BriefList from './components/Brief';
+import MainLog from './components/MainLog/MainLog';
 
 const Example = lazy(() =>
   import('./pages/Example' /* webpackChunkName: "Example" */),
@@ -34,10 +35,11 @@ function App() {
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
   return (
     <>
-      <header className={styles.headerContainer}>
+      {/* <header className={styles.headerContainer}>
         <AppBar></AppBar>
         {isLoggedIn ? <UserMenu /> : <Login />}
-      </header>
+      </header> */}
+      <MainLog />
       <Container>
         <Suspense fallback={<div>Downloading...</div>}>
           <Routes>
