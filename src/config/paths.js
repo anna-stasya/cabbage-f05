@@ -2,8 +2,8 @@ const paths = {
   home: '/',
   reports: '/reports',
   register: '/register',
-  login: '/',
-  transactions: '/transactions', 
+  login: '/login',
+  brief: '/brief', //сводка
 };
 
 export default paths;
