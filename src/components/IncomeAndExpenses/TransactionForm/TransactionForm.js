@@ -115,7 +115,7 @@ export default function TransactionForm({
           <CostEditor cost={cost} onChange={handleChangeCost} />
         </form>
       </div>
-      <div>
+      <div className={s.btnsContainer}>
         <Button
           type="submit"
           className={`${s.button} ${s.leftButton}`}
