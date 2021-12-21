@@ -19,9 +19,9 @@ const transactions = createReducer(
   {},
   {
     [transactionsActions.getExpenseByDateSuccess]: (_, { payload }) =>
-      payload.transactions,
+      payload.data,
     [transactionsActions.getIncomeByDateSuccess]: (_, { payload }) =>
-      payload.transactions,
+      payload.data,
   },
 );
 
@@ -29,6 +29,13 @@ const initialDate = moment(new Date()).valueOf();
 
 const selectedDate = createReducer(initialDate, {
   [transactionsActions.setDate]: (_, { payload }) => payload,
+});
+
+const totalBalance = createReducer(0, {
+  [transactionsActions.setTotalBalanceSuccess]: (_, { payload }) => {
+    console.log('payload', payload);
+    return payload;
+  },
 });
 
 const isLoading = createReducer(false, {
@@ -58,4 +65,9 @@ const isLoading = createReducer(false, {
 //   [transactionsActions.deleteTransactionRequest]: () => null,
 // });
 
-export default combineReducers({ transactions, isLoading, selectedDate });
+export default combineReducers({
+  transactions,
+  isLoading,
+  totalBalance,
+  selectedDate,
+});

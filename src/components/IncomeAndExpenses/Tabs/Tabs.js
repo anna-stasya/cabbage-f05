@@ -41,7 +41,7 @@ export default function Tabs() {
   const transactions = useSelector(transactionsSelectors.getTransactions);
 
   useEffect(() => {
-    const momentDate = moment(new Date()).valueOf();
+    const momentDate = moment().valueOf();
     dispatch(transactionsOperations.getExpenseByDate(momentDate));
   }, [dispatch]);
 
@@ -76,6 +76,7 @@ export default function Tabs() {
         id,
         onDeleteTransactionSuccess,
         onDeleteTransactionError,
+        income,
       ),
     );
   };
@@ -97,7 +98,7 @@ export default function Tabs() {
 
   return (
     <div>
-      <div>
+      <div className={s.tabsContainer}>
         <Button
           onClick={clickExpense}
           className={
@@ -117,7 +118,7 @@ export default function Tabs() {
         </Button>
       </div>
       {expense ? (
-        <div className="counter-tab-container">
+        <div className={s.counterTabContainer}>
           <TransactionForm
             options={optionsExpense}
             onSubmit={handleSubmit}
@@ -129,12 +130,20 @@ export default function Tabs() {
           />
         </div>
       ) : (
-        <TransactionForm
-          options={optionsIncome}
-          income={income}
-          onSubmit={handleSubmit}
-          placeholder="Категория дохода"
-        />
+        <div className={s.counterTabContainer}>
+          <TransactionForm
+            options={optionsIncome}
+            income={income}
+            onSubmit={handleSubmit}
+            placeholder="Категория дохода"
+          />
+          <TransactionsList
+            transactions={transactions}
+            income={income}
+            onDelete={onDeleteTransaction}
+          />
+
+        </div>
       )}
       {/* <TransactionForm options={optionsExpense} /> */}
     </div>
