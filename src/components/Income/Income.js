@@ -1,10 +1,19 @@
 import { useState } from 'react';
+// import { useSelector } from 'react-redux';
 import { ReactComponent as Salary } from '../../img/reportsCategories/salary.svg';
 import { ReactComponent as AdditionalIncome } from '../../img/reportsCategories/additional-income.svg';
 import s from './Income.module.css';
 
 export default function Income() {
   const [activeValue, setActiveValue] = useState('');
+
+  //Получаем данные расходов из редакса
+  // const incomeData = useSelector(
+  //   state => state.desiredMonth.IncomePerDesiredMonth,
+  // );
+
+  // console.log('IncomeData:');
+  // console.log(incomeData);
 
   //Имитация данных, полученных с бекенда
   const backendCategories = [

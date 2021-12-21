@@ -51,9 +51,7 @@ const Login = () => {
           <p className={`${s.textGoogle} ${s.textAuth}`}>
             Вы можете авторизоваться с помощью Google Account:
           </p>
-
           <SignInGoogle className={b.btnGoogle} />
-
           <p className={s.textAuth}>
             Или зайти с помощью e-mail и пароля, предварительно
             зарегистрировавшись:
@@ -95,7 +93,6 @@ const Login = () => {
                   value={values.password}
                   className={s.input}
                 />
-
                 <ErrorMessage
                   name="password"
                   component="div"
@@ -116,6 +113,7 @@ const Login = () => {
           </Formik>
         </div>
       )}
+
     </div>
   );
 };
