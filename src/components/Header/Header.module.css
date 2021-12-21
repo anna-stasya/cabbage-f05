@@ -1,6 +1,7 @@
 .logo {
   margin-left: 19px;
   margin-top: 12px;
+  margin-bottom: 13px;
 }
 
 .headerContainer {
@@ -98,7 +99,6 @@
 
   .logo {
     margin-top: 13px;
-    margin-bottom: 13px;
   }
   .user {
     margin-left: 908px;

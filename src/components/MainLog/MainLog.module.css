@@ -1,23 +1,33 @@
 .main__container {
   position: relative;
   min-width: 320px;
+  margin: 0 auto;
 }
 .hero {
-  padding-top: 286px;
+  padding-top: 140px;
   border-bottom-left-radius: 90px;
   background-color: #f5f6fb;
+}
+.logoHero {
+  position: absolute;
+  z-index: 3;
+  top: 150px;
+  left: 20px;
+  width: 180px;
+  height: 50px;
 }
 
 .hero__title {
   position: absolute;
   z-index: 3;
-  top: 137px;
+  top: 210px;
   left: 60px;
   font-style: 700;
   font-size: 13px;
   line-height: 1.15;
   letter-spacing: 0.15em;
   text-transform: uppercase;
+  color: #52555f;
 }
 
 .main {
@@ -26,7 +36,15 @@
   background-repeat: no-repeat;
   background-position: bottom 0px left 35px;
 }
-
+.coles {
+  position: relative;
+  top: -130px;
+  left: 0px;
+  padding-top: 170px;
+  background-image: url(../../images/many\ coles.png);
+  background-position: bottom 1px left 1px;
+}
+/* ------------------------------- Tablet ------------------------------ */
 @media screen and (min-width: 768px) {
   .main__container {
     width: 768px;
@@ -34,10 +52,18 @@
   .hero {
     padding-top: 335px;
   }
+  .logoHero {
+    position: absolute;
+    z-index: 3;
+    top: 150px;
+    left: 100px;
+    width: 310px;
+    height: 80px;
+  }
 
   .hero__title {
-    top: 172px;
-    left: 214.5px;
+    top: 250px;
+    left: 200px;
     font-size: 16px;
     line-height: 1.18;
     letter-spacing: 0.18em;
@@ -57,7 +83,7 @@
     background-position: bottom 1px left 1px;
   }
 }
-
+/* ---------------------------------------Desktop ----------------------------- */
 @media screen and (min-width: 1280px) {
   .main__container {
     width: 1349px;
@@ -65,6 +91,15 @@
 
   .hero {
     padding-top: 320px;
+  }
+
+  .logoHero {
+    position: absolute;
+    z-index: 3;
+    top: 365px;
+    left: 170px;
+    width: 377px;
+    height: 120px;
   }
 
   .hero__title {

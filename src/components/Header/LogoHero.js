@@ -1,28 +1,12 @@
-import styles from '../Header/Header.module.css';
-import LogoHeader from './LogoHeader';
-
 import React from 'react';
 
-export default function AppBar() {
+import s from '../MainLog/MainLog.module.css';
+
+export default function LogoHero() {
   return (
-    <div className={styles.logo}>
-      <LogoHeader />
-      {/* <a href="/">
-        <svg
-          width="90"
-          height="31"
-          viewBox="0 0 90 31"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <rect x="6" y="5" width="33" height="26" rx="8" fill="#FB7C2F" />
-          <rect
-            width="33"
-            height="26"
-            rx="8"
-            fill="#FB7C2F"
-            fillOpacity="0.2"
-          />
+    <div className={s.logoHero}>
+      <a href="/">
+        <svg viewBox="0 0 90 31" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path
             fillRule="evenodd"
             clipRule="evenodd"
@@ -30,7 +14,7 @@ export default function AppBar() {
             fill="black"
           />
         </svg>
-      </a> */}
+      </a>
     </div>
   );
 }

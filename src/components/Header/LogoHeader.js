@@ -1,13 +1,9 @@
-import styles from '../Header/Header.module.css';
-import LogoHeader from './LogoHeader';
-
 import React from 'react';
 
-export default function AppBar() {
+export default function LogoHeader() {
   return (
-    <div className={styles.logo}>
-      <LogoHeader />
-      {/* <a href="/">
+    <div>
+      <a href="/">
         <svg
           width="90"
           height="31"
@@ -30,7 +26,7 @@ export default function AppBar() {
             fill="black"
           />
         </svg>
-      </a> */}
+      </a>
     </div>
   );
 }

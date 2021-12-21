@@ -6,7 +6,7 @@
   width: 300px;
   height: 525px;
   margin: auto;
-  margin-top: 48px;
+  margin-top: -600px;
   padding: 42px 17px 51px;
   border-radius: 30px;
   box-shadow: 5px 10px 20px rgba(170, 178, 197, 0.4);
@@ -67,7 +67,7 @@
 
 @media screen and (min-width: 768px) {
   .auth {
-    margin-top: 0;
+    margin-top: -730px;
     width: 436px;
     height: 535px;
     padding: 50px 85px 53px;
@@ -97,7 +97,7 @@
 @media screen and (min-width: 1280px) {
   .auth {
     position: absolute;
-    right: 110px;
-    top: 173.5px;
+    margin-top: -670px;
+    margin-left: 780px;
   }
 }
