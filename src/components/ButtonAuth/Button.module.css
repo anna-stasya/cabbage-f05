@@ -1,6 +1,7 @@
 /* =============  Button Google*/
 .btnGoogle {
   margin: auto;
+  margin-top: 24px;
   margin-bottom: 30px;
 
   width: 122px;
