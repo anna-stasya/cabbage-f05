@@ -98,7 +98,7 @@ export default function Tabs() {
 
   return (
     <div>
-      <div>
+      <div className={s.tabsContainer}>
         <Button
           onClick={clickExpense}
           className={
@@ -118,7 +118,7 @@ export default function Tabs() {
         </Button>
       </div>
       {expense ? (
-        <div className="counter-tab-container">
+        <div className={s.counterTabContainer}>
           <TransactionForm
             options={optionsExpense}
             onSubmit={handleSubmit}
@@ -130,7 +130,7 @@ export default function Tabs() {
           />
         </div>
       ) : (
-        <div>
+        <div className={s.counterTabContainer}>
           <TransactionForm
             options={optionsIncome}
             income={income}
@@ -142,6 +142,7 @@ export default function Tabs() {
             income={income}
             onDelete={onDeleteTransaction}
           />
+
         </div>
       )}
       {/* <TransactionForm options={optionsExpense} /> */}
