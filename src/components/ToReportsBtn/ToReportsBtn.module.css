@@ -1,5 +1,5 @@
 .link {
-  display: flex;
+  display: inline-flex;
   text-decoration: none;
   align-items: center;
   width: 154px;
@@ -17,16 +17,17 @@
   font-size: 12px;
   line-height: 14px;
   margin-right: 20px;
-  color: rgb(32, 33, 37, 0.7);
+  color: rgba(86, 86, 88, 0.7);
   font-weight: 500;
   padding-top: 6px;
   padding-left: 3px;
-  transition: all 100ms linear;
+  transition: all 150ms linear;
 }
 
 .btnText:hover,
 .btnText:focus {
   color: rgb(155, 157, 165);
+  text-decoration: underline;
 }
 
 .btnIcon {

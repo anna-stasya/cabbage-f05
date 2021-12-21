@@ -20,8 +20,6 @@ moment.updateLocale('ru', {
   ],
 });
 
-axios.defaults.baseURL = 'http://localhost:3001';
-
 export const fetchTransaction = () => async dispatch => {
   dispatch(transactionsActions.fetchExpenseRequest());
 
@@ -40,12 +38,6 @@ const setBalance = balance => async dispatch => {
     const response = await axios.patch(
       '/api/auth/users/balance',
       { balance },
-      {
-        headers: {
-          authorization:
-            'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxYzA5MjlmMjQ4MmYzMWFjZjU3NDBmZiIsImlhdCI6MTY0MDAxMDQxMCwiZXhwIjoxNjQwMDUzNjEwfQ.kk4KFjsWvBMJXKdrPS23PFWCHN3JwAWa3Y1nNEYrYTM',
-        },
-      },
     );
     dispatch(
       transactionsActions.setTotalBalanceSuccess(response.data.user.balance),
@@ -59,12 +51,7 @@ export const addExpense = transaction => async dispatch => {
   dispatch(transactionsActions.addExpenseRequest());
 
   try {
-    await axios.post('/api/expense', transaction, {
-      headers: {
-        authorization:
-          'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxYzA5MjlmMjQ4MmYzMWFjZjU3NDBmZiIsImlhdCI6MTY0MDAxMDQxMCwiZXhwIjoxNjQwMDUzNjEwfQ.kk4KFjsWvBMJXKdrPS23PFWCHN3JwAWa3Y1nNEYrYTM',
-      },
-    });
+    await axios.post('/api/expense', transaction);
     dispatch(transactionsActions.addExpenseSuccess());
   } catch (error) {
     dispatch(transactionsActions.addExpenseError(error.message));
@@ -75,12 +62,7 @@ const addIncome = data => async dispatch => {
   dispatch(transactionsActions.addIncomeRequest());
 
   try {
-    await axios.post('/api/income', data, {
-      headers: {
-        authorization:
-          'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxYzA5MjlmMjQ4MmYzMWFjZjU3NDBmZiIsImlhdCI6MTY0MDAxMDQxMCwiZXhwIjoxNjQwMDUzNjEwfQ.kk4KFjsWvBMJXKdrPS23PFWCHN3JwAWa3Y1nNEYrYTM',
-      },
-    });
+    await axios.post('/api/income', data);
     dispatch(transactionsActions.addIncomeSuccess());
   } catch (error) {
     dispatch(transactionsActions.addIncomeError(error.message));
@@ -93,12 +75,7 @@ export const deleteTransaction =
     dispatch(transactionsActions.deleteTransactionRequest());
 
     try {
-      await axios.delete(`/api/${transaction}/${transactionId}`, {
-        headers: {
-          authorization:
-            'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxYzA5MjlmMjQ4MmYzMWFjZjU3NDBmZiIsImlhdCI6MTY0MDAxMDQxMCwiZXhwIjoxNjQwMDUzNjEwfQ.kk4KFjsWvBMJXKdrPS23PFWCHN3JwAWa3Y1nNEYrYTM',
-        },
-      });
+      await axios.delete(`/api/${transaction}/${transactionId}`);
       dispatch(transactionsActions.deleteTransactionSuccess(transactionId));
       onSuccess();
     } catch (error) {
@@ -112,12 +89,7 @@ const getExpenseByDate = date => async dispatch => {
   const month = moment(Number(date)).format('MMMM');
 
   try {
-    const { data } = await axios.get(`/api/expense?month=${month}`, {
-      headers: {
-        authorization:
-          'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxYzA5MjlmMjQ4MmYzMWFjZjU3NDBmZiIsImlhdCI6MTY0MDAxMDQxMCwiZXhwIjoxNjQwMDUzNjEwfQ.kk4KFjsWvBMJXKdrPS23PFWCHN3JwAWa3Y1nNEYrYTM',
-      },
-    });
+    const { data } = await axios.get(`/api/expense?month=${month}`);
     dispatch(transactionsActions.getExpenseByDateSuccess(data));
   } catch (error) {
     dispatch(transactionsActions.getExpenseByDateError());
@@ -129,12 +101,7 @@ const getIncomeByDate = date => async dispatch => {
   const month = moment(Number(date)).format('MMMM');
 
   try {
-    const { data } = await axios.get(`/api/income?month=${month}`, {
-      headers: {
-        authorization:
-          'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxYzA5MjlmMjQ4MmYzMWFjZjU3NDBmZiIsImlhdCI6MTY0MDAxMDQxMCwiZXhwIjoxNjQwMDUzNjEwfQ.kk4KFjsWvBMJXKdrPS23PFWCHN3JwAWa3Y1nNEYrYTM',
-      },
-    });
+    const { data } = await axios.get(`/api/income?month=${month}`);
     dispatch(transactionsActions.getIncomeByDateSuccess(data));
   } catch (error) {
     dispatch(transactionsActions.getIncomeByDateError(error));

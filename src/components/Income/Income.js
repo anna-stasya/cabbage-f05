@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { ReactComponent as Salary } from '../../img/reports/salary.svg';
-import { ReactComponent as AdditionalIncome } from '../../img/reports/additional-income.svg';
+import { ReactComponent as Salary } from '../../img/reportsCategories/salary.svg';
+import { ReactComponent as AdditionalIncome } from '../../img/reportsCategories/additional-income.svg';
 import s from './Income.module.css';
 
 export default function Income() {

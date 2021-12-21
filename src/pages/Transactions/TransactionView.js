@@ -8,8 +8,8 @@ export default function TransactionView() {
   return (
     <>
       <Balance />
-      <Tabs />
       <ToReportsBtn />
+      <Tabs />
     </>
   );
 }
