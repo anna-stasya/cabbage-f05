@@ -50,7 +50,7 @@ const Login = () => {
       </p>
 
         <SignInGoogle className={b.btnGoogle}  />
-      
+
       <p className={s.textAuth}>
         Или зайти с помощью e-mail и пароля, предварительно зарегистрировавшись:
       </p>
@@ -106,6 +106,18 @@ const Login = () => {
             <button
               type="submit"
               className={b.btnAuth}
+
+              ы
+              // disabled={
+              //   isSubmitting ||
+              //   !(
+              //     Object.keys(errors).length === 0 &&
+              //     Object.keys(touched).length ===
+              //       Object.keys(INITIAL_VALUES).length
+              //   )
+              // }
+
+
             >
               Войти
             </button>
@@ -113,7 +125,21 @@ const Login = () => {
             <Link to="/register">
               <button
                 type="submit"
+
+                
+                // className={b.btnAuth}
+                // disabled={
+                //   isSubmitting ||
+                //   !(
+                //     Object.keys(errors).length === 0 &&
+                //     Object.keys(touched).length ===
+                //       Object.keys(INITIAL_VALUES).length
+                //   )
+                // }
+
+
                 className={b.btnAuth} 
+
               >
                 Регистрация
               </button>

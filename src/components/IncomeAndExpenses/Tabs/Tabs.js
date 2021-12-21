@@ -41,7 +41,7 @@ export default function Tabs() {
   const transactions = useSelector(transactionsSelectors.getTransactions);
 
   useEffect(() => {
-    const momentDate = moment(new Date()).valueOf();
+    const momentDate = moment().valueOf();
     dispatch(transactionsOperations.getExpenseByDate(momentDate));
   }, [dispatch]);
 
@@ -76,6 +76,7 @@ export default function Tabs() {
         id,
         onDeleteTransactionSuccess,
         onDeleteTransactionError,
+        income,
       ),
     );
   };
@@ -136,6 +137,12 @@ export default function Tabs() {
             onSubmit={handleSubmit}
             placeholder="Категория дохода"
           />
+          <TransactionsList
+            transactions={transactions}
+            income={income}
+            onDelete={onDeleteTransaction}
+          />
+
         </div>
       )}
       {/* <TransactionForm options={optionsExpense} /> */}
