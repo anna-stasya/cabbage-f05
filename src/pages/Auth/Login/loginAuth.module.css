@@ -1,5 +1,9 @@
 /* ---------------------------mobile -------------------------*/
 .auth {
+  position: absolute;
+  right: 110px;
+  top: 197px;
+
   display: flex;
   flex-direction: column;
   width: 300px;
@@ -66,6 +70,10 @@
 
 @media screen and (min-width: 768px) {
   .auth {
+    position: absolute;
+    right: 166px;
+    top: 241px;
+
     margin-top: 0;
     width: 436px;
     height: 535px;
@@ -96,7 +104,7 @@
 @media screen and (min-width: 1280px) {
   .auth {
     position: absolute;
-    right: 166px;
-    top: 297px;
+    right: 110px;
+    top: 117px;
   }
 }
