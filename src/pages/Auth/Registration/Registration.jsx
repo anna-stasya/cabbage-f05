@@ -1,11 +1,9 @@
 import React, { useCallback } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 
 import { SignInGoogle } from '../SignInGoogle/SigninGoogle';
 import authOperations from '../../../redux/auth/auth-operations';
-import authSelectors from '../../../redux/auth/auth-selectors';
 
 import s from './RegisterAuth.module.css';
 import b from '../../../components/ButtonAuth/Button.module.css';
@@ -19,7 +17,6 @@ const INITIAL_VALUES = {
 
 const Registration = () => {
   const dispatch = useDispatch();
-  const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
 
   const validate = useCallback(values => {
     const errors = {};
@@ -61,107 +58,102 @@ const Registration = () => {
     return errors;
   }, []);
 
+
   const handleSubmit = e => {
-    const name = e.name;
     const email = e.email;
     const password = e.password;
-
-    dispatch(authOperations.register({ name, email, password }));
+  
+    dispatch(authOperations.register({ email, password }));
   };
 
   return (
-    <div>
-      {!isLoggedIn && (
-        <div className={s.auth}>
-          <p className={`${s.textGoogle} ${s.textAuth}`}>
-            Вы можете авторизоваться с помощью Google Account:
-          </p>
-          <SignInGoogle className={b.btnGoogle} />
-          <p className={s.textAuth}>Или заполните поля ниже:</p>
-          <Formik
-            initialValues={INITIAL_VALUES}
-            validate={validate}
-            onSubmit={handleSubmit}
-          >
-            {() => (
-              <Form className={s.form}>
-                {/* =====================Name ===========================*/}
-                <label htmlFor="name" className={s.label}>
-                  <p className={s.text}>*Имя: </p>
-                </label>
-                <Field
-                  type="text"
-                  name="name"
-                  placeholder="Имя"
-                  className={s.input}
-                />
+    <div className={s.auth}>
+      <p className={`${s.textGoogle} ${s.textAuth}`}>
+        Вы можете авторизоваться с помощью Google Account:
+      </p>
+      <SignInGoogle className={b.btnGoogle} />
+      <p className={s.textAuth}>Или заполните поля ниже:</p>
+      <Formik
+        initialValues={INITIAL_VALUES}
+        validate={validate}
+        onSubmit={handleSubmit}
+      >
+        {() => (
+          <Form className={s.form}>
+            {/* =====================Name ===========================*/}
+            <label htmlFor="name" className={s.label}>
+              <p className={s.text}>*Имя: </p>
+            </label>
+            <Field
+              type="text"
+              name="name"
+              placeholder="Имя"
+              className={s.input}
+            />
 
-                <ErrorMessage
-                  name="name"
-                  component="div"
-                  className={s.ErrorMessage}
-                />
-                {/* ==============================Email=========================*/}
-                <label htmlFor="email" className={s.label}>
-                  <p className={s.text}>*Электронная почта: </p>
-                </label>
-                <Field
-                  type="email"
-                  name="email"
-                  placeholder="your@email.com"
-                  className={s.input}
-                />
-                <ErrorMessage
-                  name="email"
-                  component="div"
-                  className={s.ErrorMessage}
-                />
-                {/* ========================Password====================== */}
-                <label htmlFor="password" className={s.label}>
-                  <p className={s.text}>*Пароль:</p>
-                </label>
-                <Field
-                  type="password"
-                  name="password"
-                  placeholder="Пароль"
-                  className={s.input}
-                />
-                <ErrorMessage
-                  name="password"
-                  component="div"
-                  className={s.ErrorMessage}
-                />
-                {/* ==================Confirm passwords======================*/}
-                <label htmlFor="password">
-                  <p className={s.text}>*Пароль:</p>
-                </label>
-                <Field
-                  type="password"
-                  name="confirmPassword"
-                  placeholder="Повторите Пароль"
-                  className={s.input}
-                />
-                <ErrorMessage
-                  name="confirmPassword"
-                  component="div"
-                  className={s.ErrorMessage}
-                />
-                {/* ==================buttons======================*/}
-                <div className={s.linkElement}>
-                  <Link to="/" className={s.link}>
-                    У Вас уже есть учетная запись? Авторизоваться!{' '}
-                  </Link>
-                </div>
-                <div className={s.btnRegister}>
-                  <button type="submit" className={b.btnAuth}>
-                    Войти
-                  </button>
-                </div>
-              </Form>
-            )}
-          </Formik>
-        </div>
-      )}
+            <ErrorMessage
+              name="name"
+              component="div"
+              className={s.ErrorMessage}
+            />
+            {/* ==============================Email=========================*/}
+            <label htmlFor="email" className={s.label}>
+              <p className={s.text}>*Электронная почта: </p>
+            </label>
+            <Field
+              type="email"
+              name="email"
+              placeholder="your@email.com"
+              className={s.input}
+            />
+            <ErrorMessage
+              name="email"
+              component="div"
+              className={s.ErrorMessage}
+            />
+            {/* ========================Password====================== */}
+            <label htmlFor="password" className={s.label}>
+              <p className={s.text}>*Пароль:</p>
+            </label>
+            <Field
+              type="password"
+              name="password"
+              placeholder="Пароль"
+              className={s.input}
+            />
+            <ErrorMessage
+              name="password"
+              component="div"
+              className={s.ErrorMessage}
+            />
+            {/* ==================Confirm passwords======================*/}
+            <label htmlFor="password">
+              <p className={s.text}>*Пароль:</p>
+            </label>
+            <Field
+              type="password"
+              name="confirmPassword"
+              placeholder="Повторите Пароль"
+              className={s.input}
+            />
+            <ErrorMessage
+              name="confirmPassword"
+              component="div"
+              className={s.ErrorMessage}
+            />
+            {/* ==================buttons======================*/}
+            
+            <div className={s.btnRegister}>
+              <button
+              type="submit"
+                className={b.btnAuth}
+            >
+              Войти
+            </button>
+            </div>
+          </Form>
+        )}
+      </Formik>
     </div>
   );
 };
