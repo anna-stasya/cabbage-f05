@@ -1,5 +1,9 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { alert, defaultModules } from "@pnotify/core";
+import "@pnotify/core/dist/PNotify.css";
+import * as PNotifyMobile from "@pnotify/mobile";
+import "@pnotify/mobile/dist/PNotifyMobile.css";
 
 axios.defaults.baseURL = 'http://localhost:3001/api';
 
@@ -18,7 +22,10 @@ const register = createAsyncThunk('/register', async credentials => {
     const { data } = await axios.post('auth/user/signup', credentials);
     return data;
   } catch (error) {
-    console.log(error);
+    defaultModules.set(PNotifyMobile, {});
+    alert({
+      text: `Не удалось зарегистрироваться`,
+    });
   }
 });
 
@@ -28,7 +35,10 @@ const logIn = createAsyncThunk('auth/login', async credentials => {
     token.set(data.token);
     return data;
   } catch (error) {
-    console.log(error);
+    defaultModules.set(PNotifyMobile, {});
+    alert({
+      text: `Не удалось авторизироваться`,
+    });
   }
 });
 
@@ -37,8 +47,10 @@ const logOut = createAsyncThunk('auth/logout', async () => {
     await axios.post('/users/logout');
     token.unset();
   } catch (error) {
-    console.log(error);
-    return error;
+    defaultModules.set(PNotifyMobile, {});
+    alert({
+      text: `Не удалось выйти из учетной записи`,
+    });
   }
 });
 const authOperations = {
