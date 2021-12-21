@@ -1,3 +1,24 @@
+.tabsContainer {
+  display: none;
+}
+
+@media screen and (min-width: 768px) {
+  .tabsContainer {
+    display: block;
+  }
+
+  .counterTabContainer {
+    padding: 30px 30px 48px 30px;
+    outline: 1px solid black;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .counterTabContainer {
+    padding: 33px 20px 60px 20px;
+  }
+}
+
 .tabButton {
   margin: 0;
   padding: 14px 48px;

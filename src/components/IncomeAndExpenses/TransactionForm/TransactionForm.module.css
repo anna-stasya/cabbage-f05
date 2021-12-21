@@ -1,5 +1,23 @@
-.inputContainer {
+/* .inputContainer {
   display: flex;
+} */
+
+.form {
+  /* display: flex; */
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14px;
+  width: 282px;
+  letter-spacing: 0.02em;
+}
+
+.categorySelectField {
+  width: 100%;
+}
+
+.btnsContainer {
+  margin: 0 auto;
+  text-align: center;
 }
 
 @media screen and (min-width: 768px) {
@@ -7,12 +25,30 @@
     flex-direction: column;
     align-items: center;
   }
+
+  .form {
+    display: flex;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+    width: 470px;
+
+    justify-content: space-between;
+    align-items: center;
+    letter-spacing: 0.02em;
+    margin-top: 0px;
+  }
+
+  .btnsContainer {
+    margin-bottom: 48px;
+  }
 }
 
 @media screen and (min-width: 1280px) {
   .inputContainer {
     justify-content: space-between;
     flex-direction: initial;
+    margin-bottom: 60px;
   }
 }
 
@@ -27,6 +63,20 @@
 @media screen and (min-width: 1280px) {
   .innerContainer {
     margin: 0;
+  }
+
+  .form {
+    width: 580px;
+  }
+
+  .btnsContainer {
+    margin: 0px;
+  }
+
+  .inputContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
 }
 
@@ -47,17 +97,6 @@
 
 .calendar {
   margin-right: 10px;
-}
-
-.form {
-  display: flex;
-  font-weight: 400;
-  font-size: 12px;
-  line-height: 14px;
-
-  justify-content: space-between;
-  align-items: center;
-  letter-spacing: 0.02em;
 }
 
 .button {
