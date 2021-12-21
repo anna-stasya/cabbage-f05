@@ -1,4 +1,5 @@
 import { useState } from 'react';
+// import { useSelector } from 'react-redux';
 import { ReactComponent as Transport } from '../../img/reportsCategories/transport.svg';
 import { ReactComponent as Products } from '../../img/reportsCategories/products.svg';
 import { ReactComponent as Health } from '../../img/reportsCategories/health.svg';
@@ -15,7 +16,15 @@ import s from './Expence.module.css';
 export default function Expence() {
   const [activeValue, setActiveValue] = useState('');
 
-  //Имитация данных, полученных с бекенда
+  //Получаем данные расходов из редакса
+  // const expenceData = useSelector(
+  //   state => state.desiredMonth.ExponsePerDesiredMonth,
+  // );
+
+  // console.log('ExpenceData:');
+  // console.log(expenceData);
+
+  //Имитация данных, полученных из редакса
   const backendCategories = [
     { price: 50, name: 'Транспорт' },
     { price: 1500, name: 'Продукты' },
@@ -28,7 +37,7 @@ export default function Expence() {
     setActiveValue(value);
   }
 
-  //Принимает массив данных с бекенда и отдает массив категорий
+  //Принимает массив данных из редакса и отдает массив категорий
   //с значенем price > 0 и добавляет иконки категорий
   function match(arr) {
     const expenceCategories = [
@@ -147,7 +156,7 @@ export default function Expence() {
     return categoriesList;
   }
 
-  //Пропускаем коллекцию полученную с бекенда через функцию match
+  //Пропускаем коллекцию полученную из редакса через функцию match
   const categoriesList = match(backendCategories);
 
   return (

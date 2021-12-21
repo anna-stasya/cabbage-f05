@@ -25,7 +25,6 @@ const authSlice = createSlice({
       if (action.payload === undefined) {
         return;
       }
-      state.user = action.payload.user;
       state.token = action.payload.token;
       state.isLoggedIn = true;
       state.isGoogleSigned = true;
