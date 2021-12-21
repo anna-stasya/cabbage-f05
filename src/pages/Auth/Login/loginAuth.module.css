@@ -1,6 +1,5 @@
 /* ---------------------------mobile -------------------------*/
 .auth {
-
   position: absolute;
   right: 110px;
   top: 197px;
@@ -105,7 +104,7 @@
 @media screen and (min-width: 1280px) {
   .auth {
     position: absolute;
-    right: 166px;
-    top: 297px;
+    right: 110px;
+    top: 117px;
   }
 }
