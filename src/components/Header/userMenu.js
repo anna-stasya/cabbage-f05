@@ -2,9 +2,18 @@ import { useDispatch, useSelector } from 'react-redux';
 import authSelectors from '../../redux/auth/auth-selectors';
 import styles from '../Header/Header.module.css';
 import authOperations from '../../redux/auth/auth-operations';
+import Modal from '../Modal/Modal';
+import { useState } from 'react';
 
 export default function UserMenu() {
   const dispatch = useDispatch();
+  const handleLogout = () => {
+    dispatch(authOperations.logOut());
+  };
+  const toggleModal = e => {
+    setShowModal(!showModal);
+  };
+  const [showModal, setShowModal] = useState(false);
 
   const name = useSelector(authSelectors.getUsername);
   return (
@@ -15,11 +24,14 @@ export default function UserMenu() {
       <button type="button" className={styles.userName}>
         {name}
       </button>
-      <button
-        type="button"
-        onClick={() => dispatch(authOperations.logOut())}
-        className={styles.logout}
-      >
+      <button type="button" className={styles.logout} onClick={toggleModal}>
+        {showModal && (
+          <Modal
+            text={'Вы действительно хотите выйти?'}
+            onCancel={toggleModal}
+            onSubmit={handleLogout}
+          />
+        )}
         <svg
           width="16"
           height="16"
