@@ -34,69 +34,69 @@ function App() {
         <AppBar></AppBar>
         {isLoggedIn ? <UserMenu /> : null}
       </header>
-     <Container>
-      <Suspense fallback={<div>Downloading...</div>}>
-        <Routes>
-          <Route end path={paths.reports} element={<Reports />} />
-          <Route path={paths.register} exact element={<Registration />} />
-          <Route path={paths.login} exact element={<Login />} />
-          <Route path="/transactions" exact element={<TransactionView />} />
-        </Routes>
-      </Suspense>
-    </Container>
+      <Container>
+        <Suspense fallback={<div>Downloading...</div>}>
+          <Routes>
+            {/* ---------------------PublicRoute -------------------------------*/}
+            <Route
+              path={paths.register}
+              element={
+                <PublicRoute restricted redirectTo={paths.login}>
+                  <Registration />
+                </PublicRoute>
+              }
+            />
+            <Route
+              path={paths.login}
+              element={
+                <PublicRoute restricted redirectTo={paths.home}>
+                  <Login />
+                </PublicRoute>
+              }
+            />
+            {/*---------------------- PrivateRoute ------------------------------*/}
+            <Route
+              path={paths.transactions}
+              element={
+                <PrivateRoute>
+                  <TransactionView />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              end
+              path={paths.reports}
+              element={
+                <PrivateRoute>
+                  <Reports />
+                </PrivateRoute>
+              }
+            />
+          </Routes>
+        </Suspense>
+      </Container>
     </>
   );
-  
 
-    // <>
-    //   <header className={styles.headerContainer}>
-    //     <AppBar></AppBar>
-    //     {isLoggedIn ? <UserMenu /> : null}
-    //   </header>
-    //   <Container>
-    //     <Suspense fallback={<div>Downloading...</div>}>
-    //       <Routes>
-    //         {/* ---------------------PublicRoute -------------------------------*/}
-    //        <Route
-    //           path={paths.register}
-    //           element={
-    //             <PublicRoute>
-    //               <Registration />
-    //             </PublicRoute>
-    //           }
-    //         />
-    //         <Route
-    //           path={paths.login}
-    //           element={
-    //             <PublicRoute>
-    //               <Login />
-    //             </PublicRoute>
-    //           }
-    //         />
-    //         {/*---------------------- PrivateRoute ------------------------------*/}
-    //      <Route
-    //           path={paths.transactions}
-    //           element={
-    //             <PrivateRoute>
-    //               <TransactionView />
-    //             </PrivateRoute>
-    //           }
-    //         />
-    //         <Route end
-    //           path={paths.reports}
-    //           element={
-    //             <PrivateRoute>
-    //              <Reports />
-    //             </PrivateRoute>
-    //           }
-    //         />
-            
-    //       </Routes>
-    //     </Suspense>
-    //   </Container>
-    // </>
-  
 
+  // return (
+  //   <>
+  //     <header className={styles.headerContainer}>
+  //       <AppBar></AppBar>
+  //       {isLoggedIn ? <UserMenu /> : null}
+  //     </header>
+  //    <Container>
+  //     <Suspense fallback={<div>Downloading...</div>}>
+  //       <Routes>
+  //         <Route end path={paths.reports} element={<Reports />} />
+  //         <Route path={paths.register} exact element={<Registration />} />
+  //         <Route path={paths.login} exact element={<Login />} />
+  //         <Route path="/transactions" exact element={<TransactionView />} />
+  //       </Routes>
+  //     </Suspense>
+  //   </Container>
+  //   </>
+  // );
 }
 
 export default App;
