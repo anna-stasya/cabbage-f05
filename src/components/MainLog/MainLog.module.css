@@ -53,9 +53,6 @@
     padding-top: 335px;
   }
   .logoHero {
-    position: absolute;
-    z-index: 3;
-    top: 150px;
     left: 100px;
     width: 310px;
     height: 80px;
@@ -75,12 +72,8 @@
     background-position: bottom 56px left 103px;
   }
   .coles {
-    position: relative;
     top: -300px;
-    left: 0px;
     padding-top: 233px;
-    background-image: url(../../images/many\ coles.png);
-    background-position: bottom 1px left 1px;
   }
 }
 /* ---------------------------------------Desktop ----------------------------- */
@@ -94,8 +87,6 @@
   }
 
   .logoHero {
-    position: absolute;
-    z-index: 3;
     top: 365px;
     left: 170px;
     width: 377px;
@@ -112,11 +103,7 @@
     background-position: bottom 50px left 230px;
   }
   .coles {
-    position: relative;
     top: -310px;
-    left: 0px;
     padding-top: 233px;
-    background-image: url(../../images/many\ coles.png);
-    background-position: bottom 1px left 1px;
   }
 }
