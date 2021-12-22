@@ -1,5 +1,4 @@
 import axios from 'axios';
-
 const getCurrentBalance = async () => {
   const { data } = await axios.get('/auth/users/current'
   // ,
@@ -10,8 +9,6 @@ const getCurrentBalance = async () => {
   //   },
   //   }
   );
-  console.log(data)
-
   return data.user.balance;
 };
 

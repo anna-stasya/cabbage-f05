@@ -21,6 +21,7 @@ const register = createAsyncThunk('/register', async credentials => {
   try {
     const { data } = await axios.post('auth/user/signup', credentials);
     return data;
+
   } catch (error) {
     defaultModules.set(PNotifyMobile, {});
     alert({

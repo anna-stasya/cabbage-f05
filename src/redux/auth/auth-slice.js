@@ -15,7 +15,9 @@ const authSlice = createSlice({
   extraReducers: {
     [authOperations.register.fulfilled](state, action) {
       console.log('register', action.payload);
-
+     if (action.payload === undefined) {
+        return;
+      }
       state.user = action.payload.user;
       state.isLoggedIn = true;
       state.isGoogleSigned = true;
