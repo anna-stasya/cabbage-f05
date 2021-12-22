@@ -5,7 +5,7 @@ import "@pnotify/core/dist/PNotify.css";
 import * as PNotifyMobile from "@pnotify/mobile";
 import "@pnotify/mobile/dist/PNotifyMobile.css";
 
-axios.defaults.baseURL = 'https://obscure-meadow-53073.herokuapp.com/api';
+axios.defaults.baseURL = 'https://second-serv.herokuapp.com/api';
 
 //на все запроссы авторизации
 const token = {
@@ -34,6 +34,7 @@ const logIn = createAsyncThunk('auth/login', async credentials => {
   try {
     const { data } = await axios.post('auth/users/signin', credentials);
     token.set(data.user.token);
+    console.log(data)
     return data;
   } catch (error) {
     defaultModules.set(PNotifyMobile, {});
