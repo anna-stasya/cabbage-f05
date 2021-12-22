@@ -33,7 +33,6 @@ const selectedDate = createReducer(initialDate, {
 
 const totalBalance = createReducer(0, {
   [transactionsActions.setTotalBalanceSuccess]: (_, { payload }) => {
-    // console.log('payload', payload);
     return payload;
   },
 });
