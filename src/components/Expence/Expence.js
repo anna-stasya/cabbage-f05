@@ -16,6 +16,20 @@ import s from './Expence.module.css';
 
 export default function Expence() {
   const [activeValue, setActiveValue] = useState('');
+  const [descriptionList, setDescriptionList] = useState([
+    'Red',
+    'Blue',
+    'Yellow',
+    'Green',
+    'Purple',
+    'Orange',
+    'Red',
+    'Blue',
+    'Yellow',
+    'Green',
+    'Purple',
+    'Orange',
+  ]);
 
   //Получаем данные расходов из редакса
   // const expenceData = useSelector(
@@ -154,9 +168,7 @@ export default function Expence() {
         });
       }
     });
-
     const categorieslist = expenceCategories.filter(el => el.price > 0);
-
     return categorieslist;
   }
 
@@ -184,7 +196,7 @@ export default function Expence() {
         {categoriesList.length > 6 && <div className={s.line2}></div>}
         {categoriesList.length > 9 && <div className={s.line3}></div>}
       </ul>
-      <Charts />
+      <Charts descriptionList={descriptionList} />
     </>
   );
 }
