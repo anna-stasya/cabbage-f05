@@ -44,23 +44,25 @@ const setBalance = balance => async dispatch => {
   }
 };
 
-export const addExpense = transaction => async dispatch => {
+export const addExpense = (transaction, onSuccess) => async dispatch => {
   dispatch(transactionsActions.addExpenseRequest());
 
   try {
     await axios.post('/expense', transaction);
     dispatch(transactionsActions.addExpenseSuccess());
+    onSuccess();
   } catch (error) {
     dispatch(transactionsActions.addExpenseError(error.message));
   }
 };
 
-const addIncome = data => async dispatch => {
+const addIncome = (data, onSuccess) => async dispatch => {
   dispatch(transactionsActions.addIncomeRequest());
 
   try {
     await axios.post('/income', data);
     dispatch(transactionsActions.addIncomeSuccess());
+    onSuccess();
   } catch (error) {
     dispatch(transactionsActions.addIncomeError(error.message));
   }

@@ -33,14 +33,16 @@ const TransactionsList = ({ income, transactions, onDelete }) => {
             </tr>
           ) : (
             transactions.length > 0 &&
-            transactions.map(item => (
-              <Transaction
-                key={item._id}
-                item={item}
-                income={income}
-                onDelete={onDelete}
-              />
-            ))
+            transactions.map(item => {
+              return (
+                <Transaction
+                  key={item._id}
+                  item={item}
+                  income={income}
+                  onDelete={onDelete}
+                />
+              );
+            })
           )}
         </tbody>
       </table>
