@@ -8,11 +8,11 @@ import TransactionsList from '../TransactionsList/TransactionsList';
 import Button from '../Button';
 // import { balanceOperations } from '../../../redux/balance';
 import authOperations from '../../../redux/auth/auth-operations';
+import authSelectors from '../../../redux/auth/auth-selectors';
 import {
   transactionsOperations,
   transactionsSelectors,
 } from '../../../redux/transaction';
-import authOperations from '../../../redux/auth/auth-selectors';
 import axios from 'axios';
 
 const optionsExpense = [
@@ -51,7 +51,7 @@ export default function Tabs() {
 
   const selectedDate = useSelector(transactionsSelectors.currentDate);
   const transactions = useSelector(transactionsSelectors.getTransactions);
-  const setToken = useSelector(authOperations.getToken);
+  const setToken = useSelector(authSelectors.getToken);
 
   useEffect(() => {
     token.set(setToken)
