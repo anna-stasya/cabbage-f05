@@ -9,40 +9,46 @@ import {
 
 import { balanceSelectors, balanceOperations } from '../../redux/balance';
 import authSelectors from '../../redux/auth/auth-selectors';
+import authOperations from '../../redux/auth/auth-operations';
 
 import Notification from '../Notification';
 
 const Balance = ({ hide, mobile }) => {
+  // const balance = useSelector(balanceSelectors.balanceCurrent);
   const balance = useSelector(authSelectors.getBalance);
+  console.log('balance', balance);
   const dispatch = useDispatch();
 
   const [sum, setSum] = useState('');
+
   const [inputBalance, setInputBalance] = useState(true);
   const toggleWindow = () => {
     setInputBalance(inputBalance => !inputBalance);
   };
 
   useEffect(() => {
-    dispatch(balanceOperations.getBalance());
+    console.log('получили баланс');
+    dispatch(authOperations.getBalance());
   }, [dispatch]);
 
-  //   useEffect(() => {
-  //   setSum(balance);
-  // }, [balance]);
+  useEffect(() => {
+    setSum(balance);
+  }, [balance]);
 
   const handleChangeBalance = e => setSum(e.currentTarget.value);
 
-
   const handleSubmitForm = e => {
     e.preventDefault();
-    dispatch(transactionsOperations.setBalance(sum));
+    console.log('записали баланс');
+    // dispatch(transactionsOperations.setBalance(sum));
+    dispatch(authOperations.setBalance(sum));
   };
   return (
     <form onSubmit={handleSubmitForm} className={s.reportBalance}>
       <label htmlFor="balans" className={s.balanceLabel}>
         Баланс:
         <div className={s.buttonsGroup}>
-          {balance === 0 || balance === undefined ? (
+          {balance === null || balance === 0 || balance === undefined ? (
             <>
               {inputBalance && <Notification onClose={toggleWindow} />}
               <input
