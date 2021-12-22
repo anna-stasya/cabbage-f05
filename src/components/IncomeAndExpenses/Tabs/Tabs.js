@@ -11,6 +11,8 @@ import {
   transactionsOperations,
   transactionsSelectors,
 } from '../../../redux/transaction';
+import authOperations from '../../../redux/auth/auth-selectors';
+import axios from 'axios';
 
 const optionsExpense = [
   { value: 'transport', label: 'Транспорт' },
@@ -31,6 +33,15 @@ const optionsIncome = [
   { value: 'additional', label: 'Доп. доход' },
 ];
 
+const token = {
+  set(token) {
+    axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+  },
+  unset() {
+    axios.defaults.headers.common.Authorization = '';
+  },
+};
+
 export default function Tabs() {
   const [expense, setExpense] = useState(true);
   const [income, setIncome] = useState(false);
@@ -39,8 +50,10 @@ export default function Tabs() {
 
   const selectedDate = useSelector(transactionsSelectors.currentDate);
   const transactions = useSelector(transactionsSelectors.getTransactions);
+  const setToken = useSelector(authOperations.getToken);
 
   useEffect(() => {
+    token.set(setToken)
     const momentDate = moment().valueOf();
     dispatch(transactionsOperations.getExpenseByDate(momentDate));
   }, [dispatch]);
