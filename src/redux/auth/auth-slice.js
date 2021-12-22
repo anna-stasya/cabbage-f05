@@ -27,8 +27,8 @@ const authSlice = createSlice({
       state.user = action.payload.user;
       state.token = action.payload.user.token;
       state.isLoggedIn = true;
-      state.isGoogleSigned = true;
-      //state.isGoogleSigned = action.payload.token;
+      //state.isGoogleSigned = true;
+      state.isGoogleSigned = action.payload.isGoogleSigned;
     },
 
     [authOperations.logOut.fulfilled](state, action) {
