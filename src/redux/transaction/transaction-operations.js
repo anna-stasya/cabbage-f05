@@ -88,7 +88,13 @@ const getExpenseByDate = date => async dispatch => {
   const month = moment(Number(date)).format('MM');
 
   try {
-    const { data } = await axios.get(`/expense?month=${month}`);
+    const { data } = await axios.get(`/expense?`,{
+      params: {
+        category: '',
+        month,
+        year: '',
+      }
+    });
     dispatch(transactionsActions.getExpenseByDateSuccess(data));
   } catch (error) {
     dispatch(transactionsActions.getExpenseByDateError());
@@ -100,7 +106,13 @@ const getIncomeByDate = date => async dispatch => {
   const month = moment(Number(date)).format('MM');
 
   try {
-    const { data } = await axios.get(`/income?month=${month}`);
+    const { data } = await axios.get(`/income?`,{
+      params: {
+        category: '',
+        month,
+        year: '',
+      }
+    });
     dispatch(transactionsActions.getIncomeByDateSuccess(data));
   } catch (error) {
     dispatch(transactionsActions.getIncomeByDateError(error));

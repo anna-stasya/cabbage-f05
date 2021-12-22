@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import axios from 'axios';
 
 import s from './Balance.module.css';
 import authSelectors from '../../redux/auth/auth-selectors';
@@ -7,8 +8,20 @@ import authOperations from '../../redux/auth/auth-operations';
 
 import Notification from '../Notification';
 
+const token = {
+  set(token) {
+    axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+  },
+  unset() {
+    axios.defaults.headers.common.Authorization = '';
+  },
+};
+
 const Balance = ({ hide, mobile }) => {
   const balance = useSelector(authSelectors.getBalance);
+
+  const setToken = useSelector(authSelectors.getToken);
+ 
   const dispatch = useDispatch();
 
   const [sum, setSum] = useState('');
@@ -19,7 +32,9 @@ const Balance = ({ hide, mobile }) => {
   };
 
   useEffect(() => {
-    dispatch(authOperations.getBalance());
+    token.set(setToken)
+     dispatch(authOperations.getBalance());
+
   }, [dispatch]);
 
   useEffect(() => {

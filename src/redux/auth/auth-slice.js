@@ -53,7 +53,12 @@ const authSlice = createSlice({
       if (action.payload === undefined || action === null) {
         return;
       }
-      state.balance = action.payload;
+
+      console.log('action', action.payload.user.balance);
+      state.balance = action.payload.user.balance;
+      state.user = action.payload.user;
+
+
     },
   },
 });
