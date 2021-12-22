@@ -19,18 +19,13 @@ const authSlice = createSlice({
         return;
       }
       state.user = action.payload.user;
-      state.isLoggedIn = true;
-      state.isGoogleSigned = true;
-      // state.isGoogleSigned = action.payload.token;
     },
     [authOperations.logIn.fulfilled](state, action) {
-      console.log('login', action);
       if (action.payload === undefined) {
         return;
-      }
-      state.balance = action.payload.balance;
-      state.user = action.payload.user;
-      state.token = action.payload.token;
+      } 
+        state.user = action.payload.user;
+      state.token = action.payload.user.token;
       state.isLoggedIn = true;
       state.isGoogleSigned = true;
       //state.isGoogleSigned = action.payload.token;
