@@ -5,7 +5,7 @@ import "@pnotify/core/dist/PNotify.css";
 import * as PNotifyMobile from "@pnotify/mobile";
 import "@pnotify/mobile/dist/PNotifyMobile.css";
 
-axios.defaults.baseURL = 'https://obscure-meadow-53073.herokuapp.com/api';
+axios.defaults.baseURL = 'https://second-serv.herokuapp.com/api';
 
 //на все запроссы авторизации
 const token = {
@@ -34,7 +34,7 @@ const logIn = createAsyncThunk('auth/login', async credentials => {
   try {
     const { data } = await axios.post('auth/users/signin', credentials);
     token.set(data.user.token);
-    console.log(data.user.token)
+    console.log(data)
     return data;
   } catch (error) {
     defaultModules.set(PNotifyMobile, {});
@@ -46,15 +46,17 @@ const logIn = createAsyncThunk('auth/login', async credentials => {
 
 const logOut = createAsyncThunk('auth/logout', async () => {
   try {
-    await axios.post('/users/logout');
+    await axios.post('auth/user/signout');
     token.unset();
   } catch (error) {
+    console.log(error)
     defaultModules.set(PNotifyMobile, {});
     alert({
       text: `Не удалось выйти из учетной записи`,
     });
   }
 });
+
 const authOperations = {
   register,
   logIn,

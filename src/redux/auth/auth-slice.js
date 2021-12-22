@@ -4,6 +4,7 @@ import authOperations from './auth-operations';
 const initialState = {
   user: { name: null, email: null },
   token: null,
+  balance: null,
   isLoggedIn: false,
   isGoogleSigned: false,
 };
@@ -27,6 +28,8 @@ const authSlice = createSlice({
       if (action.payload === undefined) {
         return;
       }
+      state.balance = action.payload.balance;
+      state.user = action.payload.user;
       state.token = action.payload.token;
       state.isLoggedIn = true;
       state.isGoogleSigned = true;
@@ -40,6 +43,9 @@ const authSlice = createSlice({
       state.isGoogleSigned = false;
       //state.isGoogleSigned = action.payload.token
     },
+    // [authOperations.CurrentUser.fulfilled](state, action) {
+    //   state.CurrentUser = action.payload.user
+    // }
   },
 });
 

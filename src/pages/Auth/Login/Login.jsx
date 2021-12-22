@@ -11,6 +11,7 @@ import s from './loginAuth.module.css';
 import b from '../../../components/ButtonAuth/Button.module.css';
 
 const INITIAL_VALUES = {
+  name: '',
   email: '',
   password: '',
 };
@@ -39,9 +40,10 @@ const Login = () => {
   }, []);
 
   const handleSubmit = e => {
+    const name = e.name;
     const email = e.email;
     const password = e.password;
-    dispatch(authOperations.logIn({ email, password }));
+    dispatch(authOperations.logIn({ name, email, password }));
   };
 
   return (

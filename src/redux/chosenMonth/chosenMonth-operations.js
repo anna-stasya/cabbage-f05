@@ -22,8 +22,7 @@ import axios from 'axios';
 const fatchTransactionsPerMonth = (date) => async (dispatch) => {
   dispatch(fatchExpensePerMonthRequest());
   dispatch(fatchIncomePerMonthRequest());
-  const month = moment(Number(date)).format('MMMM');
-  console.log(month);
+  const month = date.getMonth();
   try {
     const expenseData = await axios.get(`/expense`, {
       params: {

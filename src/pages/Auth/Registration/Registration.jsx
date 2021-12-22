@@ -153,9 +153,11 @@ const Registration = () => {
                   </Link>
                 </div>
                 <div className={s.btnRegister}>
-                  <button type="submit" className={b.btnAuth}>
-                    Войти
-                  </button>
+                  {/* <Link to="/" > */}
+                    <button type="submit" className={b.btnAuth}>
+                      Войти
+                    </button>
+                  {/* </Link> */}
                 </div>
               </Form>
             )}

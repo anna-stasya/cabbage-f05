@@ -35,6 +35,7 @@ const setBalance = balance => async dispatch => {
   dispatch(transactionsActions.setTotalBalanceRequest());
 
   try {
+    console.log(balance)
     const response = await axios.patch(
       '/auth/users/balance',
       { balance },
