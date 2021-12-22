@@ -59,6 +59,7 @@ export default function TransactionForm({
 
     const transaction = { date, description, category: category.label, sum };
     console.log('transaction', transaction);
+    console.log('date', moment(date).format('DD MMM YYYY hh:mm a'));
     onSubmit(transaction);
     handleClearForm();
   };
@@ -91,7 +92,11 @@ export default function TransactionForm({
           customInput={<CustomInput />}
         />
         <form className={s.form}>
-          <CategoryInput value={description} onChange={handleChangeProduct} />
+          <CategoryInput
+            value={description}
+            onChange={handleChangeProduct}
+            income={income}
+          />
           <CategorySelect
             onChange={handleChangeCategory}
             category={category}

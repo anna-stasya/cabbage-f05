@@ -63,7 +63,7 @@ export default function Tabs() {
   };
 
   const onSuccess = () => {
-    // toast.success('Transaction successfully added.');
+    toast.success('Transaction successfully added.');
     dispatch(authOperations.getBalance());
     if (income) {
       dispatch(transactionsOperations.getIncomeByDate(selectedDate));
