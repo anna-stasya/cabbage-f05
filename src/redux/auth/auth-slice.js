@@ -18,9 +18,9 @@ const authSlice = createSlice({
      if (action.payload === undefined) {
         return;
       }
-      state.user = action.payload.user;
-      state.isLoggedIn = true;
-      state.isGoogleSigned = true;
+      //state.user = action.payload.user;
+      // state.isLoggedIn = true;
+      // state.isGoogleSigned = true;
       // state.isGoogleSigned = action.payload.token;
     },
     [authOperations.logIn.fulfilled](state, action) {
@@ -32,8 +32,8 @@ const authSlice = createSlice({
       state.user = action.payload.user;
       state.token = action.payload.token;
       state.isLoggedIn = true;
-      state.isGoogleSigned = true;
-      //state.isGoogleSigned = action.payload.token;
+      //state.isGoogleSigned = true;
+      state.isGoogleSigned = action.payload.isGoogleSigned;
     },
 
     [authOperations.logOut.fulfilled](state, action) {
