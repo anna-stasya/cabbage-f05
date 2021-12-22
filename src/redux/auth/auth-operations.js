@@ -34,7 +34,6 @@ const logIn = createAsyncThunk('auth/login', async credentials => {
   try {
     const { data } = await axios.post('auth/users/signin', credentials);
     token.set(data.user.token);
-    console.log(data);
     return data;
   } catch (error) {
     defaultModules.set(PNotifyMobile, {});
@@ -59,32 +58,25 @@ const logOut = createAsyncThunk('auth/logout', async () => {
 
 const setBalance = createAsyncThunk('auth/setBalance', async balance => {
   try {
-    console.log('зашло');
     const response = await axios.patch('/auth/users/balance', { balance });
-    console.log('response', response);
     return response;
-    // dispatch(
-    //   transactionsActions.setTotalBalanceSuccess(response.data.user.balance),
-    // );
   } catch (error) {
     defaultModules.set(PNotifyMobile, {});
     alert({
-      text: `Не удалось получить баланс пользователя`,
+      text: `Не удалось записать баланс пользователя`,
     });
-    // dispatch(transactionsActions.setTotalBalanceError(error));
   }
 });
 
 const getBalance = createAsyncThunk('balance/getBalance', async () => {
   try {
-    // dispatch(balanceActions.setLoading(true));
     const balance = await balanceServices.getCurrentBalance();
-    console.log('balance', balance);
     return balance;
-    // dispatch(balanceActions.getBalance(balance));
-    // dispatch(balanceActions.setLoading(false));
   } catch (error) {
-    throw new Error(error);
+    defaultModules.set(PNotifyMobile, {});
+    alert({
+      text: `Не удалось получить баланс пользователя`,
+    });
   }
 });
 

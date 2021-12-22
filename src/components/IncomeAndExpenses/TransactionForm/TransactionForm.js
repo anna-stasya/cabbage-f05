@@ -58,6 +58,7 @@ export default function TransactionForm({
     e.preventDefault();
 
     const transaction = { date, description, category: category.label, sum };
+    console.log('transaction', transaction);
     onSubmit(transaction);
     handleClearForm();
   };

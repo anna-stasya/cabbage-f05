@@ -2,21 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import s from './Balance.module.css';
-import {
-  transactionsSelectors,
-  transactionsOperations,
-} from '../../redux/transaction';
-
-import { balanceSelectors, balanceOperations } from '../../redux/balance';
 import authSelectors from '../../redux/auth/auth-selectors';
 import authOperations from '../../redux/auth/auth-operations';
 
 import Notification from '../Notification';
 
 const Balance = ({ hide, mobile }) => {
-  // const balance = useSelector(balanceSelectors.balanceCurrent);
   const balance = useSelector(authSelectors.getBalance);
-  console.log('balance', balance);
   const dispatch = useDispatch();
 
   const [sum, setSum] = useState('');
@@ -27,7 +19,6 @@ const Balance = ({ hide, mobile }) => {
   };
 
   useEffect(() => {
-    console.log('получили баланс');
     dispatch(authOperations.getBalance());
   }, [dispatch]);
 
@@ -39,8 +30,6 @@ const Balance = ({ hide, mobile }) => {
 
   const handleSubmitForm = e => {
     e.preventDefault();
-    console.log('записали баланс');
-    // dispatch(transactionsOperations.setBalance(sum));
     dispatch(authOperations.setBalance(sum));
   };
   return (

@@ -44,23 +44,25 @@ const setBalance = balance => async dispatch => {
   }
 };
 
-export const addExpense = transaction => async dispatch => {
+export const addExpense = (transaction, onSuccess) => async dispatch => {
   dispatch(transactionsActions.addExpenseRequest());
 
   try {
     await axios.post('/expense', transaction);
     dispatch(transactionsActions.addExpenseSuccess());
+    onSuccess();
   } catch (error) {
     dispatch(transactionsActions.addExpenseError(error.message));
   }
 };
 
-const addIncome = data => async dispatch => {
+const addIncome = (data, onSuccess) => async dispatch => {
   dispatch(transactionsActions.addIncomeRequest());
 
   try {
     await axios.post('/income', data);
     dispatch(transactionsActions.addIncomeSuccess());
+    onSuccess();
   } catch (error) {
     dispatch(transactionsActions.addIncomeError(error.message));
   }
@@ -83,7 +85,7 @@ export const deleteTransaction =
 
 const getExpenseByDate = date => async dispatch => {
   dispatch(transactionsActions.getExpenseByDateRequest());
-  const month = moment(Number(date)).format('MMMM');
+  const month = moment(Number(date)).format('MM');
 
   try {
     const { data } = await axios.get(`/expense?month=${month}`);
@@ -95,7 +97,7 @@ const getExpenseByDate = date => async dispatch => {
 
 const getIncomeByDate = date => async dispatch => {
   dispatch(transactionsActions.getIncomeByDateRequest());
-  const month = moment(Number(date)).format('MMMM');
+  const month = moment(Number(date)).format('MM');
 
   try {
     const { data } = await axios.get(`/income?month=${month}`);

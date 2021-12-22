@@ -23,8 +23,8 @@ const authSlice = createSlice({
     [authOperations.logIn.fulfilled](state, action) {
       if (action.payload === undefined) {
         return;
-      } 
-        state.user = action.payload.user;
+      }
+      state.user = action.payload.user;
       state.token = action.payload.user.token;
       state.isLoggedIn = true;
       state.isGoogleSigned = true;
@@ -46,20 +46,13 @@ const authSlice = createSlice({
       if (action.payload === undefined) {
         return;
       }
-      console.log('action', action);
-      console.log(
-        'action.payload.data.user.balance',
-        action.payload.data.user.balance,
-      );
       state.balance = action.payload.data.user.balance;
-      console.log('state.balance', state.balance);
     },
 
     [authOperations.getBalance.fulfilled](state, action) {
       if (action.payload === undefined || action === null) {
         return;
       }
-      console.log('action', action);
       state.balance = action.payload;
     },
   },
