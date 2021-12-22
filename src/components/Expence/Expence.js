@@ -11,6 +11,7 @@ import { ReactComponent as Communal } from '../../img/reportsCategories/communal
 import { ReactComponent as Sport } from '../../img/reportsCategories/sport.svg';
 import { ReactComponent as Education } from '../../img/reportsCategories/education.svg';
 import { ReactComponent as Other } from '../../img/reportsCategories/other.svg';
+import Charts from '../Charts';
 import s from './Expence.module.css';
 
 export default function Expence() {
@@ -26,10 +27,12 @@ export default function Expence() {
 
   //Имитация данных, полученных из редакса
   const backendCategories = [
-    { price: 50, name: 'Транспорт' },
-    { price: 1500, name: 'Продукты' },
-    { price: 1000, name: 'Здоровье' },
-    { price: 55005, name: 'Алкоголь' },
+    { price: 100, category: 'Транспорт', description: 'Taxi' },
+    { price: 100, category: 'Транспорт', description: 'Bus' },
+    { price: 100, category: 'Транспорт', description: 'Air' },
+    { price: 100, category: 'Продукты', description: 'Bananas' },
+    { price: 100, category: 'Здоровье', description: 'Hospital' },
+    { price: 100, category: 'Алкоголь', description: 'Beer' },
   ];
 
   //Задает в стейт значение поля "имя"
@@ -42,8 +45,8 @@ export default function Expence() {
   function match(arr) {
     const expenceCategories = [
       {
-        price: 5000,
-        name: 'Транспорт',
+        price: null,
+        category: 'Транспорт',
         img: (
           <Transport
             className={activeValue === 'Транспорт' ? s.activeSvg : s.svg}
@@ -51,8 +54,8 @@ export default function Expence() {
         ),
       },
       {
-        price: 5000,
-        name: 'Продукты',
+        price: null,
+        category: 'Продукты',
         img: (
           <Products
             className={activeValue === 'Продукты' ? s.activeSvg : s.svg}
@@ -60,8 +63,8 @@ export default function Expence() {
         ),
       },
       {
-        price: 5000,
-        name: 'Здоровье',
+        price: null,
+        category: 'Здоровье',
         img: (
           <Health
             className={activeValue === 'Здоровье' ? s.activeSvg : s.svg}
@@ -69,8 +72,8 @@ export default function Expence() {
         ),
       },
       {
-        price: 5000,
-        name: 'Алкоголь',
+        price: null,
+        category: 'Алкоголь',
         img: (
           <Alcohol
             className={activeValue === 'Алкоголь' ? s.activeSvg : s.svg}
@@ -78,8 +81,8 @@ export default function Expence() {
         ),
       },
       {
-        price: 5000,
-        name: 'Развлечение',
+        price: null,
+        category: 'Развлечение',
         img: (
           <Entertainment
             className={activeValue === 'Развлечение' ? s.activeSvg : s.svg}
@@ -87,8 +90,8 @@ export default function Expence() {
         ),
       },
       {
-        price: 5000,
-        name: 'Все для дома',
+        price: null,
+        category: 'Все для дома',
         img: (
           <Housing
             className={activeValue === 'Все для дома' ? s.activeSvg : s.svg}
@@ -96,8 +99,8 @@ export default function Expence() {
         ),
       },
       {
-        price: 5000,
-        name: 'Техника',
+        price: null,
+        category: 'Техника',
         img: (
           <Technics
             className={activeValue === 'Техника' ? s.activeSvg : s.svg}
@@ -105,8 +108,8 @@ export default function Expence() {
         ),
       },
       {
-        price: 5000,
-        name: 'Коммуналка, связь',
+        price: null,
+        category: 'Коммуналка, связь',
         img: (
           <Communal
             className={
@@ -116,8 +119,8 @@ export default function Expence() {
         ),
       },
       {
-        price: 5000,
-        name: 'Спорт, хобби',
+        price: null,
+        category: 'Спорт, хобби',
         img: (
           <Sport
             className={activeValue === 'Спорт, хобби' ? s.activeSvg : s.svg}
@@ -125,8 +128,8 @@ export default function Expence() {
         ),
       },
       {
-        price: 5000,
-        name: 'Образование',
+        price: null,
+        category: 'Образование',
         img: (
           <Education
             className={activeValue === 'Образование' ? s.activeSvg : s.svg}
@@ -134,50 +137,54 @@ export default function Expence() {
         ),
       },
       {
-        price: 5000,
-        name: 'Прочее',
+        price: null,
+        category: 'Прочее',
         img: (
           <Other className={activeValue === 'Прочее' ? s.activeSvg : s.svg} />
         ),
       },
     ];
-    const categoriesList = [];
 
-    arr.forEach(({ price, name }) => {
+    arr.forEach(({ price, category }) => {
       if (price > 0) {
         expenceCategories.forEach(el => {
-          if (el.name === name) {
-            el.price = price;
-            categoriesList.push(el);
+          if (el.category === category) {
+            el.price = el.price + price;
           }
         });
       }
     });
-    return categoriesList;
+
+    const categorieslist = expenceCategories.filter(el => el.price > 0);
+
+    return categorieslist;
   }
 
   //Пропускаем коллекцию полученную из редакса через функцию match
   const categoriesList = match(backendCategories);
 
   return (
-    <ul className={s.list}>
-      {categoriesList &&
-        categoriesList.map(({ price, name, img }) => (
-          <li key={name} className={s.item}>
-            <button
-              onClick={() => onClickSetActiveValue(name)}
-              className={s.button}
-            >
-              <span className={s.price}>{price.toFixed(2)}</span>
-              {img}
-              <span className={s.name}>{name}</span>
-            </button>
-          </li>
-        ))}
-      {/* Добавляет линии после 3, 6, 9 категорий в мобильной версии */}
-      {categoriesList.length > 3 && <div className={s.line1}></div>}
-      {categoriesList.length > 6 && <div className={s.line2}></div>}
-      {categoriesList.length > 9 && <div className={s.line3}></div>}
-    </ul>
+    <>
+      <ul className={s.list}>
+        {categoriesList &&
+          categoriesList.map(({ price, category, img }) => (
+            <li key={category} className={s.item}>
+              <button
+                onClick={() => onClickSetActiveValue(category)}
+                className={s.button}
+              >
+                <span className={s.price}>{price.toFixed(2)}</span>
+                {img}
+                <span className={s.category}>{category}</span>
+              </button>
+            </li>
+          ))}
+        {/* Добавляет линии после 3, 6, 9 категорий в мобильной версии */}
+        {categoriesList.length > 3 && <div className={s.line1}></div>}
+        {categoriesList.length > 6 && <div className={s.line2}></div>}
+        {categoriesList.length > 9 && <div className={s.line3}></div>}
+      </ul>
+      <Charts />
+    </>
   );
 }
