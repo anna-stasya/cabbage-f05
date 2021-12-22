@@ -28,6 +28,7 @@
   border-radius: 50%;
   text-align: center;
   margin-left: auto;
+  padding-top: 9px;
   border: none;
   font-family: Roboto;
   font-size: 12px;
@@ -51,13 +52,13 @@
     margin-left: 26px;
   }
   .userName {
-    display: inline-block;
+    display: block;
     padding: 0;
     border: none;
     font: inherit;
     color: inherit;
     background-color: transparent;
-    cursor: pointer;
+    margin-top: 21px;
     margin-left: 10px;
     font-size: 12px;
     line-height: 14px;

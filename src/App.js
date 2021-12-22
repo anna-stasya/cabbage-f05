@@ -34,7 +34,7 @@ function App() {
     <>
       <header className={styles.headerContainer}>
         <AppBar></AppBar>
-        {isLoggedIn ? <UserMenu /> : <Login />}
+        {isLoggedIn ? <UserMenu /> : null}
       </header>
 
       <Container>

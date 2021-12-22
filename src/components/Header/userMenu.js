@@ -3,6 +3,7 @@ import authSelectors from '../../redux/auth/auth-selectors';
 import styles from '../Header/Header.module.css';
 import authOperations from '../../redux/auth/auth-operations';
 import Modal from '../Modal/Modal';
+import ModalUniversal from '../ModalUniversal/ModalUniversal';
 import { useState } from 'react';
 
 export default function UserMenu() {
@@ -18,19 +19,17 @@ export default function UserMenu() {
   const name = useSelector(authSelectors.getUsername);
   return (
     <>
-      <button type="button" className={styles.user}>
-        U
-      </button>
-      <button type="button" className={styles.userName}>
-        {name}
-      </button>
+      <div className={styles.user}>U</div>
+      <div className={styles.userName}>{name}</div>
       <button type="button" className={styles.logout} onClick={toggleModal}>
         {showModal && (
           <Modal
-            text={'Вы действительно хотите выйти?'}
-            onCancel={toggleModal}
-            onSubmit={handleLogout}
-          />
+            onClose={toggleModal}
+            toggleEnterActiveBtn={handleLogout}
+            toggleRegisterActiveBtn={toggleModal}
+          >
+            <ModalUniversal children={'Вы действительно хотите выйти?'} />
+          </Modal>
         )}
         <svg
           width="16"
