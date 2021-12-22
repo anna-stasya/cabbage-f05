@@ -36,10 +36,10 @@ export default function Charts({ descriptionList }) {
   };
 
   const data = {
-    labels: descriptionList,
+    labels: descriptionList.map(el => el.description),
     datasets: [
       {
-        label: '# of Votes',
+        label: '',
         data: [12, 19, 3, 5, 0, 3, 12, 19, 3, 5, 0, 3],
         showLine: false,
         backgroundColor: ['rgb(255, 117, 29)'],
@@ -49,6 +49,8 @@ export default function Charts({ descriptionList }) {
       },
     ],
   };
+
+  const categoriesList = [];
   return (
     <div className={s.bar}>
       <Bar data={data} options={options} />

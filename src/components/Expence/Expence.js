@@ -17,18 +17,9 @@ import s from './Expence.module.css';
 export default function Expence() {
   const [activeValue, setActiveValue] = useState('');
   const [descriptionList, setDescriptionList] = useState([
-    'Red',
-    'Blue',
-    'Yellow',
-    'Green',
-    'Purple',
-    'Orange',
-    'Red',
-    'Blue',
-    'Yellow',
-    'Green',
-    'Purple',
-    'Orange',
+    { price: 100, category: 'Транспорт', description: 'Taxi' },
+    { price: 100, category: 'Транспорт', description: 'Bus' },
+    { price: 100, category: 'Транспорт', description: 'Air' },
   ]);
 
   //Получаем данные расходов из редакса
