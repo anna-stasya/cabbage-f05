@@ -1,11 +1,14 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { alert, defaultModules } from "@pnotify/core";
-import "@pnotify/core/dist/PNotify.css";
-import * as PNotifyMobile from "@pnotify/mobile";
-import "@pnotify/mobile/dist/PNotifyMobile.css";
+import { alert, defaultModules } from '@pnotify/core';
+import '@pnotify/core/dist/PNotify.css';
+import * as PNotifyMobile from '@pnotify/mobile';
+import '@pnotify/mobile/dist/PNotifyMobile.css';
+import { balanceServices } from '../../services';
 
-axios.defaults.baseURL = 'https://obscure-meadow-53073.herokuapp.com/api';
+
+
+axios.defaults.baseURL = 'https://second-serv.herokuapp.com/api';
 
 //на все запроссы авторизации
 const token = {
@@ -21,7 +24,6 @@ const register = createAsyncThunk('/register', async credentials => {
   try {
     const { data } = await axios.post('auth/user/signup', credentials);
     return data;
-
   } catch (error) {
     defaultModules.set(PNotifyMobile, {});
     alert({
@@ -48,7 +50,7 @@ const logOut = createAsyncThunk('auth/logout', async () => {
     await axios.post('auth/user/signout');
     token.unset();
   } catch (error) {
-    console.log(error)
+    console.log(error);
     defaultModules.set(PNotifyMobile, {});
     alert({
       text: `Не удалось выйти из учетной записи`,
@@ -56,10 +58,46 @@ const logOut = createAsyncThunk('auth/logout', async () => {
   }
 });
 
+const setBalance = createAsyncThunk('auth/setBalance', async balance => {
+  try {
+    const response = await axios.patch('/auth/users/balance', { balance });
+    return response;
+  } catch (error) {
+    defaultModules.set(PNotifyMobile, {});
+    alert({
+      text: `Не удалось записать баланс пользователя`,
+    });
+  }
+});
+
+const getBalance = createAsyncThunk('balance/getBalance', async () => {
+  try {
+
+    // dispatch(balanceActions.setLoading(true));
+    const { data } = await axios.get('/auth/users/current')
+    console.log('получили баланс');
+    return data;
+    // dispatch(balanceActions.getBalance(balance));
+    // dispatch(balanceActions.setLoading(false));
+ 
+
+  //  const balance = await balanceServices.getCurrentBalance();
+   // return balance;
+  } catch (error) {
+    defaultModules.set(PNotifyMobile, {});
+    alert({
+      text: `Не удалось получить баланс пользователя`,
+    });
+
+  }
+});
+
 const authOperations = {
   register,
   logIn,
   logOut,
+  setBalance,
+  getBalance,
 };
 
 export default authOperations;
