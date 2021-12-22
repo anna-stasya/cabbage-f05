@@ -32,7 +32,7 @@ const register = createAsyncThunk('/register', async credentials => {
 const logIn = createAsyncThunk('auth/login', async credentials => {
   try {
     const { data } = await axios.post('auth/users/signin', credentials);
-    token.set(data.token);
+    token.set(data.user.token);
     return data;
   } catch (error) {
     defaultModules.set(PNotifyMobile, {});
