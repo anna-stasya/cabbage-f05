@@ -3,20 +3,20 @@ import { useSelector } from 'react-redux';
 import { Routes, Route } from 'react-router-dom';
 
 import { paths } from './config';
-// components;
+//components
 import Container from './components/Container';
 import AppBar from './components/Header/appBar';
 import UserMenu from './components/Header/userMenu';
 import PrivateRoute from './components/Route/PrivateRoute';
 import PublicRoute from './components/Route/PublicRoute';
-// Transactions;
+//Transactions
 import TransactionView from './pages/Transactions/TransactionView';
 
 import authSelectors from './redux/auth/auth-selectors';
 import './App.css';
 import styles from './components/Header/Header.module.css';
 
-// Auth;
+//Auth
 const Login = lazy(() => import('./pages/Auth/Login/Login'));
 const Registration = lazy(() =>
   import('./pages/Auth/Registration/Registration'),
@@ -37,63 +37,65 @@ function App() {
       <Container>
         <Suspense fallback={<div>Downloading...</div>}>
           <Routes>
-            <Route end path={paths.reports} element={<Reports />} />
-            <Route path={paths.register} exact element={<Registration />} />
-            <Route path={paths.login} exact element={<Login />} />
-            <Route path="/transactions" exact element={<TransactionView />} />
+            {/* ---------------------PublicRoute -------------------------------*/}
+            <Route
+              path={paths.register}
+              element={
+                <PublicRoute restricted redirectTo={paths.login}>
+                  <Registration />
+                </PublicRoute>
+              }
+            />
+            <Route
+              path={paths.login}
+              element={
+                <PublicRoute restricted redirectTo={paths.home}>
+                  <Login />
+                </PublicRoute>
+              }
+            />
+            {/*---------------------- PrivateRoute ------------------------------*/}
+            <Route
+              path={paths.transactions}
+              element={
+                <PrivateRoute>
+                  <TransactionView />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              end
+              path={paths.reports}
+              element={
+                <PrivateRoute>
+                  <Reports />
+                </PrivateRoute>
+              }
+            />
           </Routes>
         </Suspense>
       </Container>
     </>
   );
 
-  // <>
-  //   <header className={styles.headerContainer}>
-  //     <AppBar></AppBar>
-  //     {isLoggedIn ? <UserMenu /> : null}
-  //   </header>
-  //   <Container>
+  // return (
+  //   <>
+  //     <header className={styles.headerContainer}>
+  //       <AppBar></AppBar>
+  //       {isLoggedIn ? <UserMenu /> : null}
+  //     </header>
+  //    <Container>
   //     <Suspense fallback={<div>Downloading...</div>}>
   //       <Routes>
-  //         {/* ---------------------PublicRoute -------------------------------*/}
-  //        <Route
-  //           path={paths.register}
-  //           element={
-  //             <PublicRoute>
-  //               <Registration />
-  //             </PublicRoute>
-  //           }
-  //         />
-  //         <Route
-  //           path={paths.login}
-  //           element={
-  //             <PublicRoute>
-  //               <Login />
-  //             </PublicRoute>
-  //           }
-  //         />
-  //         {/*---------------------- PrivateRoute ------------------------------*/}
-  //      <Route
-  //           path={paths.transactions}
-  //           element={
-  //             <PrivateRoute>
-  //               <TransactionView />
-  //             </PrivateRoute>
-  //           }
-  //         />
-  //         <Route end
-  //           path={paths.reports}
-  //           element={
-  //             <PrivateRoute>
-  //              <Reports />
-  //             </PrivateRoute>
-  //           }
-  //         />
-
+  //         <Route end path={paths.reports} element={<Reports />} />
+  //         <Route path={paths.register} exact element={<Registration />} />
+  //         <Route path={paths.login} exact element={<Login />} />
+  //         <Route path="/transactions" exact element={<TransactionView />} />
   //       </Routes>
   //     </Suspense>
   //   </Container>
-  // </>
+  //   </>
+  // );
 }
 
 export default App;
