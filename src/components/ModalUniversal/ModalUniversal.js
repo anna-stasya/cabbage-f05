@@ -9,8 +9,8 @@ import logOut from '../../redux/auth/auth-operations';
 import s from './ModalUniversal.module.css';
 
 export default function ModalUniversal({ children, onClose }) {
-  const [enterActive, setEnterActive] = useState(true);
-  const [registerActive, setRegisterActive] = useState(false);
+  const [enterActive, setEnterActive] = useState('true');
+  const [registerActive, setRegisterActive] = useState('false');
   const dispatch = useDispatch();
   const userName = useSelector(getUsername.getUsername);
 
@@ -30,8 +30,8 @@ export default function ModalUniversal({ children, onClose }) {
 
   const toggleEnterActiveBtn = () => {
     const btnYes = document.getElementById('buttons');
-    setEnterActive(true);
-    setRegisterActive(false);
+    setEnterActive('true');
+    setRegisterActive('false');
 
     dispatch(logOut(userName));
     btnYes.addEventListener('click', onClose);
@@ -39,24 +39,26 @@ export default function ModalUniversal({ children, onClose }) {
   };
 
   const toggleRegisterActiveBtn = () => {
-    setEnterActive(false);
-    setRegisterActive(true);
+    setEnterActive('false');
+    setRegisterActive('true');
   };
   return (
     <form>
       <BiX name="close" type="button" id="icon-close" className={s.iconClose} />
       <p className={s.question}>{children}</p>
       <div className={s.buttons}>
-        <button
-          className={s.button}
-          type="submit"
-          id="btnYes"
-          active={enterActive}
-          name="yes"
-          onClick={toggleEnterActiveBtn}
-        >
-          Да
-        </button>
+        <div id="buttons">
+          <button
+            className={s.button}
+            type="submit"
+            id="btnYes"
+            active={enterActive}
+            name="yes"
+            onClick={toggleEnterActiveBtn}
+          >
+            Да
+          </button>
+        </div>
         <button
           className={s.button}
           type="button"
