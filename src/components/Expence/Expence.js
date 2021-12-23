@@ -1,5 +1,5 @@
 import { useState } from 'react';
-// import { useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { ReactComponent as Transport } from '../../img/reportsCategories/transport.svg';
 import { ReactComponent as Products } from '../../img/reportsCategories/products.svg';
 import { ReactComponent as Health } from '../../img/reportsCategories/health.svg';
@@ -16,41 +16,38 @@ import s from './Expence.module.css';
 
 export default function Expence() {
   const [activeValue, setActiveValue] = useState('');
-  const [descriptionList, setDescriptionList] = useState([
-    { price: 100, category: 'Транспорт', description: 'Taxi' },
-    { price: 100, category: 'Транспорт', description: 'Bus' },
-    { price: 100, category: 'Транспорт', description: 'Air' },
-  ]);
+  const [descriptionList, setDescriptionList] = useState([]);
 
-  //Получаем данные расходов из редакса
-  // const expenceData = useSelector(
-  //   state => state.desiredMonth.ExponsePerDesiredMonth,
-  // );
-
-  // console.log('ExpenceData:');
-  // console.log(expenceData);
+  // Получаем данные расходов из редакса
+  const expenceData = useSelector(
+    state => state.desiredMonth.ExponsePerDesiredMonth.data,
+  );
 
   //Имитация данных, полученных из редакса
-  const backendCategories = [
-    { price: 100, category: 'Транспорт', description: 'Taxi' },
-    { price: 100, category: 'Транспорт', description: 'Bus' },
-    { price: 100, category: 'Транспорт', description: 'Air' },
-    { price: 100, category: 'Продукты', description: 'Bananas' },
-    { price: 100, category: 'Здоровье', description: 'Hospital' },
-    { price: 100, category: 'Алкоголь', description: 'Beer' },
-  ];
+  // const backendCategories = [
+  //   { sum: 100, category: 'Транспорт', description: 'Taxi' },
+  //   { sum: 100, category: 'Транспорт', description: 'Bus' },
+  //   { sum: 100, category: 'Транспорт', description: 'Air' },
+  //   { sum: 100, category: 'Продукты', description: 'Bananas' },
+  //   { sum: 100, category: 'Здоровье', description: 'Hospital' },
+  //   { sum: 100, category: 'Алкоголь', description: 'Beer' },
+  // ];
 
   //Задает в стейт значение поля "имя"
   function onClickSetActiveValue(value) {
     setActiveValue(value);
+    const chartCategoriesLIst = expenceData.filter(
+      ({ category }) => category === value,
+    );
+    setDescriptionList(chartCategoriesLIst);
   }
 
   //Принимает массив данных из редакса и отдает массив категорий
-  //с значенем price > 0 и добавляет иконки категорий
+  //с значенем sum > 0 и добавляет иконки категорий
   function match(arr) {
     const expenceCategories = [
       {
-        price: null,
+        sum: null,
         category: 'Транспорт',
         img: (
           <Transport
@@ -59,7 +56,7 @@ export default function Expence() {
         ),
       },
       {
-        price: null,
+        sum: null,
         category: 'Продукты',
         img: (
           <Products
@@ -68,7 +65,7 @@ export default function Expence() {
         ),
       },
       {
-        price: null,
+        sum: null,
         category: 'Здоровье',
         img: (
           <Health
@@ -77,7 +74,7 @@ export default function Expence() {
         ),
       },
       {
-        price: null,
+        sum: null,
         category: 'Алкоголь',
         img: (
           <Alcohol
@@ -86,7 +83,7 @@ export default function Expence() {
         ),
       },
       {
-        price: null,
+        sum: null,
         category: 'Развлечение',
         img: (
           <Entertainment
@@ -95,7 +92,7 @@ export default function Expence() {
         ),
       },
       {
-        price: null,
+        sum: null,
         category: 'Все для дома',
         img: (
           <Housing
@@ -104,7 +101,7 @@ export default function Expence() {
         ),
       },
       {
-        price: null,
+        sum: null,
         category: 'Техника',
         img: (
           <Technics
@@ -113,7 +110,7 @@ export default function Expence() {
         ),
       },
       {
-        price: null,
+        sum: null,
         category: 'Коммуналка, связь',
         img: (
           <Communal
@@ -124,7 +121,7 @@ export default function Expence() {
         ),
       },
       {
-        price: null,
+        sum: null,
         category: 'Спорт, хобби',
         img: (
           <Sport
@@ -133,7 +130,7 @@ export default function Expence() {
         ),
       },
       {
-        price: null,
+        sum: null,
         category: 'Образование',
         img: (
           <Education
@@ -142,7 +139,7 @@ export default function Expence() {
         ),
       },
       {
-        price: null,
+        sum: null,
         category: 'Прочее',
         img: (
           <Other className={activeValue === 'Прочее' ? s.activeSvg : s.svg} />
@@ -150,33 +147,34 @@ export default function Expence() {
       },
     ];
 
-    arr.forEach(({ price, category }) => {
-      if (price > 0) {
-        expenceCategories.forEach(el => {
-          if (el.category === category) {
-            el.price = el.price + price;
-          }
-        });
-      }
-    });
-    const categorieslist = expenceCategories.filter(el => el.price > 0);
+    arr &&
+      arr.forEach(({ sum, category }) => {
+        if (sum > 0) {
+          expenceCategories.forEach(el => {
+            if (el.category === category) {
+              el.sum += sum;
+            }
+          });
+        }
+      });
+    const categorieslist = expenceCategories.filter(({ sum }) => sum > 0);
     return categorieslist;
   }
 
   //Пропускаем коллекцию полученную из редакса через функцию match
-  const categoriesList = match(backendCategories);
+  const categoriesList = match(expenceData);
 
   return (
     <>
       <ul className={s.list}>
         {categoriesList &&
-          categoriesList.map(({ price, category, img }) => (
+          categoriesList.map(({ sum, category, img }) => (
             <li key={category} className={s.item}>
               <button
                 onClick={() => onClickSetActiveValue(category)}
                 className={s.button}
               >
-                <span className={s.price}>{price.toFixed(2)}</span>
+                <span className={s.price}>{sum.toFixed(2)}</span>
                 {img}
                 <span className={s.category}>{category}</span>
               </button>
@@ -187,7 +185,9 @@ export default function Expence() {
         {categoriesList.length > 6 && <div className={s.line2}></div>}
         {categoriesList.length > 9 && <div className={s.line3}></div>}
       </ul>
-      <Charts descriptionList={descriptionList} />
+      <div className={s.charts}>
+        <Charts descriptionList={descriptionList} />
+      </div>
     </>
   );
 }
