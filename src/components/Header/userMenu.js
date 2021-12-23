@@ -5,11 +5,13 @@ import authOperations from '../../redux/auth/auth-operations';
 import Modal from '../Modal/Modal';
 import ModalUniversal from '../ModalUniversal/ModalUniversal';
 import { useState } from 'react';
+import defaultAvatar from './user.png';
 
 export default function UserMenu() {
   const dispatch = useDispatch();
   const handleLogout = () => {
     dispatch(authOperations.logOut());
+    toggleModal();
   };
   const toggleModal = e => {
     setShowModal(!showModal);
@@ -21,16 +23,22 @@ export default function UserMenu() {
 
   return (
     <>
-      <div className={styles.user}> {avatar}U</div>
+      <div className={styles.user}>
+        <img
+          src={avatar ? avatar : defaultAvatar}
+          alt="user avatar"
+          className={styles.userAvatar}
+        />
+      </div>
       <div className={styles.userName}>{name} </div>
       <button type="button" className={styles.logout} onClick={toggleModal}>
         {showModal && (
-          <Modal onClose={toggleModal}>
-            <ModalUniversal
-              children={'Вы действительно хотите выйти?'}
-              toggleEnterActiveBtn={handleLogout}
-              toggleRegisterActiveBtn={toggleModal}
-            />
+          <Modal
+            onClose={toggleModal}
+            toggleEnterActiveBtn={handleLogout}
+            toggleRegisterActiveBtn={toggleModal}
+          >
+            <ModalUniversal children={'Вы действительно хотите выйти?'} />
           </Modal>
         )}
         <svg
@@ -59,9 +67,18 @@ export default function UserMenu() {
       </button>
       <button
         type="button"
-        onClick={() => dispatch(authOperations.logOut())}
+        onClick={toggleModal}
         className={styles.tabletLogout}
       >
+        {showModal && (
+          <Modal
+            onClose={toggleModal}
+            toggleEnterActiveBtn={handleLogout}
+            toggleRegisterActiveBtn={toggleModal}
+          >
+            <ModalUniversal children={'Вы действительно хотите выйти?'} />
+          </Modal>
+        )}
         Выйти
       </button>
     </>

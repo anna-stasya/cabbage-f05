@@ -21,14 +21,15 @@
   border: none;
 }
 .user {
+  display: flex;
   width: 32px;
   margin-top: 12px;
   height: 32px;
   background: #f5f6fa;
   border-radius: 50%;
-  text-align: center;
+  align-items: center;
   margin-left: auto;
-  padding-top: 9px;
+
   border: none;
   font-family: Roboto;
   font-size: 12px;

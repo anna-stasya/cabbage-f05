@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { BiX } from 'react-icons/bi';
-
+import authOperations from '../../redux/auth/auth-operations';
+import { useDispatch } from 'react-redux';
 import s from './ModalUniversal.module.css';
 
 export default function ModalUniversal({ children, onClose }) {
   const [enterActive, setEnterActive] = useState('true');
   const [registerActive, setRegisterActive] = useState('false');
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const icon = document.getElementById('icon-close');
@@ -19,9 +21,8 @@ export default function ModalUniversal({ children, onClose }) {
     };
   }, [onClose]);
 
-  const toggleEnterActiveBtn = () => {
-    setEnterActive(true);
-    setRegisterActive(false);
+  const handleLogout = () => {
+    dispatch(authOperations.logOut());
   };
 
   const toggleRegisterActiveBtn = () => {
@@ -38,7 +39,7 @@ export default function ModalUniversal({ children, onClose }) {
           type="submit"
           active={enterActive}
           name="yes"
-          onClick={toggleEnterActiveBtn}
+          onClick={handleLogout}
         >
           Да
         </button>
