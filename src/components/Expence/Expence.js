@@ -181,9 +181,9 @@ export default function Expence() {
             </li>
           ))}
         {/* Добавляет линии после 3, 6, 9 категорий в мобильной версии */}
-        {categoriesList.length > 3 && <div className={s.line1}></div>}
-        {categoriesList.length > 6 && <div className={s.line2}></div>}
-        {categoriesList.length > 9 && <div className={s.line3}></div>}
+        {categoriesList.length > 2 && <div className={s.line1}></div>}
+        {categoriesList.length > 5 && <div className={s.line2}></div>}
+        {categoriesList.length > 8 && <div className={s.line3}></div>}
       </ul>
       <div className={s.charts}>
         <Charts descriptionList={descriptionList} />
