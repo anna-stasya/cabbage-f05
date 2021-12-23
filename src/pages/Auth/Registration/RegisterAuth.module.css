@@ -1,19 +1,27 @@
 /* ---------------------------mobile -------------------------*/
 .auth {
+  position: absolute;
+  right: 10px;
+  top: 160px;
+
   display: flex;
   flex-direction: column;
   width: 300px;
-  height: 625px;
+  height: 100ch;
+  /* height: 625px; */
   margin: auto;
   margin-top: 48px;
-  padding: 42px 17px 51px;
+  padding: 42px 17px 42px;
+
   border-radius: 30px;
   box-shadow: 5px 10px 20px rgba(170, 178, 197, 0.4);
+   background-color: #ffffff;
 }
 
 .textGoogle {
   margin: auto;
   text-align: center;
+  margin-bottom: 10px;
 }
 
 .textAuth {
@@ -22,11 +30,11 @@
   font-style: normal;
   font-weight: normal;
   width: 242px;
-  /* height: 24px; */
   font-size: 10px;
-
   line-height: 1.2;
   letter-spacing: 0.04em;
+
+  margin-bottom: 10px;
   color: #52555f;
 }
 
@@ -47,7 +55,8 @@
   padding: 0;
   color: #eb5757;
   font-size: 10px;
-  line-height: 12px;
+  line-height: 1.2;
+  letter-spacing: 0.04em;
 }
 
 .input {
@@ -63,19 +72,36 @@
   border: 0;
 }
 
-.btnRegister{
-  display:flex;
+.btnRegister {
+  display: flex;
   margin: auto;
   justify-content: center;
+}
+.linkElement {
+  justify-content: center;
+  margin-top: 15px;
+}
+.link {
+  font-weight: 400;
+  font-size: 10px;
+  height: 24px;
+  letter-spacing: 0.04em;
+
+  padding-top: 10px;
 }
 /* ----------------------------------------tablet ---------------------------------*/
 
 @media screen and (min-width: 768px) {
   .auth {
+    position: absolute;
+    right: 166px;
+    top: 241px;
+
     margin-top: 0;
     width: 436px;
-    height: 685px;
-    padding: 50px 85px 53px;
+    height: 700px;
+    /* height: 685px; */
+    padding: 50px 85px 50px;
   }
 
   .textAuth {
@@ -102,7 +128,7 @@
 @media screen and (min-width: 1280px) {
   .auth {
     position: absolute;
-    right: 166px;
-    top: 297px;
+    right: 110px;
+    top: 70px;
   }
 }

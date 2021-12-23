@@ -12,7 +12,7 @@ import {
   transactionsOperations,
   transactionsActions,
 } from '../../../redux/transaction';
-import { ReactComponent as Calendar } from '../../../img/reports/calendar.svg';
+import { ReactComponent as Calendar } from '../../../img/reportsCategories/calendar.svg';
 
 import s from './TransactionForm.module.css';
 
@@ -22,20 +22,20 @@ export default function TransactionForm({
   onSubmit,
   placeholder,
 }) {
-  const [date, setDate] = useState(moment(new Date()).valueOf());
-  const [product, setProduct] = useState('');
+  const [date, setDate] = useState(moment().valueOf());
+  const [description, seDescription] = useState('');
   const [category, setCategory] = useState(null);
-  const [cost, setCost] = useState('');
+  const [sum, setSum] = useState('');
 
   const dispatch = useDispatch();
 
   useEffect(() => {
     if (!income) {
-      const formatDate = moment(new Date(date)).valueOf();
+      const formatDate = moment().valueOf();
       dispatch(transactionsOperations.getExpenseByDate(formatDate));
     }
     if (income) {
-      const momentDate = moment(new Date(date)).valueOf();
+      const momentDate = moment().valueOf();
       dispatch(transactionsOperations.getIncomeByDate(momentDate));
     }
   }, [dispatch, date, income]);
@@ -44,13 +44,12 @@ export default function TransactionForm({
     handleClearForm();
   }, [income]);
 
-  // const handleChangeDate = e => setDate(moment(e).valueOf());
-  const handleChangeCost = e => setCost(e.target.value);
-  const handleChangeProduct = e => setProduct(e.target.value);
+  const handleChangeCost = e => setSum(e.target.value);
+  const handleChangeProduct = e => seDescription(e.target.value);
   const handleChangeCategory = e => setCategory(e);
 
   const handleChangeDate = date => {
-    const momentDate = moment(new Date(date)).valueOf();
+    const momentDate = moment(date).valueOf();
     setDate(momentDate);
     dispatch(transactionsActions.setDate(momentDate));
   };
@@ -58,29 +57,18 @@ export default function TransactionForm({
   const handleFormSubmit = e => {
     e.preventDefault();
 
-    const transaction = { date, product, category, cost };
+    const transaction = { date, description, category: category.label, sum };
+    console.log('transaction', transaction);
+    console.log('date', moment(date).format('DD MMM YYYY hh:mm a'));
     onSubmit(transaction);
-    // operations.addTransaction(transaction);
-    // fetch('http://example.com', {
-    //   method: 'POST',
-    //   body: JSON.stringify(userData),
-    //   headers: {
-    //     Accept: 'application/json',
-    //     'Content-Type': 'application/json',
-    //   },
-    // }).then(response => {
-    //   response.json().then(data => {
-    //     console.log('Successful' + data);
-    //   });
-    // });
     handleClearForm();
   };
 
   const handleClearForm = () => {
-    setDate(new Date());
-    setProduct('');
+    setDate(moment().valueOf());
+    seDescription('');
     setCategory('');
-    setCost('');
+    setSum('');
   };
 
   const CustomInput = forwardRef(({ value, onClick }, ref) => (
@@ -104,7 +92,11 @@ export default function TransactionForm({
           customInput={<CustomInput />}
         />
         <form className={s.form}>
-          <CategoryInput value={product} onChange={handleChangeProduct} />
+          <CategoryInput
+            value={description}
+            onChange={handleChangeProduct}
+            income={income}
+          />
           <CategorySelect
             onChange={handleChangeCategory}
             category={category}
@@ -112,10 +104,10 @@ export default function TransactionForm({
             income={income}
             placeholder={placeholder}
           />
-          <CostEditor cost={cost} onChange={handleChangeCost} />
+          <CostEditor cost={sum} onChange={handleChangeCost} />
         </form>
       </div>
-      <div>
+      <div className={s.btnsContainer}>
         <Button
           type="submit"
           className={`${s.button} ${s.leftButton}`}

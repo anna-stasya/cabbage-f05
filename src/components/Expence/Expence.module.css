@@ -8,6 +8,10 @@
   position: relative;
 }
 
+.charts {
+  /* background-color: #071f41; */
+}
+
 .item {
   margin-right: 10px;
   margin-bottom: 40px;
@@ -27,7 +31,7 @@
   margin-bottom: 5px;
 }
 
-.name {
+.category {
   font-style: normal;
   font-weight: 400;
   font-size: 12px;
@@ -53,6 +57,12 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  transition: all 250ms ease-in-out;
+}
+
+.button:hover,
+.button:focus {
+  transform: scale(1.05);
 }
 
 .activeButton {
@@ -69,7 +79,8 @@
 }
 
 .activeSvg {
-  fill: #ff751d;
+  fill: hsl(23, 100%, 56%);
+  transition: fill 250ms ease-in-out;
 }
 
 .activeSvg rect {

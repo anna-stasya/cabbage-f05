@@ -71,7 +71,7 @@
   .tableBody::-webkit-scrollbar {
     width: 6px;
     border-radius: 2px;
-    background: transparent;
+    background: #f5f6fb;
   }
 
   .tableBody::-webkit-scrollbar-thumb {
@@ -80,7 +80,7 @@
   }
 }
 
-@media screen and (min-width: 1060px) {
+@media screen and (min-width: 1280px) {
   .tableDeskWrapper {
     margin-right: 30px;
   }
