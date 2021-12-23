@@ -124,7 +124,7 @@
 @media screen and (min-width: 768px) {
   .reportBalance {
     display: inline-flex;
-    margin-right: auto;
+    /* margin-right: auto; */
   }
 
   .balanceLabel {

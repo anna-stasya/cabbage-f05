@@ -1,9 +1,7 @@
 .list{
     display: flex;
-    min-width: 282px;
-    height: 85px;
-    /* width: 1060px;
-    height: 50px; */
+    width: 1060px;
+    height: 50px;
    
     background-color: #FFFFFF;
     justify-content: center;
@@ -24,7 +22,7 @@
     font-weight: 700;
     font-size: 14px;
     line-height: 16px;
-    letter-spacing: $ls
+    letter-spacing: 1.142
 }
 .item:not(:last-child){
     padding-right: 21px;
@@ -51,14 +49,3 @@
     color: #407946;
     margin-left: 15px;
 }
-
-@media screen and (min-width: 768px) {
-    .list{
-    height: 50px;
-}
-.item{
-    height: 36px;
-}
-}
-
-@media screen and (min-width: 1280px) {}
