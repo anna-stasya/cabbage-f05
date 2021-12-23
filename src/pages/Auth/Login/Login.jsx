@@ -43,6 +43,7 @@ const Login = () => {
   }, []);
 
   const handleSubmit = e => {
+    console.log('submit');
     const name = e.name;
     const email = e.email;
     const password = e.password;
@@ -115,7 +116,7 @@ const Login = () => {
                 </button>
 
                 <Link to="/register">
-                  <button type="submit" className={b.btnAuth}>
+                  <button type="button" className={b.btnAuth}>
                     Регистрация
                   </button>
                 </Link>
