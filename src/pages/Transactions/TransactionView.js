@@ -16,6 +16,9 @@ export default function TransactionView() {
     <div
     // className={s.main_container}
     >
+      <Balance />
+      {/* </div> */}
+      {/* <div className={s.reports}> */}
       {/* <HomeMain> */}
       {/* <Wrapper> */}
       {/* <div className={s.home_container}> */}
@@ -25,9 +28,6 @@ export default function TransactionView() {
       {/* </div> */}
       {/* </div> */}
       {/* <div className={s.balance}> */}
-      <Balance />
-      {/* </div> */}
-      {/* <div className={s.reports}> */}
       <BriefList />
       {/* </div> */}
       {/* </Wrapper> */}

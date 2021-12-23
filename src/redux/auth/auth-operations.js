@@ -4,7 +4,7 @@ import { alert, defaultModules } from '@pnotify/core';
 import '@pnotify/core/dist/PNotify.css';
 import * as PNotifyMobile from '@pnotify/mobile';
 import '@pnotify/mobile/dist/PNotifyMobile.css';
-import { balanceServices } from '../../services';
+// import { balanceServices } from '../../services';
 
 
 
@@ -50,7 +50,7 @@ const logOut = createAsyncThunk('auth/logout', async () => {
     await axios.post('auth/user/signout');
     token.unset();
   } catch (error) {
-    
+
   }
 });
 
