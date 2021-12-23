@@ -131,7 +131,7 @@
   .reportBalance {
     display: inline-flex;
     margin-right: 117px;
-    padding-left: 65px;
+    padding-left: 60px;
   }
 
   .balanceLabel {
@@ -151,7 +151,7 @@
     height: 44px;
     margin-left: 21px;
     margin-top: 0px;
-    min-width: 125px;
+    width: 125px;
     border: 2px solid #ffffff;
     background-color: transparent;
     border-radius: 16px;
