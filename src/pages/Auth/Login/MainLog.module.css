@@ -1,48 +1,32 @@
 .main__container {
   position: relative;
   min-width: 320px;
-  margin: 0 auto;
 }
 .hero {
-  padding-top: 140px;
+  padding-top: 286px;
   border-bottom-left-radius: 90px;
   background-color: #f5f6fb;
 }
-.logoHero {
-  position: absolute;
-  z-index: 3;
-  top: 100px;
-  left: 20px;
-  width: 180px;
-  height: 50px;
-}
+
 .hero__title {
   position: absolute;
   z-index: 3;
-  top: 160px;
+  top: 137px;
   left: 60px;
   font-style: 700;
   font-size: 13px;
   line-height: 1.15;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: #52555f;
 }
+
 .main {
   padding-top: 514px;
   background-image: url(../../images/cole.png);
   background-repeat: no-repeat;
   background-position: bottom 0px left 35px;
 }
-.coles {
-  position: relative;
-  top: -130px;
-  left: 0px;
-  padding-top: 170px;
-  background-image: url(../../images/many\ coles.png);
-  background-position: bottom 1px left 1px;
-}
-/* ------------------------------- Tablet ------------------------------ */
+
 @media screen and (min-width: 768px) {
   .main__container {
     width: 768px;
@@ -50,52 +34,54 @@
   .hero {
     padding-top: 335px;
   }
-  .logoHero {
-    left: 100px;
-    width: 310px;
-    height: 80px;
-  }
+
   .hero__title {
-    top: 200px;
-    left: 200px;
+    top: 172px;
+    left: 214.5px;
     font-size: 16px;
     line-height: 1.18;
     letter-spacing: 0.18em;
   }
+
   .main {
     padding-top: 446px;
     background-image: url(../../images/double\ cole.png);
     background-position: bottom 56px left 103px;
   }
   .coles {
+    position: relative;
     top: -300px;
+    left: 0px;
     padding-top: 233px;
+    background-image: url(../../images/many\ coles.png);
+    background-position: bottom 1px left 1px;
   }
 }
-/* ---------------------------------------Desktop ----------------------------- */
+
 @media screen and (min-width: 1280px) {
   .main__container {
-    width: 1349px;
+    width: 1280px;
   }
+
   .hero {
-    padding-top: 250px;
+    padding-top: 400px;
   }
-  .logoHero {
-    top: 245px;
-    left: 170px;
-    width: 377px;
-    height: 120px;
-  }
+
   .hero__title {
-    top: 365px;
+    top: 428px;
     left: 302px;
   }
+
   .main {
     padding-top: 268px;
     background-position: bottom 50px left 230px;
   }
   .coles {
-    top: -230px;
+    position: relative;
+    top: -380px;
+    left: 0px;
     padding-top: 233px;
+    background-image: url(../../images/many\ coles.png);
+    background-position: bottom 1px left 1px;
   }
 }
