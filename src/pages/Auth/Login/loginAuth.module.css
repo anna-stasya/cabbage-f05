@@ -103,6 +103,7 @@
 
 @media screen and (min-width: 1280px) {
   .auth {
+    
     position: absolute;
     right: 110px;
     top: 117px;

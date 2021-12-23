@@ -9,6 +9,12 @@ import BriefList from '../../components/Brief';
 
 import BriefList from '../../components/Brief'
 
+
+export default function TransactionView() {
+  return (
+    <div>
+
+
 // import s from './TransactionView.module.css';
 
 export default function TransactionView() {
@@ -36,11 +42,15 @@ export default function TransactionView() {
     </div>
 
     <>
+
       <Balance />
       <ToReportsBtn />
       <Tabs />
-      <BriefList />
-    </>
+     <BriefList />
+
+    
+
+   </>
 
   );
 }
