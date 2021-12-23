@@ -1,9 +1,13 @@
+/*--------------------------------------mobile--------------------------------- */
+.BriefList {
+  /* display: none; */
+}
 /* ----------------------------------------tablet ---------------------------------*/
-/* @media screen and (min-width: 768px) { */
+@media screen and (min-width: 768px) {
   .BriefList {
     position: absolute;
-    left: 77px;
-    top: 904px;
+    left: -480px;
+    top: 975px;
 
     width: 230px;
     height: 278px;
@@ -66,10 +70,16 @@
     border-radius: 5px;
     background-color: #f5f6fb;
   }
-/* } */
+}
+
 /* ----------------------------------------desktop ---------------------------------*/
-/* @media screen and (min-width: 1280px) {
-  position: absolute;
+@media screen and (min-width: 1280px) {
+  /* position: absolute;
   left: 920px;
-  top: 324px;
-} */
+  top: 324px; */
+
+  .BriefList {
+    left: -100px;
+    top: 220px;
+  }
+}
