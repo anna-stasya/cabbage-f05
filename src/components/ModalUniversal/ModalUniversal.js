@@ -4,8 +4,8 @@ import { BiX } from 'react-icons/bi';
 import s from './ModalUniversal.module.css';
 
 export default function ModalUniversal({ children, onClose }) {
-  const [enterActive, setEnterActive] = useState(true);
-  const [registerActive, setRegisterActive] = useState(false);
+  const [enterActive, setEnterActive] = useState('true');
+  const [registerActive, setRegisterActive] = useState('false');
 
   useEffect(() => {
     const icon = document.getElementById('icon-close');

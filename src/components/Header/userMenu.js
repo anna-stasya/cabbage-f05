@@ -17,18 +17,20 @@ export default function UserMenu() {
   const [showModal, setShowModal] = useState(false);
 
   const name = useSelector(authSelectors.getUsername);
+  const avatar = useSelector(authSelectors.getUserAvatar);
+
   return (
     <>
-      <div className={styles.user}>U</div>
-      <div className={styles.userName}>{name}</div>
+      <div className={styles.user}> {avatar}U</div>
+      <div className={styles.userName}>{name} </div>
       <button type="button" className={styles.logout} onClick={toggleModal}>
         {showModal && (
-          <Modal
-            onClose={toggleModal}
-            toggleEnterActiveBtn={handleLogout}
-            toggleRegisterActiveBtn={toggleModal}
-          >
-            <ModalUniversal children={'Вы действительно хотите выйти?'} />
+          <Modal onClose={toggleModal}>
+            <ModalUniversal
+              children={'Вы действительно хотите выйти?'}
+              toggleEnterActiveBtn={handleLogout}
+              toggleRegisterActiveBtn={toggleModal}
+            />
           </Modal>
         )}
         <svg
