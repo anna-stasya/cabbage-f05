@@ -69,7 +69,9 @@ function App() {
               path={paths.transactions}
               element={
                 <PrivateRoute>
-                  <div className={back.backgroundWrapper}>
+                  <div
+                    // className={back.backgroundWrapper}
+                  >
                     <TransactionView />
                   </div>
                 </PrivateRoute>
