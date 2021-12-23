@@ -1,9 +1,37 @@
 import s from './Charts.module.css';
 import Chart from 'chart.js/auto';
-import { Bar, horizontalBar } from 'react-chartjs-2';
+import { Bar } from 'react-chartjs-2';
 
 export default function Charts({ descriptionList }) {
+  //Принимает массив всех транзакций и выдает массив
+  //транзакций, сгрупированных по полю description
+  function match(arr) {
+    const stuckDescriptionList = [];
+    arr.forEach(({ sum, description }) => {
+      const isIncludes = stuckDescriptionList.find(
+        el => el.description === description,
+      );
+      if (isIncludes) {
+        stuckDescriptionList.forEach(el => {
+          if (el.description === description) {
+            el.sum += sum;
+          }
+        });
+      } else stuckDescriptionList.push({ sum, description });
+    });
+
+    stuckDescriptionList.sort((a, b) => b.sum - a.sum);
+
+    return stuckDescriptionList;
+  }
+
+  //Пропускаем массив всех транзакций через ф-цию match
+  const stuckDescriptionList = match(descriptionList);
+
+  //Настройки ChartJS
+  let mql = window.matchMedia('all and (max-width: 767px)');
   const options = {
+    indexAxis: mql.matches ? 'y' : 'x',
     responsive: true,
     plugins: {
       legend: {
@@ -20,37 +48,46 @@ export default function Charts({ descriptionList }) {
       x: {
         beginAtZero: true,
         grid: {
-          offset: true,
+          //   offset: true,
         },
+      },
+      ticks: {
+        // display: mql.matches ? false : true,
+        display: false,
       },
       y: {
         grid: {
-          //   offset: true,
+          // offset: true,
           drawTicks: false,
         },
         ticks: {
-          display: false,
+          display: mql.matches ? true : false,
+          stepSize: 100000000,
         },
       },
     },
   };
 
+  //Данные для отрисовки ChartJS
   const data = {
-    labels: descriptionList.map(el => el.description),
+    labels: stuckDescriptionList.map(el => el.description),
     datasets: [
       {
         label: '',
-        data: [12, 19, 3, 5, 0, 3, 12, 19, 3, 5, 0, 3],
+        data: stuckDescriptionList.map(el => el.sum),
         showLine: false,
-        backgroundColor: ['rgb(255, 117, 29)'],
-        barThickness: 38,
+        backgroundColor: [
+          'rgb(255, 117, 29)',
+          'rgb(255, 218, 192)',
+          'rgb(255, 218, 192)',
+        ],
+        barThickness: 20,
         // barPercentage: 0.1,
-        borderRadius: 10,
+        borderRadius: 6,
       },
     ],
   };
 
-  const categoriesList = [];
   return (
     <div className={s.bar}>
       <Bar data={data} options={options} />

@@ -6,11 +6,14 @@ import s from './Tabs.module.css';
 import TransactionForm from '../TransactionForm';
 import TransactionsList from '../TransactionsList/TransactionsList';
 import Button from '../Button';
-import { balanceOperations } from '../../../redux/balance';
+// import { balanceOperations } from '../../../redux/balance';
+import authOperations from '../../../redux/auth/auth-operations';
+import authSelectors from '../../../redux/auth/auth-selectors';
 import {
   transactionsOperations,
   transactionsSelectors,
 } from '../../../redux/transaction';
+import axios from 'axios';
 
 const optionsExpense = [
   { value: 'transport', label: 'Транспорт' },
@@ -31,6 +34,15 @@ const optionsIncome = [
   { value: 'additional', label: 'Доп. доход' },
 ];
 
+const token = {
+  set(token) {
+    axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+  },
+  unset() {
+    axios.defaults.headers.common.Authorization = '';
+  },
+};
+
 export default function Tabs() {
   const [expense, setExpense] = useState(true);
   const [income, setIncome] = useState(false);
@@ -39,8 +51,10 @@ export default function Tabs() {
 
   const selectedDate = useSelector(transactionsSelectors.currentDate);
   const transactions = useSelector(transactionsSelectors.getTransactions);
+  const setToken = useSelector(authSelectors.getToken);
 
   useEffect(() => {
+    token.set(setToken)
     const momentDate = moment().valueOf();
     dispatch(transactionsOperations.getExpenseByDate(momentDate));
   }, [dispatch]);
@@ -49,7 +63,7 @@ export default function Tabs() {
     if (expense) return;
     setIncome(false);
     setExpense(true);
-    const momentDate = moment(new Date()).valueOf();
+    const momentDate = moment().valueOf();
     dispatch(transactionsOperations.getExpenseByDate(momentDate));
   };
 
@@ -57,16 +71,27 @@ export default function Tabs() {
     if (income) return;
     setIncome(true);
     setExpense(false);
-    const momentDate = moment(new Date()).valueOf();
+    const momentDate = moment().valueOf();
     dispatch(transactionsOperations.getIncomeByDate(momentDate));
+  };
+
+  const onSuccess = () => {
+    toast.success('Transaction successfully added.');
+    dispatch(authOperations.getBalance());
+    if (income) {
+      dispatch(transactionsOperations.getIncomeByDate(selectedDate));
+    }
+    if (expense) {
+      dispatch(transactionsOperations.getExpenseByDate(selectedDate));
+    }
   };
 
   const handleSubmit = data => {
     if (income) {
-      dispatch(transactionsOperations.addIncome(data));
+      dispatch(transactionsOperations.addIncome(data, onSuccess));
     }
     if (expense) {
-      dispatch(transactionsOperations.addExpense(data));
+      dispatch(transactionsOperations.addExpense(data, onSuccess));
     }
   };
 
@@ -83,7 +108,7 @@ export default function Tabs() {
 
   const onDeleteTransactionSuccess = () => {
     toast.success('Transaction has been deleted.');
-    dispatch(balanceOperations.getBalance());
+    dispatch(authOperations.getBalance());
     if (income) {
       dispatch(transactionsOperations.getIncomeByDate(selectedDate));
     }
@@ -142,7 +167,6 @@ export default function Tabs() {
             income={income}
             onDelete={onDeleteTransaction}
           />
-
         </div>
       )}
       {/* <TransactionForm options={optionsExpense} /> */}

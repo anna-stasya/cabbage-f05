@@ -7,10 +7,7 @@ import { SignInGoogle } from '../SignInGoogle/SigninGoogle';
 import authOperations from '../../../redux/auth/auth-operations';
 import authSelectors from '../../../redux/auth/auth-selectors';
 
-import LogoHero from '../../../components/Header/LogoHero';
-
 import s from './loginAuth.module.css';
-import style from './MainLog.module.css';
 import b from '../../../components/ButtonAuth/Button.module.css';
 
 const INITIAL_VALUES = {
@@ -43,6 +40,7 @@ const Login = () => {
   }, []);
 
   const handleSubmit = e => {
+    console.log('submit');
     const name = e.name;
     const email = e.email;
     const password = e.password;
@@ -50,13 +48,7 @@ const Login = () => {
   };
 
   return (
-    <div className={style.main__container}>
-      <div className={style.hero}>
-        <LogoHero />
-        <h1 className={style.hero__title}>Smart Finance</h1>
-        <div className={style.coles}></div>
-      </div>
-      <div className={style.main}></div>
+    <div>
       {!isLoggedIn && (
         <div className={s.auth}>
           <p className={`${s.textGoogle} ${s.textAuth}`}>
@@ -115,7 +107,7 @@ const Login = () => {
                 </button>
 
                 <Link to="/register">
-                  <button type="submit" className={b.btnAuth}>
+                  <button type="button" className={b.btnAuth}>
                     Регистрация
                   </button>
                 </Link>

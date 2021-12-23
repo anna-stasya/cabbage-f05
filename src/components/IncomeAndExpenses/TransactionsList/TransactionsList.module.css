@@ -71,7 +71,7 @@
   .tableBody::-webkit-scrollbar {
     width: 6px;
     border-radius: 2px;
-    background: transparent;
+    background: #f5f6fb;
   }
 
   .tableBody::-webkit-scrollbar-thumb {

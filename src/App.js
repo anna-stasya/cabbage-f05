@@ -41,7 +41,8 @@ function App() {
             <Route
               path={paths.register}
               element={
-                <PublicRoute restricted redirectTo={paths.login}>
+                //  <PublicRoute restricted redirectTo={paths.login}>
+                    <PublicRoute restricted> 
                   <Registration />
                 </PublicRoute>
               }
@@ -49,7 +50,8 @@ function App() {
             <Route
               path={paths.login}
               element={
-                <PublicRoute restricted redirectTo={paths.home}>
+                //  <PublicRoute restricted redirectTo={paths.home}>
+                <PublicRoute restricted>
                   <Login />
                 </PublicRoute>
               }
