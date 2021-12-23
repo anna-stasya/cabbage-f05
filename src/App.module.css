@@ -1,28 +1,32 @@
 /*-------------------------стили для приватных роутов ---------------------------*/
 .backgroundWrapper {
-  max-width: 320px;
+  /* max-width: 320px; */
   margin-left: auto;
   margin-right: auto;
   background-image: url(./images/background-m.png);
+  background-size: 320px 342px;
   background-repeat: no-repeat;
-  background-position: top -86px center;
+  background-position: top center;
+  /* background-position: top -86px center; */
 }
 
 @media screen and (min-width: 768px) {
   .backgroundWrapper {
-    max-width: 768px;
+    /* max-width: 768px; */
     background-image: url(./images/background-t.png);
     background-size: 768px, 183px;
-    background-position: top -56px center, right 88px bottom 64px;
+    background-position: top center;
+    /* background-position: top -56px center, right 88px bottom 64px; */
   }
 }
 
 @media screen and (min-width: 1280px) {
   .backgroundWrapper {
-    max-width: 1280px;
+    /* max-width: 1280px; */
     background-image: url(./images/background-d.png);
-    background-size: 1280px, 1280px;
-    background-position: top -56px left 0, left 2px bottom -7px;
+    background-size: 1280px, 52px;
+    background-position: top center;
+    /* background-position: top -56px left 0, left 2px bottom -7px; */
   }
 }
 

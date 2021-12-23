@@ -36,59 +36,61 @@ function App() {
         <AppBar></AppBar>
         {isLoggedIn ? <UserMenu /> : null}
       </header>
-      <Container>
-        <Suspense fallback={<div>Downloading...</div>}>
-          <Routes>
-            {/* ---------------------PublicRoute -------------------------------*/}
-            <Route
-              path={paths.register}
-              element={
-                //  <PublicRoute restricted redirectTo={paths.login}>
+      <div className={back.backgroundWrapper}>
+        <Container>
+          <Suspense fallback={<div>Downloading...</div>}>
+            <Routes>
+              {/* ---------------------PublicRoute -------------------------------*/}
+              <Route
+                path={paths.register}
+                element={
+                  //  <PublicRoute restricted redirectTo={paths.login}>
 
-                <PublicRoute restricted>
-                  {/* <div className={back.backgroundAuth}> */}
+                  <PublicRoute restricted>
+                    {/* <div className={back.backgroundAuth}> */}
                     <Registration />
-                  {/* </div> */}
-                </PublicRoute>
-              }
-            />
-            <Route
-              path={paths.login}
-              element={
-                //  <PublicRoute restricted redirectTo={paths.home}>
+                    {/* </div> */}
+                  </PublicRoute>
+                }
+              />
+              <Route
+                path={paths.login}
+                element={
+                  //  <PublicRoute restricted redirectTo={paths.home}>
 
-                <PublicRoute restricted>
-                  {/* <div className={back.backgroundAuth}> */}
+                  <PublicRoute restricted>
+                    {/* <div className={back.backgroundAuth}> */}
                     <Login />
-                  {/* </div> */}
-                </PublicRoute>
-              }
-            />
-            {/*---------------------- PrivateRoute ------------------------------*/}
-            <Route
-              path={paths.transactions}
-              element={
-                <PrivateRoute>
-                  <div className={back.backgroundWrapper}>
-                    <TransactionView />
-                  </div>
-                </PrivateRoute>
-              }
-            />
-            <Route
-              end
-              path={paths.reports}
-              element={
-                <div className={back.backgroundWrapper}>
+                    {/* </div> */}
+                  </PublicRoute>
+                }
+              />
+              {/*---------------------- PrivateRoute ------------------------------*/}
+              <Route
+                path={paths.transactions}
+                element={
                   <PrivateRoute>
-                    <Reports />
+                    <div>
+                      <TransactionView />
+                    </div>
                   </PrivateRoute>
-                </div>
-              }
-            />
-          </Routes>
-        </Suspense>
-      </Container>
+                }
+              />
+              <Route
+                end
+                path={paths.reports}
+                element={
+                  <div>
+                    <PrivateRoute>
+                      <Reports />
+                    </PrivateRoute>
+                  </div>
+                }
+              />
+            </Routes>
+          </Suspense>
+        </Container>
+      </div>
     </>
   );
 
