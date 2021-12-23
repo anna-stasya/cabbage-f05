@@ -17,6 +17,7 @@ import s from './Expence.module.css';
 export default function Expence() {
   const [activeValue, setActiveValue] = useState('');
   const [descriptionList, setDescriptionList] = useState([]);
+  // console.log(descriptionList);
 
   // Получаем данные расходов из редакса
   const expenceData = useSelector(
@@ -186,7 +187,9 @@ export default function Expence() {
         {categoriesList.length > 8 && <div className={s.line3}></div>}
       </ul>
       <div className={s.charts}>
-        <Charts descriptionList={descriptionList} />
+        {descriptionList.length > 0 && (
+          <Charts descriptionList={descriptionList} />
+        )}
       </div>
     </>
   );
