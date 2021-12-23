@@ -8,7 +8,7 @@ import { balanceServices } from '../../services';
 
 
 
-axios.defaults.baseURL = 'https://second-serv.herokuapp.com/api';
+axios.defaults.baseURL = 'https://obscure-meadow-53073.herokuapp.com/api';
 
 //на все запроссы авторизации
 const token = {
