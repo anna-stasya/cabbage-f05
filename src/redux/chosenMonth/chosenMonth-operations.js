@@ -18,11 +18,10 @@ import axios from 'axios';
 //   },
 // };
 
-
-const fatchTransactionsPerMonth = (date) => async (dispatch) => {
+const fatchTransactionsPerMonth = date => async dispatch => {
   dispatch(fatchExpensePerMonthRequest());
   dispatch(fatchIncomePerMonthRequest());
-  const month = date.getMonth();
+  const month = moment(date).format('MM');
   try {
     const expenseData = await axios.get(`/expense`, {
       params: {
@@ -38,7 +37,7 @@ const fatchTransactionsPerMonth = (date) => async (dispatch) => {
         year: '',
       },
     });
-
+    console.log(expenseData);
     dispatch(fatchExpensePerMonthSuccess(expenseData.data));
     dispatch(fatchIncomePerMonthSuccess(incomeData.data));
   } catch (error) {

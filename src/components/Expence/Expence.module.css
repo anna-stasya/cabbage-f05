@@ -8,6 +8,10 @@
   position: relative;
 }
 
+.charts {
+  /* background-color: #071f41; */
+}
+
 .item {
   margin-right: 10px;
   margin-bottom: 40px;

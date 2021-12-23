@@ -37,7 +37,7 @@ const ChosenMonth = () => {
     const dateNow = new Date();
     setVisibleDate(moment(dateNow.toISOString()).format('MMMM YYYY'));
     setstateDate(dateNow);
-    // dispatch(operations.fatchTransactionsPerMonth(dateNow));
+    dispatch(operations.fatchTransactionsPerMonth(dateNow));
   }, [dispatch]);
 
   const incrementDate = event => {
