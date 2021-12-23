@@ -30,8 +30,7 @@
 }
 .main {
   padding-top: 514px;
-  /* background-image: url(../../../images/cole.png); */
-  background-image: url(../../images/cole.png);
+  background-image: url(../../../images/cole.png);
   background-repeat: no-repeat;
   background-position: bottom 0px left 35px;
 }
@@ -40,8 +39,7 @@
   top: -130px;
   left: 0px;
   padding-top: 170px;
-  /* background-image: url(../../../images/many\ coles.png); */
-   background-image: url(../../images/many\ coles.png);
+  background-image: url(../../../images/many\ coles.png);
   background-position: bottom 1px left 1px;
 }
 /* ------------------------------- Tablet ------------------------------ */
@@ -66,8 +64,7 @@
   }
   .main {
     padding-top: 446px;
-    /* background-image: url(../../../images/double\ cole.png); */
-    background-image: url(../../images/double\ cole.png);
+    background-image: url(../../../images/double\ cole.png);
     background-position: bottom 56px left 103px;
   }
   .coles {
