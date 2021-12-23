@@ -7,13 +7,6 @@ import BriefList from '../../components/Brief';
 // import HomeMain from '../../components/HomeMain/HomeMain';
 // import Wrapper from '../../components/Wrapper/Wrapper';
 
-import BriefList from '../../components/Brief'
-
-
-export default function TransactionView() {
-  return (
-    <div>
-
 
 // import s from './TransactionView.module.css';
 
@@ -41,16 +34,16 @@ export default function TransactionView() {
       {/* </HomeMain> */}
     </div>
 
-    <>
+  //   <>
 
-      <Balance />
-      <ToReportsBtn />
-      <Tabs />
-     <BriefList />
+  //     <Balance />
+  //     <ToReportsBtn />
+  //     <Tabs />
+  //    <BriefList />
 
     
 
-   </>
+  //  </>
 
   );
 }
