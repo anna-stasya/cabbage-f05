@@ -6,8 +6,6 @@ import * as PNotifyMobile from '@pnotify/mobile';
 import '@pnotify/mobile/dist/PNotifyMobile.css';
 import { balanceServices } from '../../services';
 
-
-
 axios.defaults.baseURL = 'https://second-serv.herokuapp.com/api';
 
 //на все запроссы авторизации
@@ -72,23 +70,19 @@ const setBalance = createAsyncThunk('auth/setBalance', async balance => {
 
 const getBalance = createAsyncThunk('balance/getBalance', async () => {
   try {
-
     // dispatch(balanceActions.setLoading(true));
-    const { data } = await axios.get('/auth/users/current')
-    console.log('получили баланс');
+    const { data } = await axios.get('/auth/users/current');
     return data;
     // dispatch(balanceActions.getBalance(balance));
     // dispatch(balanceActions.setLoading(false));
- 
 
-  //  const balance = await balanceServices.getCurrentBalance();
-   // return balance;
+    //  const balance = await balanceServices.getCurrentBalance();
+    // return balance;
   } catch (error) {
     defaultModules.set(PNotifyMobile, {});
     alert({
       text: `Не удалось получить баланс пользователя`,
     });
-
   }
 });
 

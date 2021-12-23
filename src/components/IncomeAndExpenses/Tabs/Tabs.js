@@ -5,6 +5,7 @@ import { toast } from 'react-toastify';
 import s from './Tabs.module.css';
 import TransactionForm from '../TransactionForm';
 import TransactionsList from '../TransactionsList/TransactionsList';
+import Brief from '../../Brief';
 import Button from '../Button';
 // import { balanceOperations } from '../../../redux/balance';
 import authOperations from '../../../redux/auth/auth-operations';
@@ -13,6 +14,7 @@ import {
   transactionsOperations,
   transactionsSelectors,
 } from '../../../redux/transaction';
+import { briefOperations, briefSelectors } from '../../../redux/brief';
 import axios from 'axios';
 
 const optionsExpense = [
@@ -54,7 +56,7 @@ export default function Tabs() {
   const setToken = useSelector(authSelectors.getToken);
 
   useEffect(() => {
-    token.set(setToken)
+    token.set(setToken);
     const momentDate = moment().valueOf();
     dispatch(transactionsOperations.getExpenseByDate(momentDate));
   }, [dispatch]);
@@ -87,11 +89,14 @@ export default function Tabs() {
   };
 
   const handleSubmit = data => {
+    console.log('data', data);
     if (income) {
       dispatch(transactionsOperations.addIncome(data, onSuccess));
+      dispatch(briefOperations.getIncomeByMonth(selectedDate));
     }
     if (expense) {
       dispatch(transactionsOperations.addExpense(data, onSuccess));
+      dispatch(briefOperations.getExpenseByMonth(selectedDate));
     }
   };
 
@@ -153,6 +158,7 @@ export default function Tabs() {
             transactions={transactions}
             onDelete={onDeleteTransaction}
           />
+          <Brief selectedDate={selectedDate} incomes={false} />
         </div>
       ) : (
         <div className={s.counterTabContainer}>
@@ -167,6 +173,7 @@ export default function Tabs() {
             income={income}
             onDelete={onDeleteTransaction}
           />
+          <Brief incomes={true} selectedDate={selectedDate} />
         </div>
       )}
       {/* <TransactionForm options={optionsExpense} /> */}

@@ -14,7 +14,6 @@ const authSlice = createSlice({
   initialState,
   extraReducers: {
     [authOperations.register.fulfilled](state, action) {
-      console.log('register', action.payload);
       if (action.payload === undefined) {
         return;
       }
@@ -54,11 +53,8 @@ const authSlice = createSlice({
         return;
       }
 
-      console.log('action', action.payload.user.balance);
       state.balance = action.payload.user.balance;
       state.user = action.payload.user;
-
-
     },
   },
 });

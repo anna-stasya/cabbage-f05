@@ -54,6 +54,22 @@ export const deleteTransactionError = createAction(
   'transaction/deleteTransactionError',
 );
 
+// const getIncomeTotalRequest = createAction(
+//   'transactions/getIncomeTotalRequest',
+// );
+// const getIncomeTotalSuccess = createAction(
+//   'transactions/getIncomeTotalSuccess',
+// );
+// const getIncomeTotalError = createAction('transactions/getIncomeTotalError');
+
+// const getExpenseTotalRequest = createAction(
+//   'transactions/getExpenseTotalRequest',
+// );
+// const getExpenseTotalSuccess = createAction(
+//   'transactions/getExpenseTotalSuccess',
+// );
+// const getExpenseTotalError = createAction('transactions/getExpenseTotalError');
+
 const transactionsActions = {
   setDate,
   fetchExpenseRequest,
@@ -77,6 +93,12 @@ const transactionsActions = {
   deleteTransactionRequest,
   deleteTransactionSuccess,
   deleteTransactionError,
+  // getExpenseTotalRequest,
+  // getExpenseTotalSuccess,
+  // getExpenseTotalError,
+  // getIncomeTotalRequest,
+  // getIncomeTotalSuccess,
+  // getIncomeTotalError,
 };
 
 export default transactionsActions;
