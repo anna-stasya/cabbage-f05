@@ -4,12 +4,9 @@ import { useSelector } from 'react-redux';
 import { BiX } from 'react-icons/bi';
 
 import authOperations from '../../redux/auth/auth-operations';
-import { useDispatch } from 'react-redux';
-
 
 import getUsername from '../../redux/auth/auth-selectors';
 import logOut from '../../redux/auth/auth-operations';
-
 
 import s from './ModalUniversal.module.css';
 
@@ -19,11 +16,10 @@ export default function ModalUniversal({ children, onClose }) {
   const dispatch = useDispatch();
   const userName = useSelector(getUsername.getUsername);
 
-
   useEffect(() => {
     const icon = document.getElementById('icon-close');
     const btnNo = document.getElementById('btnNo');
-    const btnYes = document.getElementById('buttons');
+    const btnYes = document.getElementById('btnYes');
 
     btnNo.addEventListener('click', onClose);
     icon.addEventListener('click', onClose);
@@ -37,9 +33,8 @@ export default function ModalUniversal({ children, onClose }) {
   const handleLogout = () => {
     dispatch(authOperations.logOut());
     dispatch(logOut(userName));
-    btnYes.addEventListener('click', onClose);
-    onClose();
 
+    onClose();
   };
 
   const toggleRegisterActiveBtn = () => {

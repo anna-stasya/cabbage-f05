@@ -1,9 +1,4 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { useState, useEffect } from 'react';
-// import { useMediaQuery } from 'react-responsive';
-
-import Modal from '../Modal/Modal';
-import ModalUniversal from '../ModalUniversal/ModalUniversal';
 
 import authSelectors from '../../redux/auth/auth-selectors';
 import styles from '../Header/Header.module.css';
@@ -28,12 +23,6 @@ export default function UserMenu() {
   //   query: '(max-width: 767px)',
   // });
 
-  const toggleModal = () => {
-    setShowModal(!showModal);
-  };
-
-  const handleLogout = () => dispatch(authOperations.logOut());
-
   const dispatch = useDispatch();
   const handleLogout = () => {
     dispatch(authOperations.logOut());
@@ -42,7 +31,6 @@ export default function UserMenu() {
   const toggleModal = e => {
     setShowModal(!showModal);
   };
-  const [showModal, setShowModal] = useState(false);
 
   // const userEmail = useSelector(state => state.auth.user.email);
   // const userName = userEmail ? nameFromEmail(userEmail) : 'User Name';
