@@ -10,7 +10,7 @@ import authSelectors from '../../../redux/auth/auth-selectors';
 import LogoHero from '../../../components/Header/LogoHero';
 
 import s from './loginAuth.module.css';
-import style from '../../../components/MainLog/MainLog.module.css';
+import style from './MainLog.module.css';
 import b from '../../../components/ButtonAuth/Button.module.css';
 
 const INITIAL_VALUES = {
