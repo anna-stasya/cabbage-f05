@@ -12,11 +12,13 @@ import PublicRoute from './components/Route/PublicRoute';
 //Transactions
 import TransactionView from './pages/Transactions/TransactionView';
 
+
 import authSelectors from './redux/auth/auth-selectors';
 import './App.css';
 import back from './App.module.css';
 import styles from './components/Header/Header.module.css';
 //import s from './TransactionView.module.css';
+
 
 //Auth
 const Login = lazy(() => import('./pages/Auth/Login/Login'));
@@ -25,6 +27,7 @@ const Registration = lazy(() =>
 );
 const Reports = lazy(() =>
   import('./pages/Reports' /* webpackChunkName: "Reports" */),
+
 );
 
 function App() {
@@ -92,6 +95,7 @@ function App() {
         </Suspense>
       </Container>
     </>
+
   );
 
   // return (
