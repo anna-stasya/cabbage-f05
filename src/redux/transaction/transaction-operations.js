@@ -89,6 +89,7 @@ const getExpenseByDate = date => async dispatch => {
 
   try {
     const { data } = await axios.get(`/expense?month=${month}`);
+    console.log('data', data);
     dispatch(transactionsActions.getExpenseByDateSuccess(data));
   } catch (error) {
     dispatch(transactionsActions.getExpenseByDateError());
