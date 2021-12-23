@@ -8,6 +8,10 @@ import ModalUniversal from '../ModalUniversal/ModalUniversal';
 import authSelectors from '../../redux/auth/auth-selectors';
 import styles from '../Header/Header.module.css';
 import authOperations from '../../redux/auth/auth-operations';
+import Modal from '../Modal/Modal';
+import ModalUniversal from '../ModalUniversal/ModalUniversal';
+import { useState } from 'react';
+import defaultAvatar from './user.png';
 
 export default function UserMenu() {
   const [showModal, setShowModal] = useState(false);
@@ -31,25 +35,42 @@ export default function UserMenu() {
   const handleLogout = () => dispatch(authOperations.logOut());
 
   const dispatch = useDispatch();
+  const handleLogout = () => {
+    dispatch(authOperations.logOut());
+    toggleModal();
+  };
+  const toggleModal = e => {
+    setShowModal(!showModal);
+  };
+  const [showModal, setShowModal] = useState(false);
 
   // const userEmail = useSelector(state => state.auth.user.email);
   // const userName = userEmail ? nameFromEmail(userEmail) : 'User Name';
 
   const name = useSelector(authSelectors.getUsername);
 
+  const avatar = useSelector(authSelectors.getUserAvatar);
+
   return (
     <>
-      <button type="button" className={styles.user}>
-        U
-      </button>
-      <button type="button" className={styles.userName}>
-        {name}
-      </button>
-      <button
-        type="button"
-        onClick={(handleLogout, toggleModal)}
-        className={styles.logout}
-      >
+      <div className={styles.user}>
+        <img
+          src={avatar ? avatar : defaultAvatar}
+          alt="user avatar"
+          className={styles.userAvatar}
+        />
+      </div>
+      <div className={styles.userName}>{name} </div>
+      <button type="button" className={styles.logout} onClick={toggleModal}>
+        {showModal && (
+          <Modal
+            onClose={toggleModal}
+            toggleEnterActiveBtn={handleLogout}
+            toggleRegisterActiveBtn={toggleModal}
+          >
+            <ModalUniversal children={'Вы действительно хотите выйти?'} />
+          </Modal>
+        )}
         <svg
           width="16"
           height="16"
@@ -76,9 +97,18 @@ export default function UserMenu() {
       </button>
       <button
         type="button"
-        onClick={(handleLogout, toggleModal)}
+        onClick={toggleModal}
         className={styles.tabletLogout}
       >
+        {showModal && (
+          <Modal
+            onClose={toggleModal}
+            toggleEnterActiveBtn={handleLogout}
+            toggleRegisterActiveBtn={toggleModal}
+          >
+            <ModalUniversal children={'Вы действительно хотите выйти?'} />
+          </Modal>
+        )}
         Выйти
       </button>
 

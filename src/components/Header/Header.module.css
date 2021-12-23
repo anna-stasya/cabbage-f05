@@ -5,7 +5,7 @@
 
 .headerContainer {
   display: flex;
-  width: 320px;
+  width: auto;
   height: 56px;
 }
 
@@ -14,20 +14,22 @@
   height: 16px;
   margin-top: 20px;
   margin-right: 19px;
-  margin-left: auto;
+  margin-left: 15px;
   background: none;
   padding: 0;
   justify-content: center;
   border: none;
 }
 .user {
+  display: flex;
   width: 32px;
   margin-top: 12px;
   height: 32px;
   background: #f5f6fa;
   border-radius: 50%;
-  text-align: center;
-  margin-left: 129px;
+  align-items: center;
+  margin-left: auto;
+
   border: none;
   font-family: Roboto;
   font-size: 12px;
@@ -44,20 +46,20 @@
 }
 @media (min-width: 768px) {
   .headerContainer {
-    width: 768px;
+    width: auto;
   }
 
   .logo {
     margin-left: 26px;
   }
   .userName {
-    display: inline-block;
+    display: block;
     padding: 0;
     border: none;
     font: inherit;
     color: inherit;
     background-color: transparent;
-    cursor: pointer;
+    margin-top: 21px;
     margin-left: 10px;
     font-size: 12px;
     line-height: 14px;
@@ -93,14 +95,14 @@
 
 @media (min-width: 1280px) {
   .headerContainer {
-    width: 1280px;
+    width: auto;
   }
 
   .logo {
     margin-top: 13px;
   }
   .user {
-    margin-left: 908px;
+    margin-left: auto;
   }
   .tabletLogout {
     margin-left: 20px;

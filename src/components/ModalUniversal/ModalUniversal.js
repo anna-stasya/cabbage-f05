@@ -3,8 +3,13 @@ import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { BiX } from 'react-icons/bi';
 
+import authOperations from '../../redux/auth/auth-operations';
+import { useDispatch } from 'react-redux';
+
+
 import getUsername from '../../redux/auth/auth-selectors';
 import logOut from '../../redux/auth/auth-operations';
+
 
 import s from './ModalUniversal.module.css';
 
@@ -13,6 +18,7 @@ export default function ModalUniversal({ children, onClose }) {
   const [registerActive, setRegisterActive] = useState('false');
   const dispatch = useDispatch();
   const userName = useSelector(getUsername.getUsername);
+
 
   useEffect(() => {
     const icon = document.getElementById('icon-close');
@@ -28,14 +34,12 @@ export default function ModalUniversal({ children, onClose }) {
     };
   }, [onClose]);
 
-  const toggleEnterActiveBtn = () => {
-    const btnYes = document.getElementById('buttons');
-    setEnterActive('true');
-    setRegisterActive('false');
-
+  const handleLogout = () => {
+    dispatch(authOperations.logOut());
     dispatch(logOut(userName));
     btnYes.addEventListener('click', onClose);
     onClose();
+
   };
 
   const toggleRegisterActiveBtn = () => {
@@ -47,18 +51,16 @@ export default function ModalUniversal({ children, onClose }) {
       <BiX name="close" type="button" id="icon-close" className={s.iconClose} />
       <p className={s.question}>{children}</p>
       <div className={s.buttons}>
-        <div id="buttons">
-          <button
-            className={s.button}
-            type="submit"
-            id="btnYes"
-            active={enterActive}
-            name="yes"
-            onClick={toggleEnterActiveBtn}
-          >
-            Да
-          </button>
-        </div>
+        <button
+          className={s.button}
+          type="submit"
+          active={enterActive}
+          id="btnYes"
+          name="yes"
+          onClick={handleLogout}
+        >
+          Да
+        </button>
         <button
           className={s.button}
           type="button"
