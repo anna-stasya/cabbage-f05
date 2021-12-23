@@ -14,7 +14,9 @@ import TransactionView from './pages/Transactions/TransactionView';
 
 import authSelectors from './redux/auth/auth-selectors';
 import './App.css';
+import back from './App.module.css';
 import styles from './components/Header/Header.module.css';
+//import s from './TransactionView.module.css';
 
 //Auth
 const Login = lazy(() => import('./pages/Auth/Login/Login'));
@@ -42,8 +44,11 @@ function App() {
               path={paths.register}
               element={
                 //  <PublicRoute restricted redirectTo={paths.login}>
-                    <PublicRoute restricted> 
-                  <Registration />
+
+                <PublicRoute restricted>
+                  {/* <div className={back.backgroundAuth}> */}
+                    <Registration />
+                  {/* </div> */}
                 </PublicRoute>
               }
             />
@@ -51,8 +56,11 @@ function App() {
               path={paths.login}
               element={
                 //  <PublicRoute restricted redirectTo={paths.home}>
+
                 <PublicRoute restricted>
-                  <Login />
+                  {/* <div className={back.backgroundAuth}> */}
+                    <Login />
+                  {/* </div> */}
                 </PublicRoute>
               }
             />
@@ -61,7 +69,9 @@ function App() {
               path={paths.transactions}
               element={
                 <PrivateRoute>
-                  <TransactionView />
+                  <div className={back.backgroundWrapper}>
+                    <TransactionView />
+                  </div>
                 </PrivateRoute>
               }
             />
@@ -69,9 +79,11 @@ function App() {
               end
               path={paths.reports}
               element={
-                <PrivateRoute>
-                  <Reports />
-                </PrivateRoute>
+                <div className={back.backgroundWrapper}>
+                  <PrivateRoute>
+                    <Reports />
+                  </PrivateRoute>
+                </div>
               }
             />
           </Routes>
@@ -79,7 +91,6 @@ function App() {
       </Container>
     </>
   );
-
 
   // return (
   //   <>

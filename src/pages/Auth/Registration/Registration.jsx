@@ -171,7 +171,7 @@ const Registration = () => {
                       className={b.btnAuth}
                       onClick = {goToLogin}
                     >
-                      Зарегестрироваться
+                      Регистрация
                     </button>
                   
                 </div>
