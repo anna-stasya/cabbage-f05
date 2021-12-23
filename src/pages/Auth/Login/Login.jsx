@@ -7,10 +7,7 @@ import { SignInGoogle } from '../SignInGoogle/SigninGoogle';
 import authOperations from '../../../redux/auth/auth-operations';
 import authSelectors from '../../../redux/auth/auth-selectors';
 
-import LogoHero from '../../../components/Header/LogoHero';
-
 import s from './loginAuth.module.css';
-import style from './MainLog.module.css';
 import b from '../../../components/ButtonAuth/Button.module.css';
 
 const INITIAL_VALUES = {
@@ -51,13 +48,7 @@ const Login = () => {
   };
 
   return (
-    <div className={style.main__container}>
-      <div className={style.hero}>
-        <LogoHero />
-        <h1 className={style.hero__title}>Smart Finance</h1>
-        <div className={style.coles}></div>
-      </div>
-      <div className={style.main}></div>
+    <div>
       {!isLoggedIn && (
         <div className={s.auth}>
           <p className={`${s.textGoogle} ${s.textAuth}`}>
