@@ -1,11 +1,5 @@
-import MainLog from '../../components/MainLog/MainLog';
-
 const Example = () => {
-  return (
-    <div>
-      <MainLog />
-    </div>
-  );
+  return <div>Example</div>;
 };
 
 export default Example;
