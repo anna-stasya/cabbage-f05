@@ -11,3 +11,19 @@
     width: 100%;
   }
 }
+
+@media screen and (min-width: 768px) {
+  .formPrimaryBar {
+    margin-top: 40px;
+    margin-bottom: 60px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .formPrimaryBar {
+    text-align: center;
+    padding-left: 280px;
+    margin-top: 40px;
+    margin-bottom: 10px;
+  }
+}

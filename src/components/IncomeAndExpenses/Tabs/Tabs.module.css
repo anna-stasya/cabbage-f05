@@ -46,7 +46,7 @@
 
   .counterTabContainer {
     padding: 30px 30px 48px 30px;
-    outline: 1px solid black;
+    /* outline: 1px solid black; */
   }
 
   .tabButton {

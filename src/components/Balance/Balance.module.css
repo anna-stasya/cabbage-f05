@@ -59,6 +59,12 @@
   }
 } */
 
+/* @media screen and (max-width: 767px) {
+  .reportBalance {
+    margin-right: 117px;
+  }
+} */
+
 @media screen and (min-width: 320px) {
   .reportBalance {
     display: table-footer-group;
@@ -124,7 +130,8 @@
 @media screen and (min-width: 768px) {
   .reportBalance {
     display: inline-flex;
-    margin-right: auto;
+    margin-right: 117px;
+    padding-left: 65px;
   }
 
   .balanceLabel {
@@ -172,6 +179,11 @@
 }
 
 @media screen and (min-width: 1280px) {
+  .reportBalance {
+    display: inline-flex;
+    margin-right: 205px;
+  }
+
   .balanceLabel {
     display: flex;
     align-items: baseline;
