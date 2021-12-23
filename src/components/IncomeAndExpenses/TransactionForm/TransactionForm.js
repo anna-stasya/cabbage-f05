@@ -83,14 +83,16 @@ export default function TransactionForm({
   return (
     <div className={s.inputContainer}>
       <div className={s.innerContainer}>
-        <DatePicker
-          locale={ru}
-          selected={date}
-          onChange={handleChangeDate}
-          dateFormat="dd.MM.yyyy"
-          todayButton="Сегодня"
-          customInput={<CustomInput />}
-        />
+        <div className={s.datepickerWrapper}>
+          <DatePicker
+            locale={ru}
+            selected={date}
+            onChange={handleChangeDate}
+            dateFormat="dd.MM.yyyy"
+            todayButton="Сегодня"
+            customInput={<CustomInput />}
+          />
+        </div>
         <form className={s.form}>
           <CategoryInput
             value={description}

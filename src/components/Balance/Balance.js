@@ -21,7 +21,7 @@ const Balance = ({ hide, mobile }) => {
   const balance = useSelector(authSelectors.getBalance);
 
   const setToken = useSelector(authSelectors.getToken);
- 
+
   const dispatch = useDispatch();
 
   const [sum, setSum] = useState('');
@@ -32,9 +32,8 @@ const Balance = ({ hide, mobile }) => {
   };
 
   useEffect(() => {
-    token.set(setToken)
-     dispatch(authOperations.getBalance());
-
+    token.set(setToken);
+    dispatch(authOperations.getBalance());
   }, [dispatch]);
 
   useEffect(() => {

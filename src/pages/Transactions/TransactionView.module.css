@@ -1,0 +1,13 @@
+@media screen and (max-width: 767px) {
+  .formPrimaryBar {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    padding-top: 20px;
+  }
+
+  .TransactionViewWrapper {
+    position: relative;
+    width: 100%;
+  }
+}

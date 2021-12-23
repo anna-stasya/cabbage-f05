@@ -1,5 +1,42 @@
-.tabsContainer {
-  display: none;
+@media screen and (max-width: 767px) {
+  .tabsContainer {
+    display: flex;
+    position: absolute;
+    bottom: -20px;
+    width: 100%;
+  }
+
+  .tabButton {
+    margin: 0;
+    width: 100%;
+    height: 54px;
+
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 14px;
+
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    background-color: #f1f1f1;
+    border: none;
+    color: inherit;
+
+    cursor: pointer;
+    transition: color 250ms linear;
+  }
+
+  .tabButton:first-of-type {
+    margin-right: 3px;
+  }
+
+  .tabButton:hover {
+    color: #ff751d;
+  }
+
+  .activeButton {
+    background-color: #fafbfd;
+    color: #ff751d;
+  }
 }
 
 @media screen and (min-width: 768px) {
@@ -11,6 +48,34 @@
     padding: 30px 30px 48px 30px;
     outline: 1px solid black;
   }
+
+  .tabButton {
+    margin: 0;
+    padding: 14px 48px;
+
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 14px;
+
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    background-color: #f1f1f1;
+    border-radius: 20px 20px 0 0;
+    border: none;
+    color: inherit;
+
+    cursor: pointer;
+    transition: color 250ms linear;
+  }
+
+  .tabButton:hover {
+    color: #ff751d;
+  }
+
+  .activeButton {
+    background-color: #fafbfd;
+    color: #ff751d;
+  }
 }
 
 @media screen and (min-width: 1280px) {
@@ -19,7 +84,7 @@
   }
 }
 
-.tabButton {
+/* .tabButton {
   margin: 0;
   padding: 14px 48px;
 
@@ -45,4 +110,4 @@
 .activeButton {
   background-color: #fafbfd;
   color: #ff751d;
-}
+} */

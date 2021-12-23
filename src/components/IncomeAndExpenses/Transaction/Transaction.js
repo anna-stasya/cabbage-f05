@@ -13,7 +13,9 @@ export default function Transaction({ item, income, onDelete }) {
       <td className={s.tableDate}>{moment(item.date).format('DD.MM.yyyy')}</td>
       <td className={s.tableProduct}>{item.description}</td>
       <td className={s.tableCategory}>{item.category}</td>
-      <td className={currClass}>{`${currCost} грн.`}</td>
+      <div className={s.tableCost}>
+        <td className="currClass">{`${currCost} грн.`}</td>
+      </div>
       <td className={s.tableDelete}>
         <Button
           type="button"

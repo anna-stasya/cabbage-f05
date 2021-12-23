@@ -54,7 +54,7 @@ export default function Tabs() {
   const setToken = useSelector(authSelectors.getToken);
 
   useEffect(() => {
-    token.set(setToken)
+    token.set(setToken);
     const momentDate = moment().valueOf();
     dispatch(transactionsOperations.getExpenseByDate(momentDate));
   }, [dispatch]);

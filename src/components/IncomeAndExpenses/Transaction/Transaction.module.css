@@ -1,3 +1,52 @@
+@media screen and (max-width: 767px) {
+  .deleteBtn {
+    width: 35px;
+    height: 35px;
+    border-color: transparent;
+    border-radius: 50%;
+    background-color: transparent;
+    cursor: pointer;
+  }
+
+  .tableTr {
+    position: relative;
+  }
+
+  .tableDate {
+    position: absolute;
+    bottom: 3px;
+    left: 10px;
+    font-size: 10px;
+    color: #52555f;
+  }
+
+  .tableProduct {
+    width: 65px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 700;
+    /* margin-right: 10px; */
+    overflow: auto;
+    color: #52555f;
+  }
+
+  .tableCategory {
+    font-size: 10px;
+    width: 85px;
+    vertical-align: bottom;
+    text-align: left;
+    padding-bottom: 3px;
+    color: #52555f;
+  }
+
+  .tableCost {
+    padding-top: 6px;
+    height: 30px;
+  }
+}
+
 @media screen and (min-width: 768px) {
   .tableTr {
     width: 100%;
@@ -16,11 +65,21 @@
   .tableProduct {
     text-align: left;
     width: 30%;
+    padding-left: 20px;
   }
 
   .tableCategory {
     width: 20%;
-    text-align: center;
+    text-align: left;
+    padding: 10px;
+  }
+
+  .tableCost {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: right;
+    align-items: center;
   }
 
   .tableDelete {
@@ -38,5 +97,12 @@
 
   .deleteBtn:hover {
     background-color: #f5f6fb;
+  }
+}
+
+@media screen and (min-width: 1260px) {
+  .tableCost {
+    justify-content: right;
+    width: 90px;
   }
 }
