@@ -7,10 +7,8 @@ import { paths } from '../../../config';
 import { SignInGoogle } from '../SignInGoogle/SigninGoogle';
 import authOperations from '../../../redux/auth/auth-operations';
 import authSelectors from '../../../redux/auth/auth-selectors';
-import LogoHero from '../../../components/Header/LogoHero';
 
 import s from './RegisterAuth.module.css';
-import style from './MainRegistr.module.css';
 import b from '../../../components/ButtonAuth/Button.module.css';
 
 const INITIAL_VALUES = {
@@ -26,9 +24,15 @@ const Registration = () => {
 
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
 
+<<<<<<< Updated upstream
   const goToLogin = () => {
     // navigate(paths.login);
     window.open(paths.login);
+=======
+ const goToLogin = () => {
+   // navigate(paths.login);
+   window.open(paths.login);
+>>>>>>> Stashed changes
   };
 
   const validate = useCallback(values => {
@@ -78,18 +82,17 @@ const Registration = () => {
     const password = e.password;
 
     dispatch(authOperations.register({ name, email, password }));
+<<<<<<< Updated upstream
     // window.open('/');
+=======
+   // window.open('/');
+>>>>>>> Stashed changes
   };
 
-  return (
-    <div className={style.main__container}>
-      <div className={style.hero}>
-        <LogoHero />
-        <h1 className={style.hero__title}>Smart Finance</h1>
-        <div className={style.coles}></div>
-      </div>
-      <div className={style.main}></div>
+ 
 
+  return (
+    <div>
       {!isLoggedIn && (
         <div className={s.auth}>
           <p className={`${s.textGoogle} ${s.textAuth}`}>
@@ -172,13 +175,24 @@ const Registration = () => {
                   </Link>
                 </div>
                 <div className={s.btnRegister}>
+                  
                   <button
+<<<<<<< Updated upstream
                     type="submit"
                     className={b.btnAuth}
                     onClick={goToLogin}
                   >
                     Регистрация
                   </button>
+=======
+                      type="submit"
+                      className={b.btnAuth}
+                      onClick = {goToLogin}
+                    >
+                      Регистрация
+                    </button>
+                  
+>>>>>>> Stashed changes
                 </div>
               </Form>
             )}

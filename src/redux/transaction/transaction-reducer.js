@@ -64,9 +64,23 @@ const isLoading = createReducer(false, {
 //   [transactionsActions.deleteTransactionRequest]: () => null,
 // });
 
+// const sixMonthsIncome = createReducer([], {
+//   [transactionsActions.getIncomeTotalSuccess]: (_, { payload }) =>
+//     payload.totalSum,
+// });
+
+// const sixMonthsExpense = createReducer([], {
+//   [transactionsActions.getExpenseTotalSuccess]: (_, { payload }) => {
+//     console.log('payloadex', payload);
+//     return payload.totalSum;
+//   },
+// });
+
 export default combineReducers({
   transactions,
   isLoading,
   totalBalance,
   selectedDate,
+  // sixMonthsIncome,
+  // sixMonthsExpense,
 });

@@ -14,7 +14,6 @@ const authSlice = createSlice({
   initialState,
   extraReducers: {
     [authOperations.register.fulfilled](state, action) {
-      console.log('register', action.payload);
       if (action.payload === undefined) {
         return;
       }
@@ -27,8 +26,8 @@ const authSlice = createSlice({
       state.user = action.payload.user;
       state.token = action.payload.user.token;
       state.isLoggedIn = true;
-      //state.isGoogleSigned = true;
-      state.isGoogleSigned = action.payload.isGoogleSigned;
+      state.isGoogleSigned = true;
+     // state.isGoogleSigned = action.payload.isGoogleSigned;
     },
 
     [authOperations.logOut.fulfilled](state, action) {
@@ -54,11 +53,8 @@ const authSlice = createSlice({
         return;
       }
 
-      console.log('action', action.payload.user.balance);
       state.balance = action.payload.user.balance;
       state.user = action.payload.user;
-
-
     },
   },
 });

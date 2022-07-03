@@ -2,8 +2,6 @@
   display: flex;
   width: 282px;
   height: 85px;
-  /* width: 1060px;
-    height: 50px; */
 
   background-color: #ffffff;
   justify-content: center;
@@ -46,7 +44,6 @@
   font-weight: 700;
   letter-spacing: 0.04em;
   color: #e53935;
-  /* margin-left: 15px; */
 }
 
 .itemIncome {
@@ -54,7 +51,6 @@
   font-weight: 700;
   letter-spacing: 0.04em;
   color: #407946;
-  /* margin-left: 15px; */
 }
 
 @media screen and (min-width: 768px) {
@@ -72,15 +68,7 @@
     margin-right: 15px;
   }
 }
-
-@media screen and (min-width: 1200px) and (max-width: 1279px) {
-  .list {
-    width: 1060px;
-    margin-left: -196px;
-  }
-}
-
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 1280px) {
   .list {
     width: 1060px;
   }

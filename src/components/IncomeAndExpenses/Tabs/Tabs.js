@@ -54,7 +54,7 @@ export default function Tabs() {
   const setToken = useSelector(authSelectors.getToken);
 
   useEffect(() => {
-    token.set(setToken)
+    token.set(setToken);
     const momentDate = moment().valueOf();
     dispatch(transactionsOperations.getExpenseByDate(momentDate));
   }, [dispatch]);
@@ -87,9 +87,10 @@ export default function Tabs() {
   };
 
   const handleSubmit = data => {
+    console.log('data', data);
     if (income) {
       dispatch(transactionsOperations.addIncome(data, onSuccess));
-    }
+     }
     if (expense) {
       dispatch(transactionsOperations.addExpense(data, onSuccess));
     }
@@ -125,6 +126,7 @@ export default function Tabs() {
     <div>
       <div className={s.tabsContainer}>
         <Button
+          type="button"
           onClick={clickExpense}
           className={
             expense ? `${s.tabButton} ${s.activeButton}` : `${s.tabButton}`
@@ -153,6 +155,7 @@ export default function Tabs() {
             transactions={transactions}
             onDelete={onDeleteTransaction}
           />
+          {/* <Brief selectedDate={selectedDate} incomes={false} /> */}
         </div>
       ) : (
         <div className={s.counterTabContainer}>
@@ -167,6 +170,7 @@ export default function Tabs() {
             income={income}
             onDelete={onDeleteTransaction}
           />
+          {/* <Brief incomes={true} selectedDate={selectedDate} /> */}
         </div>
       )}
       {/* <TransactionForm options={optionsExpense} /> */}

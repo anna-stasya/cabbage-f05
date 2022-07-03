@@ -1,25 +1,25 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { GoogleLogin } from 'react-google-login';
 
 import logInSucces from '../../../redux/auth/auth-slice';
+import authSelectors from '../../../redux/auth/auth-selectors';
+import { clientId } from './constants';
 import googleLogo from './svg/logoGoogle.svg';
 
 import b from '../../../components/ButtonAuth/Button.module.css';
 
-const clientId =
-  '969256354016-orno03n42ee5h75ii12h0s0lmfu5tfcn.apps.googleusercontent.com';
-
 function SignInGoogle() {
   const dispatch = useDispatch();
-
+  const Token = useSelector(authSelectors.getToken);
   const onSuccess = res => {
     console.log('Login Success: currentUser:', res.profileObj);
     alert(
       ` Авторизация прошла успешно🎉 Добро пожаловать, ${res.profileObj.name} 😍. \n Рады Вас видеть!`,
     );
     const { email, name } = res.profileObj;
-    dispatch(logInSucces({ email, name, token: 'qwqw', isGoogleSigned: true }));
+    // dispatch(logInSucces({ email, name, token: Token, isGoogleSigned: true }));
+    console.log(Token);
   };
 
   const onFailure = res => {

@@ -6,14 +6,14 @@
 
 @media (min-width: 768px) {
   .container {
-    max-width: 668px;
+    max-width: 768px;
     padding: 0 50px;
   }
 }
 
 @media (min-width: 1280px) {
   .container {
-    max-width: 1060px;
+    max-width: 1280px;
     padding: 0 110px;
   }
 }

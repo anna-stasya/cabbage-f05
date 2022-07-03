@@ -6,10 +6,8 @@ import { Formik, ErrorMessage } from 'formik';
 import { SignInGoogle } from '../SignInGoogle/SigninGoogle';
 import authOperations from '../../../redux/auth/auth-operations';
 import authSelectors from '../../../redux/auth/auth-selectors';
-import LogoHero from '../../../components/Header/LogoHero';
 
 import s from './loginAuth.module.css';
-import style from './MainLog.module.css';
 import b from '../../../components/ButtonAuth/Button.module.css';
 
 const INITIAL_VALUES = {
@@ -17,6 +15,8 @@ const INITIAL_VALUES = {
   email: '',
   password: '',
 };
+
+
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -49,15 +49,20 @@ const Login = () => {
     dispatch(authOperations.logIn({ name, email, password }));
   };
 
+  // const showHidePassword = target => {
+  //   var input = document.getElementById('password-input');
+  //   if (input.getAttribute('type') === 'password') {
+  //     target.classList.add('view');
+  //     input.setAttribute('type', 'text');
+  //   } else {
+  //     target.classList.remove('view');
+  //     input.setAttribute('type', 'password');
+  //   }
+  //   return false;
+  // };
+
   return (
-    <div className={style.main__container}>
-      <div className={style.hero}>
-        <LogoHero />
-        <h1 className={style.hero__title}>Smart Finance</h1>
-        <div className={style.coles}></div>
-      </div>
-      <div className={style.main}></div>
-      
+    <div>
       {!isLoggedIn && (
         <div className={s.auth}>
           <p className={`${s.textGoogle} ${s.textAuth}`}>
@@ -96,15 +101,24 @@ const Login = () => {
                 <label htmlFor="password" className={s.label}>
                   <p className={s.text}>Пароль:</p>
                 </label>
-                <input
-                  type="password"
-                  name="password"
-                  placeholder="Пароль"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.password}
-                  className={s.input}
-                />
+                <div className={s.password}>
+                  <input
+                    // autoComplete="on"
+                    type="password"
+                    name="password"
+                    id="password-input"
+                    placeholder="Пароль"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.password}
+                    className={s.input}
+                  />
+                  {/* <span
+                  title="Показать/Скрыть пароль"
+                    className={s.passwordControl}
+                    onClick={showHidePassword}
+                  ></span> */}
+                </div>
                 <ErrorMessage
                   name="password"
                   component="div"

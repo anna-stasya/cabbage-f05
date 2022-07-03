@@ -21,15 +21,13 @@
   border: none;
 }
 .user {
-  display: flex;
   width: 32px;
   margin-top: 12px;
   height: 32px;
   background: #f5f6fa;
   border-radius: 50%;
-  align-items: center;
+  text-align: center;
   margin-left: auto;
-
   border: none;
   font-family: Roboto;
   font-size: 12px;
@@ -53,13 +51,13 @@
     margin-left: 26px;
   }
   .userName {
-    display: block;
-    padding: 0;
+    display: flex;
+    margin-top: 21px;
     border: none;
     font: inherit;
     color: inherit;
     background-color: transparent;
-    margin-top: 21px;
+
     margin-left: 10px;
     font-size: 12px;
     line-height: 14px;
@@ -79,18 +77,23 @@
     color: inherit;
     background-color: transparent;
     cursor: pointer;
+    margin-right: 15px;
     text-decoration: underline;
-    margin-right: 20px;
   }
 
   .tabletLogout::before {
     width: 36px;
     transform: rotate(90deg);
+    margin-left: 20px;
+    margin-right: 20px;
 
     content: '';
     display: inline-block;
     border: 1px solid #e0e5eb;
   }
+}
+.tabletLogout:hover {
+  color: #ff751d;
 }
 
 @media (min-width: 1280px) {
@@ -102,10 +105,9 @@
     margin-top: 13px;
   }
   .user {
-    margin-left: auto;
+    margin-left: 908px;
   }
   .tabletLogout {
-    margin-left: 20px;
-    margin-right: 20px;
+    margin-right: 10px;
   }
 }
