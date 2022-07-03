@@ -1,7 +1,6 @@
 import { Suspense, lazy } from 'react';
 import { useSelector } from 'react-redux';
 import { Routes, Route } from 'react-router-dom';
-
 import { paths } from './config';
 //components
 import Container from './components/Container';
@@ -11,8 +10,8 @@ import PrivateRoute from './components/Route/PrivateRoute';
 import PublicRoute from './components/Route/PublicRoute';
 //Transactions
 import TransactionView from './pages/Transactions/TransactionView';
-
-
+//Background
+import Background from './components/Background';
 import authSelectors from './redux/auth/auth-selectors';
 import './App.css';
 import back from './App.module.css';
@@ -39,6 +38,7 @@ function App() {
         <AppBar></AppBar>
         {isLoggedIn ? <UserMenu /> : null}
       </header>
+       <Background>
       <Container>
         <Suspense fallback={<div>Downloading...</div>}>
           <Routes>
@@ -49,9 +49,7 @@ function App() {
                 //  <PublicRoute restricted redirectTo={paths.login}>
 
                 <PublicRoute restricted>
-                  {/* <div className={back.backgroundAuth}> */}
                     <Registration />
-                  {/* </div> */}
                 </PublicRoute>
               }
             />
@@ -61,9 +59,9 @@ function App() {
                 //  <PublicRoute restricted redirectTo={paths.home}>
 
                 <PublicRoute restricted>
-                  {/* <div className={back.backgroundAuth}> */}
+                  
                     <Login />
-                  {/* </div> */}
+                  
                 </PublicRoute>
               }
             />
@@ -72,11 +70,9 @@ function App() {
               path={paths.transactions}
               element={
                 <PrivateRoute>
-                  <div
-                    // className={back.backgroundWrapper}
-                  >
+                 
                     <TransactionView />
-                  </div>
+                
                 </PrivateRoute>
               }
             />
@@ -84,16 +80,17 @@ function App() {
               end
               path={paths.reports}
               element={
-                <div className={back.backgroundWrapper}>
+                
                   <PrivateRoute>
                     <Reports />
                   </PrivateRoute>
-                </div>
+               
               }
             />
           </Routes>
         </Suspense>
-      </Container>
+        </Container>
+        </Background>
     </>
 
   );

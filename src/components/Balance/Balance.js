@@ -35,7 +35,7 @@ const Balance = ({ hide, mobile }) => {
     token.set(setToken)
      dispatch(authOperations.getBalance());
 
-  }, [dispatch]);
+  }, [dispatch, setToken]);
 
   useEffect(() => {
     setSum(balance);

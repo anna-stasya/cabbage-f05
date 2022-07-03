@@ -1,9 +1,9 @@
 import React, { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useNavigate, NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 
-import { paths } from '../../../config';
+// import { paths } from '../../../config';
 import { SignInGoogle } from '../SignInGoogle/SigninGoogle';
 import authOperations from '../../../redux/auth/auth-operations';
 import authSelectors from '../../../redux/auth/auth-selectors';
@@ -22,14 +22,14 @@ const INITIAL_VALUES = {
 
 const Registration = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
 
-  const goToLogin = () => {
-    // navigate(paths.login);
-    window.open(paths.login);
-  };
+  // const goToLogin = () => {
+  //   // navigate(paths.login);
+  //   window.open(paths.login);
+  // };
 
   const validate = useCallback(values => {
     const errors = {};
@@ -72,12 +72,13 @@ const Registration = () => {
   }, []);
 
   const handleSubmit = e => {
-    console.log('submit:', handleSubmit);
+    // console.log('submit:', handleSubmit);
     const name = e.name;
     const email = e.email;
     const password = e.password;
 
     dispatch(authOperations.register({ name, email, password }));
+    window.location.assign('/');
     // window.open('/');
   };
 
@@ -175,7 +176,7 @@ const Registration = () => {
                   <button
                     type="submit"
                     className={b.btnAuth}
-                    onClick={goToLogin}
+                    // onClick={goToLogin}
                   >
                     Регистрация
                   </button>
