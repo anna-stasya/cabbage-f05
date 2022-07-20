@@ -14,13 +14,12 @@ export default function Background({ children }) {
     
     return (
     <>
-      {locationUser && <BackgroundUser>{children}</BackgroundUser>};
+      {locationUser && <BackgroundUser>{children}</BackgroundUser>}
       {locationUserActivity && (
         <BackgroundTrans location={location.pathname === paths.reports}>
           {children}
         </BackgroundTrans>
       )}
-      ;
     </>
-  );
+  )
 }

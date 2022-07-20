@@ -1,6 +1,6 @@
 /* ---------------------------mobile -------------------------*/
 .auth {
-  /* position: absolute; */
+  position: absolute;
   right: 110px;
   top: 197px;
 
@@ -12,12 +12,14 @@
   margin-top: 48px;
   padding: 42px 17px 51px;
   border-radius: 30px;
+  background-color: #ffff;
   box-shadow: 5px 10px 20px rgba(170, 178, 197, 0.4);
   z-index: 100;
 }
 
 .textGoogle {
   margin: auto;
+  color: #52555F;
   text-align: center;
 }
 
@@ -26,7 +28,7 @@
   font-family: Roboto;
   font-style: normal;
   font-weight: normal;
-  width: 242px;
+  width: 222px;
   height: 24px;
   font-size: 10px;
 

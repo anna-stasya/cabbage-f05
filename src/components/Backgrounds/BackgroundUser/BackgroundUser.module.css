@@ -19,7 +19,8 @@
     background-repeat: no-repeat;
     background-image: url(../../../images/background/Vector_mob.png),
         url(../../../images/background/Vector.png);
-    background-position: right -34px top 160px, left 35px top 767px;
+    background-position: right -20px top 160px, left 35px top 767px;
+    
 }
 
 @media screen and (min-width: 768px) {
