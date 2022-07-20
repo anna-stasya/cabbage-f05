@@ -25,7 +25,7 @@ export default function UserMenu() {
   const name = useSelector(authSelectors.getUsername);
   const avatar = useSelector(authSelectors.getUserAvatar);
   // ------------------->  выход из Google
-  const token = useSelector(authSelectors.getToken);
+  // const token = useSelector(authSelectors.getToken);
   const isGoogleSigned = useSelector(authSelectors.getisGoogleSigned);
 
   const onLogoutSuccess = () => {

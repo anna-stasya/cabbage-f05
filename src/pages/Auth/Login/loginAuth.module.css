@@ -1,6 +1,6 @@
 /* ---------------------------mobile -------------------------*/
 .auth {
-  position: absolute;
+  /* position: absolute; */
   right: 110px;
   top: 197px;
 
@@ -8,11 +8,12 @@
   flex-direction: column;
   width: 300px;
   height: 525px;
-  margin: auto;
+  /* margin: auto; */
   margin-top: 48px;
   padding: 42px 17px 51px;
   border-radius: 30px;
   box-shadow: 5px 10px 20px rgba(170, 178, 197, 0.4);
+  z-index: 100;
 }
 
 .textGoogle {
@@ -21,7 +22,7 @@
 }
 
 .textAuth {
-  /* margin-bottom: 24px; */
+  margin-bottom: 24px;
   font-family: Roboto;
   font-style: normal;
   font-weight: normal;
@@ -40,8 +41,9 @@
   font-weight: 400;
   font-size: 10px;
   line-height: 12px;
+  text-align: left;
   letter-spacing: 0.04em;
-  margin-top: 20px;
+  /* margin-top: 20px; */
   margin-bottom: 12px;
   color: #000000;
 }
@@ -57,7 +59,7 @@
 .input {
   font-family: Roboto;
   margin-bottom: 4px;
-  /* margin-bottom: 30px; */
+  margin-bottom: 30px;
   width: 253px;
   height: 52px;
   background: #f5f6fb;
@@ -106,7 +108,7 @@
 
 @media screen and (min-width: 768px) {
   .auth {
-    position: absolute;
+    /* position: absolute; */
     right: 166px;
     top: 241px;
 
@@ -117,9 +119,11 @@
   }
 
   .textAuth {
+    margin-bottom: 20px;
     width: 265px;
     height: 28px;
     font-size: 12px;
+    text-align: left;
     line-height: 1.7;
     letter-spacing: 0.04em;
   }
@@ -139,7 +143,7 @@
 
 @media screen and (min-width: 1280px) {
   .auth {
-    position: absolute;
+    /* position: absolute; */
     right: 110px;
     top: 117px;
   }

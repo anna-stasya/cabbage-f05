@@ -1,9 +1,10 @@
 import { Suspense, lazy } from 'react';
 import { useSelector } from 'react-redux';
 import { Routes, Route } from 'react-router-dom';
-
 import { paths } from './config';
-//components
+// Background
+import Background from './components/Backgrounds/Background';
+// components
 import Container from './components/Container';
 import AppBar from './components/Header/appBar';
 import UserMenu from './components/Header/userMenu';
@@ -18,7 +19,9 @@ import './App.css';
 import styles from './components/Header/Header.module.css';
 
 //Auth
-const Login = lazy(() => import('./pages/Auth/Login/Login'));
+const Login = lazy(() =>
+  import('./pages/Auth/Login/Login')
+);
 const Registration = lazy(() =>
   import('./pages/Auth/Registration/Registration'),
 );
@@ -31,75 +34,17 @@ function App() {
 
   return (
     <>
-      <header className={styles.headerContainer}>
-        <AppBar></AppBar>
-        {isLoggedIn ? <UserMenu /> : null}
-      </header>
-<<<<<<< Updated upstream
-      <Container>
-        <Suspense fallback={<div>Downloading...</div>}>
-          <Routes>
-            {/* ---------------------PublicRoute -------------------------------*/}
-            <Route
-              path={paths.register}
-              element={
-                //  <PublicRoute restricted redirectTo={paths.login}>
-
-                <PublicRoute restricted>
-                  {/* <div className={back.backgroundAuth}> */}
-                    <Registration />
-                  {/* </div> */}
-                </PublicRoute>
-              }
-            />
-            <Route
-              path={paths.login}
-              element={
-                //  <PublicRoute restricted redirectTo={paths.home}>
-
-                <PublicRoute restricted>
-                  {/* <div className={back.backgroundAuth}> */}
-                    <Login />
-                  {/* </div> */}
-                </PublicRoute>
-              }
-            />
-            {/*---------------------- PrivateRoute ------------------------------*/}
-            <Route
-              path={paths.transactions}
-              element={
-                <PrivateRoute>
-                  <div
-                    // className={back.backgroundWrapper}
-                  >
-                    <TransactionView />
-                  </div>
-                </PrivateRoute>
-              }
-            />
-            <Route
-              end
-              path={paths.reports}
-              element={
-                <div className={back.backgroundWrapper}>
-                  <PrivateRoute>
-                    <Reports />
-                  </PrivateRoute>
-                </div>
-              }
-            />
-          </Routes>
-        </Suspense>
-      </Container>
-=======
       <Background>
+        <header className={styles.headerContainer}>
+          <AppBar />
+          {isLoggedIn ? <UserMenu /> : null}
+        </header>
         <Container>
           <Suspense fallback={<div>Downloading...</div>}>
             <Routes>
               <Route
                 path={paths.register}
                 element={
-                  //  <PublicRoute restricted redirectTo={paths.login}>
                   <PublicRoute restricted>
                     <Registration />
                   </PublicRoute>
@@ -108,13 +53,11 @@ function App() {
               <Route
                 path={paths.login}
                 element={
-                  //  <PublicRoute restricted redirectTo={paths.home}>
                   <PublicRoute restricted>
                     <Login />
                   </PublicRoute>
                 }
               />
-
               <Route
                 path={paths.transactions}
                 element={
@@ -136,7 +79,7 @@ function App() {
           </Suspense>
         </Container>
       </Background>
->>>>>>> Stashed changes
+
     </>
   );
 

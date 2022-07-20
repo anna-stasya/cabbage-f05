@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import moment from 'moment';
 import { toast } from 'react-toastify';
@@ -8,12 +8,12 @@ import TransactionsList from '../TransactionsList/TransactionsList';
 import Button from '../Button';
 // import { balanceOperations } from '../../../redux/balance';
 import authOperations from '../../../redux/auth/auth-operations';
-import authSelectors from '../../../redux/auth/auth-selectors';
+// import authSelectors from '../../../redux/auth/auth-selectors';
 import {
   transactionsOperations,
   transactionsSelectors,
 } from '../../../redux/transaction';
-import axios from 'axios';
+// import axios from 'axios';
 
 const optionsExpense = [
   { value: 'transport', label: 'Транспорт' },
@@ -34,14 +34,14 @@ const optionsIncome = [
   { value: 'additional', label: 'Доп. доход' },
 ];
 
-const token = {
-  set(token) {
-    axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-  },
-  unset() {
-    axios.defaults.headers.common.Authorization = '';
-  },
-};
+// const token = {
+//   set(token) {
+//     axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+//   },
+//   unset() {
+//     axios.defaults.headers.common.Authorization = '';
+//   },
+// };
 
 export default function Tabs() {
   const [expense, setExpense] = useState(true);
@@ -51,13 +51,37 @@ export default function Tabs() {
 
   const selectedDate = useSelector(transactionsSelectors.currentDate);
   const transactions = useSelector(transactionsSelectors.getTransactions);
-  const setToken = useSelector(authSelectors.getToken);
+  // const setToken = useSelector(authSelectors.getToken);
+
+  // useEffect(() => {
+  //   // token.set(setToken);
+  //   const momentDate = moment().valueOf();
+  //   dispatch(transactionsOperations.getExpenseByDate(momentDate));
+  // }, [dispatch]);
+
+  const getIncomes = useCallback(
+    momentDate => {
+      dispatch(transactionsOperations.getIncomeByDate(momentDate));
+    },
+    [dispatch],
+  );
+
+  const getExpenses = useCallback(
+    momentDate => {
+      dispatch(transactionsOperations.getExpenseByDate(momentDate));
+    },
+    [dispatch],
+  );
 
   useEffect(() => {
-    token.set(setToken);
-    const momentDate = moment().valueOf();
-    dispatch(transactionsOperations.getExpenseByDate(momentDate));
-  }, [dispatch]);
+    const momentDate = moment(selectedDate).valueOf();
+    if (income) {
+      getIncomes(momentDate);
+    }
+    if (!income) {
+      getExpenses(momentDate);
+    }
+  }, [getIncomes, getExpenses, income, selectedDate]);
 
   const clickExpense = () => {
     if (expense) return;

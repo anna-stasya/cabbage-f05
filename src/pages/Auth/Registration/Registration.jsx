@@ -1,9 +1,8 @@
 import React, { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useNavigate, NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 
-import { paths } from '../../../config';
 import { SignInGoogle } from '../SignInGoogle/SigninGoogle';
 import authOperations from '../../../redux/auth/auth-operations';
 import authSelectors from '../../../redux/auth/auth-selectors';
@@ -20,20 +19,9 @@ const INITIAL_VALUES = {
 
 const Registration = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
 
-<<<<<<< Updated upstream
-  const goToLogin = () => {
-    // navigate(paths.login);
-    window.open(paths.login);
-=======
- const goToLogin = () => {
-   // navigate(paths.login);
-   window.open(paths.login);
->>>>>>> Stashed changes
-  };
 
   const validate = useCallback(values => {
     const errors = {};
@@ -82,14 +70,8 @@ const Registration = () => {
     const password = e.password;
 
     dispatch(authOperations.register({ name, email, password }));
-<<<<<<< Updated upstream
-    // window.open('/');
-=======
-   // window.open('/');
->>>>>>> Stashed changes
+    window.location.assign('/');
   };
-
- 
 
   return (
     <div>
@@ -177,22 +159,13 @@ const Registration = () => {
                 <div className={s.btnRegister}>
                   
                   <button
-<<<<<<< Updated upstream
+
                     type="submit"
                     className={b.btnAuth}
-                    onClick={goToLogin}
                   >
-                    Регистрация
+                    Зарегестрироваться
                   </button>
-=======
-                      type="submit"
-                      className={b.btnAuth}
-                      onClick = {goToLogin}
-                    >
-                      Регистрация
-                    </button>
-                  
->>>>>>> Stashed changes
+
                 </div>
               </Form>
             )}

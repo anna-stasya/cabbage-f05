@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { useLocation } from 'react-router-dom';
+import paths from '../../config/paths';
 import axios from 'axios';
 
 import s from './Balance.module.css';
@@ -18,8 +20,9 @@ const token = {
 };
 
 const Balance = ({ hide, mobile }) => {
-  const balance = useSelector(authSelectors.getBalance);
+  const location = useLocation();
 
+  const balance = useSelector(authSelectors.getBalance);
   const setToken = useSelector(authSelectors.getToken);
  
   const dispatch = useDispatch();
@@ -35,7 +38,7 @@ const Balance = ({ hide, mobile }) => {
     token.set(setToken)
      dispatch(authOperations.getBalance());
 
-  }, [dispatch]);
+  }, [dispatch, setToken]);
 
   useEffect(() => {
     setSum(balance);
@@ -48,7 +51,12 @@ const Balance = ({ hide, mobile }) => {
     dispatch(authOperations.setBalance(sum));
   };
   return (
-    <form onSubmit={handleSubmitForm} className={s.reportBalance}>
+    <form
+      onSubmit={handleSubmitForm}
+      className={`${s.reportBalance} ${
+        location.pathname === paths.reports && `${s.reportBalancePage}`
+      }`}>
+      
       <label htmlFor="balans" className={s.balanceLabel}>
         Баланс:
         <div className={s.buttonsGroup}>
