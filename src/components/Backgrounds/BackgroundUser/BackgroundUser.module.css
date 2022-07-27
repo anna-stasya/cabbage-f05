@@ -2,14 +2,22 @@
     position: relative;
     height: 100vh;
     width: 100%;
-    /* overflow: hidden; */
 }
 
 .background {
+    background-image: url(../../../images/background-m.png);
+    background-repeat: no-repeat;
+
+    width: 320px;
     height: 342px;
+    margin: 0;
+    z-index: 0;
+    /* left: 0px;
+    top: 0px; */
+    /* height: 342px;
     border-bottom-left-radius: 100px;
     background: #f5f6fb;
-    width: 100%;
+    width: 100%; */
 }
 
 .coles {
@@ -17,10 +25,10 @@
     height: 100vh;
     width: 100%;
     background-repeat: no-repeat;
-    background-image: url(../../../images/background/Vector_mob.png),
+    background-image: url(../../../images/background/Vector_mob1.png),
         url(../../../images/background/Vector.png);
-    background-position: right -20px top 160px, left 35px top 767px;
-    
+    background-position: left 281px top 160px, left 35px top 767px;
+    color: #DFE2EB;
 }
 
 @media screen and (min-width: 768px) {

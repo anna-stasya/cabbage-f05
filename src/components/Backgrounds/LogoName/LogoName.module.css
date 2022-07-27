@@ -1,0 +1,33 @@
+.LogoBox {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    width: 183px;
+    height: 63px;
+    left: 49px;
+    right: 88px;
+    top: 142px;
+}
+
+.LogoHead{
+    width: 183px;
+    /* height: 46.34px;
+    left: 49px;
+    top: 142px; */
+}
+
+.LogoSign{
+    width: 141px;
+    height: 12px;
+    left: 60px;
+    top: 193px;
+    
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 13px;
+    line-height: 15px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #52555F;
+}

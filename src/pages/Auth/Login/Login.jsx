@@ -7,6 +7,8 @@ import { SignInGoogle } from '../SignInGoogle/SigninGoogle';
 import authOperations from '../../../redux/auth/auth-operations';
 import authSelectors from '../../../redux/auth/auth-selectors';
 
+import LogoName from '../../../components/Backgrounds/LogoName';
+
 import s from './loginAuth.module.css';
 import b from '../../../components/ButtonAuth/Button.module.css';
 
@@ -63,6 +65,7 @@ const Login = () => {
 
   return (
     <div>
+      <LogoName></LogoName>
       {!isLoggedIn && (
         <div className={s.auth}>
           <p className={`${s.textGoogle} ${s.textAuth}`}>
