@@ -5,22 +5,18 @@
     width: 183px;
     height: 63px;
     left: 49px;
-    right: 88px;
     top: 142px;
 }
 
 .LogoHead{
     width: 183px;
-    /* height: 46.34px;
-    left: 49px;
-    top: 142px; */
 }
 
 .LogoSign{
     width: 141px;
     height: 12px;
-    left: 60px;
-    top: 193px;
+    margin-top: 5px;
+    margin-left: 13px;
     
     font-family: 'Roboto';
     font-style: normal;
@@ -30,4 +26,32 @@
     letter-spacing: 0.15em;
     text-transform: uppercase;
     color: #52555F;
+}
+
+/* ----------------------------------------tablet ---------------------------------*/
+
+@media screen and (min-width: 768px) {
+    .LogoBox {
+        width: 307px;
+        height: 101px;
+        left: 161px;
+        top: 146px;
+        }
+
+    .LogoHead {
+        width: 307px;
+        height: 78px;
+    }
+
+    .LogoSign {
+        margin-left: 50px;
+        margin-top: 5px;
+        width: 179px;
+        height: 19px;
+
+        font-size: 16px;
+        line-height: 19px;
+        letter-spacing: 0.18em;
+        color: #52555F;
+    }
 }
