@@ -2,10 +2,12 @@
 import Tabs from '../../components/IncomeAndExpenses/Tabs';
 import Balance from '../../components/Balance';
 import ToReportsBtn from '../../components/ToReportsBtn';
-import BriefList from '../../components/Brief';
+
+//import BriefList from '../../components/Brief';
 
 // import HomeMain from '../../components/HomeMain/HomeMain';
 // import Wrapper from '../../components/Wrapper/Wrapper';
+
 
 
 // import s from './TransactionView.module.css';
@@ -13,9 +15,13 @@ import BriefList from '../../components/Brief';
 export default function TransactionView() {
   return (
 
+
     <div
     // className={s.main_container}
     >
+
+    
+
       <Balance />
       {/* </div> */}
       {/* <div className={s.reports}> */}
@@ -25,10 +31,11 @@ export default function TransactionView() {
       {/* <div className={s.table_container}>. */}
       <ToReportsBtn />
       <Tabs />
+
       {/* </div> */}
       {/* </div> */}
       {/* <div className={s.balance}> */}
-      <BriefList />
+      {/* <BriefList /> */}
       {/* </div> */}
       {/* </Wrapper> */}
       {/* </HomeMain> */}
@@ -44,6 +51,9 @@ export default function TransactionView() {
     
 
   //  </>
+
+
+   
 
   );
 }

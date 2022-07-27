@@ -1,31 +1,34 @@
 /* ---------------------------mobile -------------------------*/
 .auth {
   position: absolute;
-  right: 10px;
-  top: 160px;
-  background-color: #ffffff;
+  left: 10px;
+  top: 197px;
+
   display: flex;
   flex-direction: column;
   width: 300px;
   height: 525px;
-  margin: 0 auto;
+  /* margin: auto; */
   margin-top: 48px;
   padding: 42px 17px 51px;
   border-radius: 30px;
+  background-color: #ffff;
   box-shadow: 5px 10px 20px rgba(170, 178, 197, 0.4);
+  z-index: 100;
 }
 
 .textGoogle {
   margin: auto;
+  color: #52555F;
   text-align: center;
 }
 
 .textAuth {
-  /* margin-bottom: 24px; */
+  margin-bottom: 24px;
   font-family: Roboto;
   font-style: normal;
   font-weight: normal;
-  width: 242px;
+  width: 222px;
   height: 24px;
   font-size: 10px;
 
@@ -40,8 +43,9 @@
   font-weight: 400;
   font-size: 10px;
   line-height: 12px;
+  text-align: left;
   letter-spacing: 0.04em;
-  margin-top: 20px;
+  /* margin-top: 20px; */
   margin-bottom: 12px;
   color: #000000;
 }
@@ -57,7 +61,7 @@
 .input {
   font-family: Roboto;
   margin-bottom: 4px;
-  /* margin-bottom: 30px; */
+  margin-bottom: 30px;
   width: 253px;
   height: 52px;
   background: #f5f6fb;
@@ -66,13 +70,48 @@
   padding: 17px 20px;
   border: 0;
 }
+/* -------password------- */
+.password{
+  /* width: 300px;
+	margin: 15px auto; */
+	/* position: relative; */
+  cursor: pointer;
+}
+
+/* #password-input {
+	width: 100%;
+	padding: 5px 0;
+	height: 30px;
+	line-height: 40px;
+	text-indent: 10px;
+	margin: 0 0 15px 0;
+	border-radius: 5px;
+	border: 1px solid #999;
+	font-size: 18px;
+} */
+
+.passwordControl {
+  color:#000000;
+	position: absolute;
+	top: 11px;
+	right: 6px;
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	background: url(https://snipp.ru/demo/495/view.svg) 0 0 no-repeat;
+  cursor: pointer;
+}
+
+.passwordControl.view {
+	background: url(https://snipp.ru/demo/495/no-view.svg) 0 0 no-repeat;
+  cursor: pointer;
+}
 /* ----------------------------------------tablet ---------------------------------*/
 
 @media screen and (min-width: 768px) {
   .auth {
-    position: absolute;
-    right: 166px;
-    top: 241px;
+    left: 166px;
+    top: 297px;
 
     margin-top: 0;
     width: 436px;
@@ -81,9 +120,11 @@
   }
 
   .textAuth {
+    margin-bottom: 20px;
     width: 265px;
     height: 28px;
     font-size: 12px;
+    text-align: left;
     line-height: 1.7;
     letter-spacing: 0.04em;
   }
@@ -103,8 +144,8 @@
 
 @media screen and (min-width: 1280px) {
   .auth {
-    position: absolute;
+    /* position: absolute; */
     right: 110px;
-    top: 70px;
+    top: 117px;
   }
 }

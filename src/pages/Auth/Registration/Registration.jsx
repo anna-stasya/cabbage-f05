@@ -1,16 +1,15 @@
 import React, { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useNavigate, NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 
-import { paths } from '../../../config';
 import { SignInGoogle } from '../SignInGoogle/SigninGoogle';
 import authOperations from '../../../redux/auth/auth-operations';
 import authSelectors from '../../../redux/auth/auth-selectors';
-import LogoHero from '../../../components/Header/LogoHero';
+
+import LogoName from '../../../components/Backgrounds/LogoName';
 
 import s from './RegisterAuth.module.css';
-import style from './MainRegistr.module.css';
 import b from '../../../components/ButtonAuth/Button.module.css';
 
 const INITIAL_VALUES = {
@@ -22,14 +21,9 @@ const INITIAL_VALUES = {
 
 const Registration = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
 
-  const goToLogin = () => {
-    // navigate(paths.login);
-    window.open(paths.login);
-  };
 
   const validate = useCallback(values => {
     const errors = {};
@@ -78,18 +72,12 @@ const Registration = () => {
     const password = e.password;
 
     dispatch(authOperations.register({ name, email, password }));
-    // window.open('/');
+    window.location.assign('/');
   };
 
   return (
-    <div className={style.main__container}>
-      <div className={style.hero}>
-        <LogoHero />
-        <h1 className={style.hero__title}>Smart Finance</h1>
-        <div className={style.coles}></div>
-      </div>
-      <div className={style.main}></div>
-
+    <div>
+      <LogoName></LogoName>
       {!isLoggedIn && (
         <div className={s.auth}>
           <p className={`${s.textGoogle} ${s.textAuth}`}>
@@ -172,13 +160,15 @@ const Registration = () => {
                   </Link>
                 </div>
                 <div className={s.btnRegister}>
+                  
                   <button
+
                     type="submit"
                     className={b.btnAuth}
-                    onClick={goToLogin}
                   >
-                    Регистрация
+                    Зарегестрироваться
                   </button>
+
                 </div>
               </Form>
             )}
