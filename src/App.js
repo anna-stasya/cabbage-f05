@@ -2,7 +2,9 @@ import { Suspense, lazy } from 'react';
 import { useSelector } from 'react-redux';
 import { Routes, Route } from 'react-router-dom';
 import { paths } from './config';
-//components
+// Background
+import Background from './components/Backgrounds/Background';
+// components
 import Container from './components/Container';
 import AppBar from './components/Header/appBar';
 import UserMenu from './components/Header/userMenu';
@@ -14,19 +16,17 @@ import TransactionView from './pages/Transactions/TransactionView';
 import Background from './components/Background';
 import authSelectors from './redux/auth/auth-selectors';
 import './App.css';
-import back from './App.module.css';
 import styles from './components/Header/Header.module.css';
-//import s from './TransactionView.module.css';
-
 
 //Auth
-const Login = lazy(() => import('./pages/Auth/Login/Login'));
+const Login = lazy(() =>
+  import('./pages/Auth/Login/Login')
+);
 const Registration = lazy(() =>
   import('./pages/Auth/Registration/Registration'),
 );
 const Reports = lazy(() =>
   import('./pages/Reports' /* webpackChunkName: "Reports" */),
-
 );
 
 function App() {
@@ -34,65 +34,53 @@ function App() {
 
   return (
     <>
-      <header className={styles.headerContainer}>
-        <AppBar></AppBar>
-        {isLoggedIn ? <UserMenu /> : null}
-      </header>
-       <Background>
-      <Container>
-        <Suspense fallback={<div>Downloading...</div>}>
-          <Routes>
-            {/* ---------------------PublicRoute -------------------------------*/}
-            <Route
-              path={paths.register}
-              element={
-                //  <PublicRoute restricted redirectTo={paths.login}>
-
-                <PublicRoute restricted>
+      <Background>
+        <header className={styles.headerContainer}>
+          <AppBar />
+          {isLoggedIn ? <UserMenu /> : null}
+        </header>
+        <Container>
+          <Suspense fallback={<div>Downloading...</div>}>
+            <Routes>
+              <Route
+                path={paths.register}
+                element={
+                  <PublicRoute restricted>
                     <Registration />
-                </PublicRoute>
-              }
-            />
-            <Route
-              path={paths.login}
-              element={
-                //  <PublicRoute restricted redirectTo={paths.home}>
-
-                <PublicRoute restricted>
-                  
+                  </PublicRoute>
+                }
+              />
+              <Route
+                path={paths.login}
+                element={
+                  <PublicRoute restricted>
                     <Login />
-                  
-                </PublicRoute>
-              }
-            />
-            {/*---------------------- PrivateRoute ------------------------------*/}
-            <Route
-              path={paths.transactions}
-              element={
-                <PrivateRoute>
-                 
+                  </PublicRoute>
+                }
+              />
+              <Route
+                path={paths.transactions}
+                element={
+                  <PrivateRoute>
                     <TransactionView />
-                
-                </PrivateRoute>
-              }
-            />
-            <Route
-              end
-              path={paths.reports}
-              element={
-                
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                end
+                path={paths.reports}
+                element={
                   <PrivateRoute>
                     <Reports />
                   </PrivateRoute>
-               
-              }
-            />
-          </Routes>
-        </Suspense>
+                }
+              />
+            </Routes>
+          </Suspense>
         </Container>
-        </Background>
-    </>
+      </Background>
 
+    </>
   );
 
   // return (

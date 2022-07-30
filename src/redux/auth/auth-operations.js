@@ -4,11 +4,8 @@ import { alert, defaultModules } from '@pnotify/core';
 import '@pnotify/core/dist/PNotify.css';
 import * as PNotifyMobile from '@pnotify/mobile';
 import '@pnotify/mobile/dist/PNotifyMobile.css';
-// import { balanceServices } from '../../services';
 
-
-
-axios.defaults.baseURL = 'https://obscure-meadow-53073.herokuapp.com/api';
+axios.defaults.baseURL = 'https://second-serv.herokuapp.com/api';
 
 //на все запроссы авторизации
 const token = {
@@ -36,6 +33,7 @@ const logIn = createAsyncThunk('auth/login', async credentials => {
   try {
     const { data } = await axios.post('auth/users/signin', credentials);
     token.set(data.user.token);
+    console.log(data);
     return data;
   } catch (error) {
     defaultModules.set(PNotifyMobile, {});
@@ -45,12 +43,39 @@ const logIn = createAsyncThunk('auth/login', async credentials => {
   }
 });
 
+const GoogleLogin = createAsyncThunk('auth/google', async googleData => {
+  try {
+    const data = await axios.post('/auth/google', { tokenId: googleData.tokenId, });
+     token.set(data.user.token);
+} catch (error) {
+    defaultModules.set(PNotifyMobile, {});
+    alert({
+      text: `Не удалось авторизироваться`,
+    });
+  }
+}
+
+)
+
+// const GoogleLoginUser = createAsyncThunk('/auth/google',async ({ email, token }) => {
+//     try {
+//       authToken.set(token);
+//       return { user: { email }, token };
+//     } catch (err) {
+//       defaultModules.set(PNotifyMobile, {});
+//     alert({
+//       text: `Не удалось авторизироваться`,
+//     });
+//     }
+//   },
+// );
+
 const logOut = createAsyncThunk('auth/logout', async () => {
   try {
-    await axios.post('auth/user/signout');
+    await axios.post('auth/users/signout');
     token.unset();
   } catch (error) {
-
+    console.log(error);
   }
 });
 
@@ -68,23 +93,19 @@ const setBalance = createAsyncThunk('auth/setBalance', async balance => {
 
 const getBalance = createAsyncThunk('balance/getBalance', async () => {
   try {
-
     // dispatch(balanceActions.setLoading(true));
-    const { data } = await axios.get('/auth/users/current')
-    console.log('получили баланс');
+    const { data } = await axios.get('/auth/users/current');
     return data;
     // dispatch(balanceActions.getBalance(balance));
     // dispatch(balanceActions.setLoading(false));
- 
 
-  //  const balance = await balanceServices.getCurrentBalance();
-   // return balance;
+    //  const balance = await balanceServices.getCurrentBalance();
+    // return balance;
   } catch (error) {
     defaultModules.set(PNotifyMobile, {});
     alert({
       text: `Не удалось получить баланс пользователя`,
     });
-
   }
 });
 
@@ -94,6 +115,7 @@ const authOperations = {
   logOut,
   setBalance,
   getBalance,
+  GoogleLogin,
 };
 
 export default authOperations;

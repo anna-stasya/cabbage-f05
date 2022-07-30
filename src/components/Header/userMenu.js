@@ -1,25 +1,49 @@
 import { useDispatch, useSelector } from 'react-redux';
-import authSelectors from '../../redux/auth/auth-selectors';
-import styles from '../Header/Header.module.css';
-import authOperations from '../../redux/auth/auth-operations';
+import { useState } from 'react';
+import { useGoogleLogout } from 'react-google-login';
+
 import Modal from '../Modal/Modal';
 import ModalUniversal from '../ModalUniversal/ModalUniversal';
-import { useState } from 'react';
 import defaultAvatar from './user.png';
+import authSelectors from '../../redux/auth/auth-selectors';
+import authSlice from '../../redux/auth/auth-slice';
+import styles from '../Header/Header.module.css';
+import authOperations from '../../redux/auth/auth-operations';
+import { clientId } from '../../pages/Auth/SignInGoogle/constants';
 
 export default function UserMenu() {
-  const dispatch = useDispatch();
-  const handleLogout = () => {
-    dispatch(authOperations.logOut());
-    toggleModal();
-  };
-  const toggleModal = e => {
+  const [showModal, setShowModal] = useState(false);
+
+  const toggleModal = () => {
     setShowModal(!showModal);
   };
-  const [showModal, setShowModal] = useState(false);
+
+  const handleLogout = () => dispatch(authOperations.logOut());
+
+  const dispatch = useDispatch();
 
   const name = useSelector(authSelectors.getUsername);
   const avatar = useSelector(authSelectors.getUserAvatar);
+  // ------------------->  выход из Google
+  // const token = useSelector(authSelectors.getToken);
+  const isGoogleSigned = useSelector(authSelectors.getisGoogleSigned);
+
+  const onLogoutSuccess = () => {
+    console.log('Logged out Success');
+    alert('Вы успешно вышли из приложения ✌');
+    dispatch(authSlice.logOut())
+  };
+
+  const onFailure = () => {
+    console.log('Handle failure cases');
+  };
+
+  const { signOut: logoutGoogle } = useGoogleLogout({
+    clientId,
+    onLogoutSuccess,
+    onFailure,
+  });
+//   выход из Google <-------------------
 
   return (
     <>
@@ -31,11 +55,11 @@ export default function UserMenu() {
         />
       </div>
       <div className={styles.userName}>{name} </div>
-      <button type="button" className={styles.logout} onClick={toggleModal}>
+      <button type="button" className={styles.logout} onClick={toggleModal}> 
         {showModal && (
           <Modal
             onClose={toggleModal}
-            toggleEnterActiveBtn={handleLogout}
+            toggleEnterActiveBtn={isGoogleSigned ? logoutGoogle : handleLogout}
             toggleRegisterActiveBtn={toggleModal}
           >
             <ModalUniversal children={'Вы действительно хотите выйти?'} />
@@ -73,7 +97,7 @@ export default function UserMenu() {
         {showModal && (
           <Modal
             onClose={toggleModal}
-            toggleEnterActiveBtn={handleLogout}
+            toggleEnterActiveBtn={isGoogleSigned ? logoutGoogle : handleLogout}
             toggleRegisterActiveBtn={toggleModal}
           >
             <ModalUniversal children={'Вы действительно хотите выйти?'} />
