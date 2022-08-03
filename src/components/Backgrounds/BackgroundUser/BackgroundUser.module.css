@@ -58,5 +58,22 @@
 
     .coles {
         background-position: left 230px bottom 50px;
+        
+        animation-name: bounceball;
+        animation-duration: 2s;
+        animation-iteration-count: infinite;
+        animation-direction: alternate;
+        animation-delay: 0;
+        animation-play-state: running;
+        animation-fill-mode: none;
+    }
+    @keyframes bounceball {
+        from {
+            bottom: 0;
+        }
+        to {
+            bottom: 60px;
+        }
+
     }
 }
