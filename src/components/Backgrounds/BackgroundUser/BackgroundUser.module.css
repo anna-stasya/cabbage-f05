@@ -5,12 +5,9 @@
 }
 
 .background {
-    background-image: url(../../../images/background-m.png);
+    background-image: url(../../../images/background/background-m.png);
     background-repeat: no-repeat;
-
-    width: 320px;
     height: 342px;
-    margin: 0;
 }
 
 .coles {
@@ -21,18 +18,17 @@
     background-image: url(../../../images/background/Vector_mob1.png),
         url(../../../images/background/Vector.png);
     background-position: left 281px top 160px, left 35px top 767px;
-    color: #DFE2EB;
 }
 
+/* ----------------------------------------tablet ---------------------------------*/
 @media screen and (min-width: 768px) {
     .background {
-        width: 768px;
+        background-color: #f5f6fb;
+        border-bottom-left-radius: 90px;
         height: 582px;
-        background-image: url(../../../images/background-t.png); 
-        background: #f5f6fb;
     }
 
-    .backgroundColes{
+    .backgroundColes {
         background-image: url(../../../images/background/cabb_up.png);
         background-repeat: no-repeat;
         background-position: left 10px top 84px;
@@ -46,7 +42,20 @@
     }
 }
 
+/* ----------------------------------------desktop ---------------------------------*/
 @media screen and (min-width: 1280px) {
+
+    .background {
+        height: 583px;
+    }
+
+    .backgroundColes {
+        background-image: url(../../../images/background/cabb_up.png);
+        background-repeat: no-repeat;
+        background-position: left 10px top 84px;
+        background-size: 1280px, 532px;
+    }
+
     .coles {
         background-position: left 230px bottom 50px;
     }

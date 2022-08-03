@@ -12,8 +12,7 @@ import PrivateRoute from './components/Route/PrivateRoute';
 import PublicRoute from './components/Route/PublicRoute';
 //Transactions
 import TransactionView from './pages/Transactions/TransactionView';
-//Background
-import Background from './components/Background';
+
 import authSelectors from './redux/auth/auth-selectors';
 import './App.css';
 import styles from './components/Header/Header.module.css';
