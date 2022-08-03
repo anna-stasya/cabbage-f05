@@ -44,7 +44,6 @@ const Login = () => {
   }, []);
 
   const handleSubmit = e => {
-    console.log('submit');
     const name = e.name;
     const email = e.email;
     const password = e.password;
