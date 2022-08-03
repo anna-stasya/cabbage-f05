@@ -8,16 +8,15 @@
     top: 142px;
 }
 
-.LogoHead{
+.LogoHead {
     width: 183px;
 }
 
-.LogoSign{
+.LogoSign {
     width: 141px;
-    height: 12px;
     margin-top: 5px;
     margin-left: 13px;
-    
+
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 700;
@@ -36,18 +35,40 @@
         height: 101px;
         left: 161px;
         top: 146px;
-        }
+    }
 
     .LogoHead {
         width: 307px;
-        height: 78px;
     }
 
     .LogoSign {
         margin-left: 50px;
         margin-top: 5px;
         width: 179px;
-        height: 19px;
+
+        font-size: 16px;
+        line-height: 19px;
+        letter-spacing: 0.18em;
+        color: #52555F;
+    }
+}
+
+/* ----------------------------------------desktop ---------------------------------*/
+
+@media screen and (min-width: 1280px) {
+    .LogoBox {
+        width: 377px;
+        height: 139px;
+        left: 230px;
+        top: 365px;
+    }
+
+    .LogoHead {
+        width: 377px;
+    }
+
+    .LogoSign {
+        margin-left: 60px;
 
         font-size: 16px;
         line-height: 19px;
