@@ -11,15 +11,22 @@
 }
 
 .coles {
+    position: absolute;    
+} 
+
+.colesMobTab{
     position: absolute;
     height: 100vh;
     width: 100%;
     background-repeat: no-repeat;
-    background-image: url(../../../images/background/Vector_mob1.png),
-        url(../../../images/background/Vector.png);
-    background-position: left 281px top 160px, left 35px top 767px;
+    background-image: url(../../../images/background/colesMob.png),
+                     url(../../../images/background/colesL.png);
+    background-position: left 281px top 160px, left 35px top 767px;  
 }
 
+.colesL, .colesR {
+    opacity: 0;
+}
 /* ----------------------------------------tablet ---------------------------------*/
 @media screen and (min-width: 768px) {
     .background {
@@ -35,11 +42,11 @@
         background-size: 1280px, 232px;
     }
 
-    .coles {
+    .colesMobTab {
         background-repeat: no-repeat;
         background-image: url(../../../images/background/double_cabb.png);
         background-position: left 103px top 826px;
-    }
+    }               
 }
 
 /* ----------------------------------------desktop ---------------------------------*/
@@ -56,24 +63,153 @@
         background-size: 1280px, 532px;
     }
 
-    .coles {
-        background-position: left 230px bottom 50px;
+    /* .coles { */
+    /* background-repeat: no-repeat; */
+    /*! две капусты без тени*/
+    /* background-image: url(../../../images/background/Vector.png),
+    url(../../../images/background/Vector-1.png);
+    background-position: left 230px top 677px, left 324px top 658px; */
+
+    /*! две капусты с тенями */
+    /* background-image: url(../../../images/background/double_cabb.png); */
+        /* background-position: left 230px bottom 50px; */
         
-        animation-name: bounceball;
+        /* anamation coles */
+        /* animation-name: bounceball;
         animation-duration: 2s;
         animation-iteration-count: infinite;
         animation-direction: alternate;
         animation-delay: 0;
         animation-play-state: running;
-        animation-fill-mode: none;
-    }
-    @keyframes bounceball {
+        animation-fill-mode: none; */
+    /* } */
+    /* @keyframes bounceball {
         from {
             bottom: 0;
         }
         to {
-            bottom: 60px;
+            bottom: 90px;
         }
 
+    } */
+
+    .colesMobTab, .colesMob {
+        opacity: 0;
     }
+    .coles{
+        opacity: 1;
+        height: 100vh;
+        width: 100%;
+    }
+
+    .colesL{
+        position: absolute;
+        opacity: 1;
+
+        animation-name: bounceball;
+        animation-iteration-count: infinite; 
+        animation-direction: alternate;
+        animation-play-state: running;
+        animation-fill-mode: none;
+
+        animation-duration: 2s;
+        /* animation-delay: 1s; */
+        
+        
+    }
+        @keyframes bounceball {
+            from {
+                bottom: 10;
+                left: 230px;
+                top: 677px;
+            }
+
+            to {
+                bottom: 80px;
+                left: 230px;
+                top: 767px;
+            }
+
+        }
+
+    .colesR{
+        position: absolute;
+        opacity: 1;
+
+        animation-name: jump;
+        animation-iteration-count: infinite;
+        animation-direction: alternate;
+        animation-play-state: running;
+        animation-fill-mode: none;
+
+        animation-duration: 2s;
+        /* animation-delay: 2s; */
+    }
+        @keyframes jump {
+            from {
+                bottom: 10;
+                left: 324px;
+                top: 767px;
+            }
+
+            to {
+                bottom: 80px;
+                left: 324px;
+                top: 677px;
+            }
+
+        }
+
+    .animateShadow{
+        position: absolute;
+        opacity: 0.1;
+
+        margin-left:324px;
+        margin-top: 850px;
+        width: 67px;
+        height: 14px;
+        border-radius: 100%;
+        
+        background-color: #000;
+        filter: blur(4px);
+        animation: jump-shadow 4s linear 1s infinite normal;
+        /* animation-duration: 5s; */
+    }
+        @keyframes jump-shadow {
+            0% {
+                transform: scale(0.8);
+            }
+    
+            /* 10% {
+                transform: scale(1.2);
+            } */
+    
+            30% {
+                transform: scale(1.4);
+            }
+    
+            40% {
+                transform: scale(1);
+            }
+    
+            /* 50% {
+                transform: scale(0.6);
+            } */
+    
+            60% {
+                transform: scale(1);
+            }
+    
+            70% {
+                transform: scale(1.4);
+            }
+    
+            /* 90% {
+                transform: scale(1);
+            } */
+    
+            100% {
+                transform: scale(0.6);
+            }
+        }
 }
